@@ -94,6 +94,11 @@ class EscuelaController extends Controller
      */
     public function destroy(escuela $escuela)
     {
-        //
+        if($escuela->foto){
+            Storage::disk('public')->delete($escuela->foto);
+        }
+
+        $escuela->delete();
+        return to_route('escuela.index');
     }
 }

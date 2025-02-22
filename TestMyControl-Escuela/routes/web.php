@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EscuelaController;
 use App\Http\Controllers\ProfileController;
+use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,7 +27,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::prefix('dashboard')->group(function(){
+Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/escuela', [EscuelaController::class, 'index'])->name('escuela.index');
     Route::get('/escuela/create', [EscuelaController::class, 'create'])->name('escuela.create');
     Route::post('/escuela', [EscuelaController::class, 'store'])->name('escuela.store');
