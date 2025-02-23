@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Seccion;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Escuela\StoreRequest;
+use App\Http\Requests\Escuela\StoreRequestSeccion;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,7 +16,8 @@ class SeccionController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Seccion/Index');
+        $seccion = Seccion::all();
+        return Inertia::render('Seccion/Index',compact('seccion'));
     }
 
     /**
@@ -28,9 +31,12 @@ class SeccionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequestSeccion $request)
     {
-        //
+        $data=$request->only('nombre_seccion');
+        
+        Seccion::create($data);
+        return to_route('seccion.index');
     }
 
     /**

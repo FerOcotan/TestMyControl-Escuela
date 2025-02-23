@@ -4,8 +4,8 @@ import { Head, Link } from '@inertiajs/react';
 
 
 
-const Index = ({auth,escuelas}) => {
-    console.log(escuelas);
+const Index = ({auth,seccion}) => {
+    console.log(seccion);
 
   return (
     <AuthenticatedLayout
@@ -35,64 +35,29 @@ const Index = ({auth,escuelas}) => {
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                    Nombre Escuela
+                                    Codigo Seccion
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                    direccion
+                                    Seccion
                                     </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    email
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    foto
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    latitud
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    longitud
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    Acciones
-                                    </th>
+                                 
                                 </tr>
                             </thead>
                             <tbody>
                                  {   
-                                    escuelas?.map(escuela => (
-                                        <tr key={escuela} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                    seccion?.map(secciones => (
+                                        <tr key={secciones} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
 
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                           
-                                            {escuela.nombre}
+                                            {secciones.id_seccion}
                                         </th>
                                         <td className="px-6 py-4">
-                                            {escuela.direccion}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {escuela.email}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            <img src={`/storage/${escuela.foto}`} alt="" className="w-20 h-20 rounded-full" />
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {escuela.latitud}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {escuela.longitud}
+                                            {secciones.nombre_seccion}
                                         </td>
 
                                         <td>
-                                                <div className="space-x-2">
-                                                    <Link href={route('escuela.edit',[escuela.id_school])} className="btn btn-primary">
-                                                        Editar
-                                                    </Link>
-                                                    <Link href={route('escuela.destroy',[escuela.id_school])} method="delete" as="button" className="btn btn-danger"> 
-                                                    Eliminar
-
-                                                    </Link>
-                                                    
-                                            </div>
+                                                
                                         </td>
                                     </tr>
                                     ))

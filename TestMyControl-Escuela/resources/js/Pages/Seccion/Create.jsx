@@ -9,9 +9,8 @@ import PrimaryButton from '@/Components/PrimaryButton';
 const Create = ({auth}) => {
 
     const initialValues = {
-        nombre: "",
-        direccion: "",
-        telefono: "",   
+        nombre_seccion: "",
+       
     };
     
     
@@ -19,7 +18,7 @@ const Create = ({auth}) => {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('padres.store'));
+        post(route('seccion.store'));
     }
     
   return (
@@ -29,10 +28,10 @@ const Create = ({auth}) => {
         <div className="flex justify-between">
 
         <h2 className="text-xl font-semibold leading-tight text-gray-800">
-            Añadir Padres
+            Añadir Seccion
         </h2>
-        <Link href={route('padres.index')} className="btn btn-primary">
-        Padres
+        <Link href={route('seccion.index')} className="btn btn-primary">
+        secciones
         </Link>
         </div>
     }
@@ -47,53 +46,22 @@ const Create = ({auth}) => {
 
 
                         <div>
-                    <InputLabel htmlFor="nombre" value="Nombre" />
+                    <InputLabel htmlFor="nombre_seccion" value="nombre_seccion" />
 
                     <TextInput
-                        id="nombre"
+                        id="nombre_seccion"
                         type="text"
-                        name="nombre"
-                        value={data.nombre}
+                        name="nombre_seccion"
+                        value={data.nombre_seccion}
                         className="mt-1 block w-full"
             
-                        onChange={(e) => setData('nombre', e.target.value)}
+                        onChange={(e) => setData('nombre_seccion', e.target.value)}
                     />
 
                     <InputError message={errors.nombre} className="mt-2" />
                 </div>
 
-                <div>
-                    <InputLabel htmlFor="direccion" value="direccion" />
-
-                    <TextInput
-                        id="direccion"
-                        type="text"
-                        name="direccion"
-                        value={data.direccion}
-                        className="mt-1 block w-full"
-            
-                        onChange={(e) => setData('direccion', e.target.value)}
-                    />
-
-                    <InputError message={errors.direccion} className="mt-2" />
-                </div>
-
-                
-                <div>
-                   <InputLabel htmlFor="telefono" value="telefono" />
-               
-                                   <TextInput
-                                       id="telefono"
-                                       type="text"
-                                       name="telefono"
-                                       value={data.telefono}
-                                       className="mt-1 block w-full"
-                           
-                                       onChange={(e) => setData('telefono', e.target.value)}
-                                   />
-               
-                                   <InputError message={errors.telefono} className="mt-2" />
-                               </div>
+              
 
                
                     <div className='flex justify-end mt-4'>

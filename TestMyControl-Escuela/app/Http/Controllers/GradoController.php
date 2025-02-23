@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Grado;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Escuela\StoreRequestGrado;
+use App\Http\Requests\Escuela\StoreRequestSeccion;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -14,8 +16,8 @@ class GradoController extends Controller
      */
     public function index()
     {
-      
-        return Inertia::render('Grado/Index');
+        $grado = Grado::all();
+        return Inertia::render('Grado/Index',compact('grado'));
         
     }
 
@@ -30,9 +32,12 @@ class GradoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequestGrado $request)
     {
-        //
+        $data=$request->only('nombre_grado');
+        
+        Grado::create($data);
+        return to_route('grado.index');
     }
 
     /**
