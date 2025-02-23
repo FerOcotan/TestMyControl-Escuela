@@ -42,8 +42,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/alumno/create', [AlumnosController::class, 'create'])->name('alumno.create');
     Route::post('/alumno', [AlumnosController::class, 'store'])->name('alumno.store');
     Route::get('/alumno/{alumno}/edit', [AlumnosController::class, 'edit'])->name('alumno.edit');
-    Route::post('/alumno/{alumno}', [AlumnosController::class, 'update'])->name('alumno.update');
-    Route::delete('/alumno/{alumno}', [AlumnosController::class, 'destroy'])->name('alumno.destroy');
+    Route::post('/alumno/{alumnos}', [AlumnosController::class, 'update'])->name('alumno.update');
+    Route::delete('/alumno/{alumnos}', [AlumnosController::class, 'destroy'])->name('alumno.destroy');
 });
 
 

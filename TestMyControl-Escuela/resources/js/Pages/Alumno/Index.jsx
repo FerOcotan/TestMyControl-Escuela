@@ -99,6 +99,10 @@ const Index = ({auth,alumnos}) => {
                                          <Link href={route('alumno.edit',[alumno.id_alumno])} className="btn btn-primary">
                                           Editar
                                         </Link>
+                                        <Link href={route('alumno.destroy',[alumno.id_alumno])} method="delete" as="button" className="btn btn-danger"> 
+                                             Eliminar
+                                        
+                                     </Link>
                                          
                                                     
                                             </div>
