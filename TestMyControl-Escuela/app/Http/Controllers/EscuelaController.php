@@ -17,9 +17,12 @@ class EscuelaController extends Controller
      */
     public function index()
     {
-        $escuelas = escuela::where('user_id', Auth::user()->id)->get();
-        
-    
+
+
+       $escuelas = escuela::where('user_id', Auth::user()->id)->get();
+       //$escuelas = Escuela::all();
+
+       
        return Inertia::render('Escuela/Index',compact('escuelas'));
 
 

@@ -6,6 +6,7 @@ use App\Models\Alumnos;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Escuela\StoreRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class AlumnosController extends Controller
@@ -15,9 +16,11 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Alumno/Index', [
-            'alumnos' => Alumnos::all()
-        ]);
+        
+       // $alumnos = Alumnos::where('user_id', Auth::user()->id)->get();
+        $alumnos = Alumnos::all();
+        
+        return Inertia::render('Alumno/Index',compact('alumnos'));
     }
     
 
@@ -26,6 +29,7 @@ class AlumnosController extends Controller
      */
     public function create()
     {
+
         return Inertia::render('Alumno/Create');
     }
 
@@ -40,6 +44,8 @@ class AlumnosController extends Controller
             $routeImage = $file->store('fotos',['disk'=>'public']);
             $data['foto']=$routeImage;
         }
+
+           $data['user_id']=Auth::user()->id;
 
         Alumnos::create($data);
         return to_route('alumno.index');
@@ -56,9 +62,10 @@ class AlumnosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Alumnos $alumnos)
+    public function edit($id_alumno)
     {
-        //
+        $alumnos = Alumnos::findOrFail($id_alumno);
+        return Inertia::render('Alumno/Edit',compact('alumnos'));
     }
 
     /**

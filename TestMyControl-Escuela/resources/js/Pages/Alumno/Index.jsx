@@ -4,7 +4,7 @@ import { Head, Link } from '@inertiajs/react';
 
 
 
-const Index = ({auth,escuelas}) => {
+const Index = ({auth,alumnos}) => {
     
 
   return (
@@ -35,16 +35,22 @@ const Index = ({auth,escuelas}) => {
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                    Nombre Escuela
+                                    Nombre Alumno
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                     direccion
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                    telfono
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                     email
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                     foto
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                    Genero
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                     latitud
@@ -59,38 +65,41 @@ const Index = ({auth,escuelas}) => {
                             </thead>
                             <tbody>
                                  {   
-                                    escuelas?.map(escuela => (
-                                        <tr key={escuela} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                    alumnos?.map(alumno => (
+                                        <tr key={alumno} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
 
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                           
-                                            {escuela.nombre}
+                                            {alumno.nombre_completo}
                                         </th>
                                         <td className="px-6 py-4">
-                                            {escuela.direccion}
+                                            {alumno.direccion}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {escuela.email}
+                                            {alumno.telefono}
                                         </td>
                                         <td className="px-6 py-4">
-                                            <img src={`/storage/${escuela.foto}`} alt="" className="w-20 h-20 rounded-full" />
+                                            {alumno.email}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {escuela.latitud}
+                                            {alumno.genero}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {escuela.longitud}
+                                            <img src={`/storage/${alumno.foto}`} alt="" className="w-20 h-20 rounded-full" />
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {alumno.latitud}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {alumno.longitud}
                                         </td>
 
                                         <td>
-                                                <div className="space-x-2">
-                                                    <Link href={route('escuela.edit',[escuela.id_school])} className="btn btn-primary">
-                                                        Editar
-                                                    </Link>
-                                                    <Link href={route('escuela.destroy',[escuela.id_school])} method="delete" as="button" className="btn btn-danger"> 
-                                                    Eliminar
-
-                                                    </Link>
+                                          <div className="space-x-2">
+                                         <Link href={route('alumno.edit',[alumno.id_alumno])} className="btn btn-primary">
+                                          Editar
+                                        </Link>
+                                         
                                                     
                                             </div>
                                         </td>

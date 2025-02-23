@@ -5,26 +5,27 @@ import InputLabel from '@/Components/InputLabel';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
+import { Select, Transition } from '@headlessui/react';
 
-const Create = ({auth}) => {
+const Edit = ({auth,alumnos}) => {
 
     const initialValues = {
-        nombre_completo: "",
-        direccion: "",
-        telefono: "",
-        email: "",   
+        nombre_completo: alumnos.nombre_completo,
+        direccion: alumnos.direccion,
+        telefono: alumnos.telefono,
+        email: alumnos.email,   
         foto: null,
-        genero:  "",
-        latitud:  "",
-        longitud: "",
+        genero: alumnos.genero,  
+        latitud: alumnos.latitud,  
+        longitud: alumnos.longitud,
     };
     
     
-    const {data,errors,setData,post} = useForm(initialValues);
+    const {data,errors,setData,post,recentlySuccessful} = useForm(initialValues);
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('alumno.store'));
+        post(route('alumno.update',alumnos));
     }
     
   return (
@@ -34,10 +35,10 @@ const Create = ({auth}) => {
         <div className="flex justify-between">
 
         <h2 className="text-xl font-semibold leading-tight text-gray-800">
-            Añadir Alumno
+        Actualizar Alumno
         </h2>
-        <Link href={route('escuela.index')} className="btn btn-primary">
-        Escuelas
+        <Link href={route('alumno.index')} className="btn btn-primary">
+        Alumnos
         </Link>
         </div>
     }
@@ -50,9 +51,21 @@ const Create = ({auth}) => {
                 <div className="p-6 text-gray-900">
                  <form onSubmit={submit}>
 
+                     <Transition
+                                            show={recentlySuccessful}
+                                            enter="transition ease-in-out"
+                                            enterFrom="opacity-0"
+                                            leave="transition ease-in-out"
+                                            leaveTo="opacity-0"
+                                        >
+                                            <p className="text-sm text-gray-600 text-center">
+                                                Alumno Actualizado.
+                                            </p>
+                   </Transition>
+
 
                         <div>
-                    <InputLabel htmlFor="nombre_completo" value="Nombre completo" />
+                    <InputLabel htmlFor="nombre_completo" value="Nombre" />
 
                     <TextInput
                         id="nombre_completo"
@@ -82,6 +95,7 @@ const Create = ({auth}) => {
 
                     <InputError message={errors.direccion} className="mt-2" />
                 </div>
+
                 <div>
                     <InputLabel htmlFor="telefono" value="telefono" />
 
@@ -129,29 +143,27 @@ const Create = ({auth}) => {
 
                     <InputError message={errors.foto} className="mt-2" />
                 </div>  
-                
+
                 <div>
                     <InputLabel htmlFor="genero" value="genero" />
 
                     <select 
                     name="genero" 
                     id="genero"
+                    defaultValue={alumnos.genero}
                     onChange={(e) => {setData('genero', e.target.value);
                         
                     }}
 
-                     className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
+                    className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
                     >
-
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
-
-            
-
                     </select>
 
+
                     <InputError message={errors.genero} className="mt-2" />
-                </div>  
+                </div>
 
                 <div>
                     <InputLabel htmlFor="latitud" value="latitud" />
@@ -187,7 +199,7 @@ const Create = ({auth}) => {
 
                     <div className='flex justify-end mt-4'>
                     <PrimaryButton >
-                        Añadir Alumno
+                        Actualizar 
                     </PrimaryButton>
 
                     </div>
@@ -203,4 +215,4 @@ const Create = ({auth}) => {
 }
 
 
-export default Create
+export default Edit
