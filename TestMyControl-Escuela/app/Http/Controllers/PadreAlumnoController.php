@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\PadreAlumno;
 use App\Http\Controllers\Controller;
+use App\Models\Alumnos;
+use App\Models\Padres;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class PadreAlumnoController extends Controller
 {
@@ -13,7 +16,9 @@ class PadreAlumnoController extends Controller
      */
     public function index()
     {
-        //
+       
+
+        return Inertia::render('PadreAlumno/Index');
     }
 
     /**
@@ -21,7 +26,13 @@ class PadreAlumnoController extends Controller
      */
     public function create()
     {
-        //
+        $alumnos = Alumnos::all(['id_alumno', 'nombre_completo']); // Selecciona ID y Nombre
+        $padres = Padres::all(['id_padre', 'nombre']); // Selecciona ID y Nombre
+    
+        return Inertia::render('PadreAlumno/Create', [
+            'alumnos' => $alumnos,
+            'padres' => $padres
+        ]);
     }
 
     /**

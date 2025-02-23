@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\EscuelaController;
+use App\Http\Controllers\PadreAlumnoController;
 use App\Http\Controllers\PadresController;
 use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
@@ -56,6 +57,17 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::delete('/padres/{padres}', [PadresController::class, 'destroy'])->name('padres.destroy');
 
  
+});
+
+
+
+Route::prefix('dashboard')->middleware('auth')->group(function(){
+    Route::get('/PadreAlumno', [PadreAlumnoController::class, 'index'])->name('PadreAlumno.index');
+    Route::get('/padrealumno/create', [PadreAlumnoController::class, 'create'])->name('padrealumno.create');
+    Route::post('/padrealumno', [PadreAlumnoController::class, 'store'])->name('padrealumno.store');
+    Route::get('/padrealumno/{padrealumno}/edit', [PadreAlumnoController::class, 'edit'])->name('padrealumno.edit');
+    Route::post('/padrealumno/{padrealumno}', [PadreAlumnoController::class, 'update'])->name('padrealumno.update');
+    Route::delete('/padrealumno/{padrealumno}', [PadreAlumnoController::class, 'destroy'])->name('padrealumno.destroy');
 });
 
 require __DIR__.'/auth.php';
