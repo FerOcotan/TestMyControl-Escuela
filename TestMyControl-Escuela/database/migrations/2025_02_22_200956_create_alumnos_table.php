@@ -21,9 +21,7 @@ return new class extends Migration
             $table->enum('genero', ['masculino', 'femenino']);
             $table->decimal('latitud'); // Mejor usar DECIMAL para precisión geoespacial
             $table->decimal('longitud');
-            $table->foreignId('id_grado');
-            $table->foreignId('id_seccion');
-            $table->foreignId('id_school');
+        
             $table->timestamps();
         
         });
