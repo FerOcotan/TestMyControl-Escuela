@@ -51,9 +51,9 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/padres', [PadresController::class, 'index'])->name('padres.index');
     Route::get('/padres/create', [PadresController::class, 'create'])->name('padres.create');
     Route::post('/padres', [PadresController::class, 'store'])->name('padres.store');
-    Route::get('/padres/{padre}/edit', [PadresController::class, 'edit'])->name('padres.edit');
-    Route::post('/padres/{padre}', [PadresController::class, 'update'])->name('padres.update');
-    Route::delete('/padres/{padre}', [PadresController::class, 'destroy'])->name('padres.destroy');
+    Route::get('/padres/{padres}/edit', [PadresController::class, 'edit'])->name('padres.edit');
+    Route::post('/padres/{padres}', [PadresController::class, 'update'])->name('padres.update');
+    Route::delete('/padres/{padres}', [PadresController::class, 'destroy'])->name('padres.destroy');
 
  
 });
