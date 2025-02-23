@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\EscuelaController;
+use App\Http\Controllers\GradoController;
 use App\Http\Controllers\PadreAlumnoController;
 use App\Http\Controllers\PadresController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeccionController;
 use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -59,7 +61,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
  
 });
 
-
+//no terminada por falta de tiempo...
 
 Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/PadreAlumno', [PadreAlumnoController::class, 'index'])->name('PadreAlumno.index');
@@ -69,5 +71,32 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::post('/padrealumno/{padrealumno}', [PadreAlumnoController::class, 'update'])->name('padrealumno.update');
     Route::delete('/padrealumno/{padrealumno}', [PadreAlumnoController::class, 'destroy'])->name('padrealumno.destroy');
 });
+
+
+Route::prefix('dashboard')->middleware('auth')->group(function(){
+
+    Route::get('grado', [GradoController::class, 'index'])->name('grado.index');
+    Route::get('grado/create', [GradoController::class, 'create'])->name('grado.create');
+    Route::post('grado', [GradoController::class, 'store'])->name('grado.store');
+    Route::get('grado/{grado}/edit', [GradoController::class, 'edit'])->name('grado.edit');
+    Route::post('grado/{grado}', [GradoController::class, 'update'])->name('grado.update');
+    Route::delete('grado/{grado}', [GradoController::class, 'destroy'])->name('grado.destroy');
+
+
+});
+
+Route::prefix('dashboard')->middleware('auth')->group(function(){
+
+    Route::get('seccion', [SeccionController::class, 'index'])->name('seccion.index');
+    Route::get('seccion/create', [SeccionController::class, 'create'])->name('seccion.create');
+    Route::post('seccion', [SeccionController::class, 'store'])->name('seccion.store');
+    Route::get('seccion/{seccion}/edit', [SeccionController::class, 'edit'])->name('seccion.edit');
+    Route::post('seccion/{seccion}', [SeccionController::class, 'update'])->name('seccion.update');
+    Route::delete('seccion/{seccion}', [SeccionController::class, 'destroy'])->name('seccion.destroy');
+
+});
+
+
+
 
 require __DIR__.'/auth.php';
