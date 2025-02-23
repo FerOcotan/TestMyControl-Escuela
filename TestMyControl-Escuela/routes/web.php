@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\EscuelaController;
+use App\Http\Controllers\PadresController;
 use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Application;
@@ -46,5 +47,15 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::delete('/alumno/{alumnos}', [AlumnosController::class, 'destroy'])->name('alumno.destroy');
 });
 
+Route::prefix('dashboard')->middleware('auth')->group(function(){
+    Route::get('/padres', [PadresController::class, 'index'])->name('padres.index');
+    Route::get('/padres/create', [PadresController::class, 'create'])->name('padres.create');
+    Route::post('/padres', [PadresController::class, 'store'])->name('padres.store');
+    Route::get('/padres/{padre}/edit', [PadresController::class, 'edit'])->name('padres.edit');
+    Route::post('/padres/{padre}', [PadresController::class, 'update'])->name('padres.update');
+    Route::delete('/padres/{padre}', [PadresController::class, 'destroy'])->name('padres.destroy');
+
+ 
+});
 
 require __DIR__.'/auth.php';
