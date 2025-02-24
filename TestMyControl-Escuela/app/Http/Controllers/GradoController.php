@@ -6,6 +6,8 @@ use App\Models\Grado;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Escuela\StoreRequestGrado;
 use App\Http\Requests\Escuela\StoreRequestSeccion;
+use App\Http\Requests\Escuela\UpdateRequest;
+use App\Http\Requests\Escuela\UpdateRequestGrado;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -51,17 +53,20 @@ class GradoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Grado $grado)
+    public function edit($id_grado)
     {
-        //
+        $grado = Grado::findOrFail($id_grado);
+        return Inertia::render('Grado/Edit',compact('grado'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Grado $grado)
+    public function update(UpdateRequestGrado $request, Grado $grado)
     {
-        //
+        $data=$request->only('nombre_grado');
+        $grado->update($data);
+        return to_route('grado.edit',$grado);
     }
 
     /**

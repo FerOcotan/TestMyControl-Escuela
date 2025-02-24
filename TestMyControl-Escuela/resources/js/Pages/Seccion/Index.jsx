@@ -40,6 +40,9 @@ const Index = ({auth,seccion}) => {
                                     <th scope="col" className="px-6 py-3">
                                     Seccion
                                     </th>
+                                    <th scope="col" className="px-6 py-3">
+                                    Acciones
+                                    </th>
                                  
                                 </tr>
                             </thead>

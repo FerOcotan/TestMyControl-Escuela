@@ -40,6 +40,9 @@ const Index = ({auth,grado}) => {
                                     <th scope="col" className="px-6 py-3">
                                     Grado
                                     </th>
+                                    <th scope="col" className="px-6 py-3">
+                                    Acciones
+                                    </th>
                                    
                                 </tr>
                             </thead>
@@ -58,7 +61,13 @@ const Index = ({auth,grado}) => {
                                       
 
                                         <td>
-                                                
+                                                <div className="space-x-2">
+                                                    <Link href={route('grado.edit',[grados.id_grado])} className="btn btn-primary">
+                                                        Editar
+                                                    </Link>
+                                                   
+                                                    
+                                            </div>
                                         </td>
                                     </tr>
                                     ))
