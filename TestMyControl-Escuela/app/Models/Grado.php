@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Grado extends Model
 {
+    protected $table = 'grados';             // Nombre de la tabla en la BD
     protected $fillable = [
         'nombre_grado',
     

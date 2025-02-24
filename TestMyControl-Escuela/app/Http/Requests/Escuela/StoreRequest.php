@@ -24,13 +24,17 @@ class StoreRequest extends FormRequest
     {
         return [
             'nombre_completo' => ['required', 'string', 'max:255'],
-            'direccion' => ['required', 'string', 'max:255'],
-            'telefono' => ['required', 'string', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'genero' => ['required', 'string', 'in:Masculino,Femenino'],
-            'foto' => ['nullable', 'mimes:png,jpg,jpeg', 'max:2040'],
-            'latitud' => ['required', 'string', 'max:255'],
-            'longitud' => ['required', 'string', 'max:255'],
+            'direccion'       => ['required', 'string', 'max:255'],
+            'telefono'        => ['required', 'string', 'max:20'],
+            'email'           => ['required', 'string', 'email', 'max:255'],
+            'genero'          => ['required', 'string', 'in:Masculino,Femenino'],
+            'foto'            => ['nullable', 'mimes:png,jpg,jpeg', 'max:2040'],
+            'latitud'         => ['required', 'string', 'max:255'],
+            'longitud'        => ['required', 'string', 'max:255'],
+            'id_school'       => ['required', 'integer', 'exists:escuelas,id_school'],
+            'id_seccion'      => ['required', 'integer', 'exists:secciones,id_seccion'],
+            'id_grado'        => ['required', 'integer', 'exists:grados,id_grado'],
         ];
     }
+    
 }

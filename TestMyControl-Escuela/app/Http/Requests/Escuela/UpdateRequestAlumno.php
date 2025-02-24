@@ -31,6 +31,9 @@ class UpdateRequestAlumno extends FormRequest
             'foto' => ['nullable', 'mimes:png,jpg,jpeg', 'max:2040'],
             'latitud' => ['required', 'string', 'max:255'],
             'longitud' => ['required', 'string', 'max:255'],
+            'id_school' => ['required', 'integer'],
+            'id_seccion' => ['required', 'integer'],
+            'id_grado' => ['required', 'integer'],
         ];
     }
 }

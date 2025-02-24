@@ -54,14 +54,14 @@ class AlumnosController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud');
+        $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud','id_school','id_seccion','id_grado');
         if($request->hasFile('foto')){
             $file=$request->file('foto');
             $routeImage = $file->store('fotos',['disk'=>'public']);
             $data['foto']=$routeImage;
         }
 
-           $data['user_id']=Auth::user()->id;
+     $data['user_id']=Auth::user()->id;
 
         Alumnos::create($data);
         return to_route('alumno.index');

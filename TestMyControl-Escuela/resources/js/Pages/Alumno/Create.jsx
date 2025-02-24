@@ -26,7 +26,11 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('alumno.store'));
+        console.log(data)
+        post(route('alumno.store'))
+        
+       
+        
     }
 
     return (
@@ -179,45 +183,45 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
                     <InputError message={errors.longitud} className="mt-2" />
                 </div>  
 
-                                {/* Grado */}
-                                <div>
-                                    <InputLabel htmlFor="id_grado" value="Grado" />
-                                    <select
-                                        id="id_grado"
-                                        name="id_grado"
-                                        className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        value={data.id_grado}
-                                        onChange={(e) => setData('id_grado', e.target.value)}
-                                    >
-                                        <option value="">Seleccione un grado</option>
-                                        {grados.map((grado) => (
-                                            <option key={grado.id} value={grado.id}>
-                                                {grado.nombre_grado}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    <InputError message={errors.id_grado} className="mt-2" />
-                                </div>
+                               {/* Grado */}
+                            <div>
+                                <InputLabel htmlFor="id_grado" value="Grado" />
+                                <select
+                                    id="id_grado"
+                                    name="id_grado"
+                                    className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    value={data.id_grado}
+                                    onChange={(e) => setData("id_grado", e.target.value)} // No convertir a BigInt
+                                >
+                                    <option value="">Seleccione un grado</option>
+                                    {grados.map((grado) => (
+                                        <option key={grado.id_grado} value={grado.id_grado}>
+                                            {grado.nombre_grado}
+                                        </option>
+                                    ))}
+                                </select>
+                                <InputError message={errors.id_grado} className="mt-2" />
+                            </div>
 
-                                {/* Sección */}
-                                <div>
-                                    <InputLabel htmlFor="id_seccion" value="Sección" />
-                                    <select
-                                        id="id_seccion"
-                                        name="id_seccion"
-                                        className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                        value={data.id_seccion}
-                                        onChange={(e) => setData('id_seccion', e.target.value)}
-                                    >
-                                        <option value="">Seleccione una sección</option>
-                                        {secciones.map((seccion) => (
-                                            <option key={seccion.id} value={seccion.id}>
-                                                {seccion.nombre_seccion}
-                                            </option>
-                                        ))}
-                                    </select>
-                                    <InputError message={errors.id_seccion} className="mt-2" />
-                                </div>
+                            {/* Sección */}
+                            <div>
+                                <InputLabel htmlFor="id_seccion" value="Sección" />
+                                <select
+                                    id="id_seccion"
+                                    name="id_seccion"
+                                    className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    value={data.id_seccion}
+                                    onChange={(e) => setData("id_seccion", e.target.value)} // No convertir a BigInt
+                                >
+                                    <option value="">Seleccione una sección</option>
+                                    {secciones.map((seccion) => (
+                                        <option key={seccion.id_seccion} value={seccion.id_seccion}>
+                                            {seccion.nombre_seccion}
+                                        </option>
+                                    ))}
+                                </select>
+                                <InputError message={errors.id_seccion} className="mt-2" />
+                            </div>
 
                                   {/* escuela */}
                                   <div>
@@ -230,13 +234,13 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
                                         onChange={(e) => setData('id_school', e.target.value)}
                                     >
                                         <option value="">Seleccione una escuela</option>
-                                        {escuelas.map((escuelas) => (
-                                            <option key={escuelas.id} value={escuelas.id}>
-                                                {escuelas.nombre}
+                                        {escuelas.map((escuela) => (
+                                            <option key={escuela.id_school} value={escuela.id_school}>
+                                                {escuela.nombre}
                                             </option>
                                         ))}
                                     </select>
-                                    <InputError message={errors.id_seccion} className="mt-2" />
+                                    <InputError message={errors.id_school} className="mt-2" />
                                 </div>
 
                                 <div className="flex justify-end mt-4">
