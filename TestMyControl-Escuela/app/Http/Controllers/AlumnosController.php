@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Escuela\StoreRequest;
 use App\Http\Requests\Escuela\UpdateRequest;
 use App\Http\Requests\Escuela\UpdateRequestAlumno;
+use App\Models\escuela;
+use App\Models\Grado;
+use App\Models\Seccion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -33,7 +36,17 @@ class AlumnosController extends Controller
     public function create()
     {
 
-        return Inertia::render('Alumno/Create');
+        $escuelas = escuela::all(['id_school', 'nombre']); // Selecciona ID y Nombre
+        $grados = Grado::all(['id_grado', 'nombre_grado']); // Selecciona ID y Nombre
+        $secciones = Seccion::all(['id_seccion', 'nombre_seccion']); // Selecciona ID y Nombre
+
+        return Inertia::render('Alumno/Create', [
+            'grados' => $grados,
+            'secciones' => $secciones,
+            'escuelas' => $escuelas
+           
+        ]);
+
     }
 
     /**
