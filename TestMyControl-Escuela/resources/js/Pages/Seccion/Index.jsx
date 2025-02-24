@@ -57,7 +57,13 @@ const Index = ({auth,seccion}) => {
                                         </td>
 
                                         <td>
-                                                
+                                                <div className="space-x-2">
+                                                    <Link href={route('seccion.edit',[secciones.id_seccion])} className="btn btn-primary">
+                                                        Editar
+                                                    </Link>
+                                                   
+                                                    
+                                            </div>
                                         </td>
                                     </tr>
                                     ))

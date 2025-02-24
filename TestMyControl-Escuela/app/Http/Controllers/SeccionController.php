@@ -6,6 +6,8 @@ use App\Models\Seccion;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Escuela\StoreRequest;
 use App\Http\Requests\Escuela\StoreRequestSeccion;
+use App\Http\Requests\Escuela\UpdateRequest;
+use App\Http\Requests\Escuela\UpdateRequestSeccion;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -50,17 +52,20 @@ class SeccionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Seccion $seccion)
+    public function edit($id_seccion)
     {
-        //
+        $seccion = Seccion::findOrFail($id_seccion);
+        return Inertia::render('Seccion/Edit',compact('seccion'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Seccion $seccion)
+    public function update(UpdateRequestSeccion $request, Seccion $seccion)
     {
-        //
+        $data=$request->only('nombre_seccion');
+        $seccion->update($data);
+        return to_route('seccion.edit',$seccion);
     }
 
     /**
