@@ -73,6 +73,7 @@ class SeccionController extends Controller
      */
     public function destroy(Seccion $seccion)
     {
-        //
+        $seccion->delete();
+        return to_route('seccion.index');
     }
 }

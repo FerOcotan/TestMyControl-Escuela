@@ -5,7 +5,7 @@ import { Head, Link } from '@inertiajs/react';
 
 
 const Index = ({auth,grado}) => {
-    console.log(grado);
+
 
   return (
     <AuthenticatedLayout
@@ -65,6 +65,10 @@ const Index = ({auth,grado}) => {
                                                     <Link href={route('grado.edit',[grados.id_grado])} className="btn btn-primary">
                                                         Editar
                                                     </Link>
+                                                    <Link href={route('grado.destroy',[grados.id_grado])} method="delete" as="button" className="btn btn-danger"> 
+                                                                   Eliminar
+                                                   
+                                                            </Link>
                                                    
                                                     
                                             </div>

@@ -74,6 +74,7 @@ class GradoController extends Controller
      */
     public function destroy(Grado $grado)
     {
-        //
+        $grado->delete();
+        return to_route('grado.index');
     }
 }
