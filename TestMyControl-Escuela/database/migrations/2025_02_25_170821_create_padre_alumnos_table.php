@@ -15,11 +15,15 @@ return new class extends Migration
             $table->bigIncrements('id_padre_alumno');
 
             // Asegúrate de usar "unsignedBigInteger" si la clave primaria en "alumnos" es "bigIncrements"
-            $table->unsignedBigInteger('id_alumno');
-            $table->foreign('id_alumno')->references('id_alumno')->on('alumnos')->onDelete('cascade');
+           
         
             $table->unsignedBigInteger('id_padre');
             $table->foreign('id_padre')->references('id_padre')->on('padres')->onDelete('cascade');
+
+            $table->unsignedBigInteger('id_alumno');
+            $table->foreign('id_alumno')->references('id_alumno')->on('alumnos')->onDelete('cascade');
+            
+
         
             $table->string('parentesco');
         
