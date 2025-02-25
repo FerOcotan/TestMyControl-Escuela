@@ -40,7 +40,7 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
                     <h2 className="text-xl font-semibold leading-tight text-gray-800">
                         Añadir Alumno
                     </h2>
-                    <Link href={route('escuela.index')} className="btn btn-primary">
+                    <Link href={route('alumno.index')} className="btn btn-primary">
                         Escuelas
                     </Link>
                 </div>
