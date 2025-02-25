@@ -169,7 +169,6 @@ const Edit = ({auth,alumnos,secciones,escuelas,grados}) => {
 
                     <InputError message={errors.genero} className="mt-2" />
                 </div>
-
                 
 
                 <div>

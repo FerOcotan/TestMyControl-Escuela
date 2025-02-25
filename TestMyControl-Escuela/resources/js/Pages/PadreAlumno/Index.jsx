@@ -35,13 +35,13 @@ const Index = ({auth,padreAlumno,padres,alumnos}) => {
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">
-                                    Nombre
+                                    Parentesco
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                    direccion
+                                    Responsable
                                     </th>
                                     <th scope="col" className="px-6 py-3">
-                                    telefono
+                                    Hijo
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                     Acciones
@@ -61,14 +61,14 @@ const Index = ({auth,padreAlumno,padres,alumnos}) => {
                                     <td className="px-6 py-4">
                                         {padre.alumnos.nombre_completo} {/* Aquí se muestra el nombre del alumno */}
                                     </td>
-                                    <td className="px-6 py-4">
-                                        <Link href={route('padrealumno.edit', [padre.id_padre_almno])} className="btn btn-primary">
-                                            Editar
-                                        </Link>
-                                        <Link href={route('padrealumno.destroy', [padre.id_padre_almno])} method="delete" as="button" className="btn btn-danger">
-                                            Eliminar
-                                        </Link>
-                                    </td>
+                                        <td className="space-x-2 flex px-6 py-4">
+                                            <Link href={route('PadreAlumno.edit', [padre.id_padre_alumno])} className="btn btn-primary">
+                                                Editar
+                                            </Link>
+                                            <Link href={route('PadreAlumno.destroy', [padre.id_padre_alumno])} method="delete" as="button" className="btn btn-danger">
+                                                Eliminar
+                                            </Link>
+                                        </td>
                                 </tr>
                             ))}
                         </tbody>

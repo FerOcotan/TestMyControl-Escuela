@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PadreAlumno;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Escuela\StoreRequestPadreAlumno;
 use App\Models\Alumnos;
 use App\Models\Padres;
 use Illuminate\Http\Request;
@@ -18,7 +19,9 @@ class PadreAlumnoController extends Controller
     {
        
         $padreAlumno = PadreAlumno::with(['padres', 'alumnos'])->get();
-        return Inertia::render('PadreAlumno/Index', compact('padreAlumno'));
+    return Inertia::render('PadreAlumno/Index', [
+        'padreAlumno' => $padreAlumno
+    ]);
     }
 
     /**
@@ -38,9 +41,11 @@ class PadreAlumnoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequestPadreAlumno $request)
     {
-        //
+        $data=$request->only('parentesco', 'id_alumno', 'id_padre');
+        PadreAlumno::create($data);
+
     }
 
     /**
@@ -54,10 +59,24 @@ class PadreAlumnoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PadreAlumno $padreAlumno)
-    {
-        //
-    }
+    public function edit($padreAlumno)
+{
+    
+        $alumnos = Alumnos::all(['id_alumno', 'nombre_completo']); // Selecciona ID y Nombre
+        $padres = Padres::all(['id_padre', 'nombre']); // Selecciona ID y Nombre
+
+        $padreAlumno = PadreAlumno::findOrFail($padreAlumno);
+       
+
+        return Inertia::render('PadreAlumno/Edit', [
+            'alumnos' => $alumnos,
+            'padres' => $padres,
+            'padreAlumno' => $padreAlumno
+            
+           
+        ]);
+}
+
 
     /**
      * Update the specified resource in storage.

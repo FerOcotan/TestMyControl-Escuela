@@ -42,19 +42,21 @@ const Create = ({ auth, alumnos, padres }) => {
                                 <div>
                                     <InputLabel htmlFor="id_alumno" value="Selecciona un Alumno" />
                                     <select
-                                        id="id_alumno"
-                                        name="id_alumno"
-                                        value={data.id_alumno}
-                                        onChange={(e) => setData('id_alumno', e.target.value)}
-                                        className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-                                    >
-                                        <option value="">-- Selecciona --</option>
-                                        {alumnos.map((alumno) => (
-                                            <option key={alumno.id_alumnos} value={alumno.id_alumnos}>
-                                                {alumno.nombre_completo}
-                                            </option>
-                                        ))}
-                                    </select>
+    id="id_alumno"
+    name="id_alumno"
+    className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+    value={data.id_alumno}
+    onChange={(e) => setData('id_alumno', parseInt(e.target.value, 10) || '')}
+>
+    <option value="">Selecciona un Alumno</option>
+    {alumnos.map((alumno) => (
+        <option key={alumno.id_alumno} value={alumno.id_alumno}>
+            {alumno.nombre_completo}
+        </option>
+    ))}
+</select>
+<InputError message={errors.id_alumno} className="mt-2" />
+
                                     <InputError message={errors.id_alumno} className="mt-2" />
                                 </div>
 

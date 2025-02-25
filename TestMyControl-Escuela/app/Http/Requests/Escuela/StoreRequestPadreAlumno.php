@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Escuela;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreRequestPadreAlumno extends FormRequest
 {
@@ -11,7 +12,7 @@ class StoreRequestPadreAlumno extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,13 @@ class StoreRequestPadreAlumno extends FormRequest
     public function rules(): array
     {
         return [
-            //
+          
+        
+            
+            'id_alumno' => ['required', 'integer', 'exists:alumnos,id_alumno'],
+            'id_padre'  => ['required', 'integer', 'exists:padres,id_padre'],
+            'parentesco' => ['required', 'string', 'max:255'],
+         
         ];
     }
 }
