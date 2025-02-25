@@ -17,8 +17,8 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-       
-        return Inertia::render('Usuarios/Index');
+        $usuarios = Usuarios::all();
+        return Inertia::render('Usuarios/Index',compact('usuarios'));
     }
 
     /**
@@ -26,6 +26,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
+
         return Inertia::render('Usuarios/Create');
     }
 
@@ -58,7 +59,9 @@ class UsuariosController extends Controller
      */
     public function edit(Usuarios $usuarios)
     {
-        //
+       
+
+        return Inertia::render('Usuarios/Edit',compact('usuarios'));
     }
 
     /**
