@@ -6,6 +6,8 @@ use App\Models\Usuarios;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Escuela\StoreRequest;
 use App\Http\Requests\Escuela\StoreRequestUsuarios;
+use App\Http\Requests\Escuela\UpdateRequest;
+use App\Http\Requests\Escuela\UpdateRequestUsuarios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
@@ -60,16 +62,18 @@ class UsuariosController extends Controller
     public function edit(Usuarios $usuarios)
     {
        
-
         return Inertia::render('Usuarios/Edit',compact('usuarios'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuarios $usuarios)
+    public function update(UpdateRequestUsuarios $request, Usuarios $usuarios)
     {
-        //
+        $data=$request->only('name','email','password','role');
+        $data['password'] = Hash::make($data['password']);
+        $usuarios->update($data);
+        return to_route('usuarios.edit',$usuarios);
     }
 
     /**
@@ -77,6 +81,7 @@ class UsuariosController extends Controller
      */
     public function destroy(Usuarios $usuarios)
     {
-        //
+        $usuarios->delete();
+        return to_route('usuarios.index');
     }
 }

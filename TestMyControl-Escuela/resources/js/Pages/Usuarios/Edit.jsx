@@ -23,7 +23,7 @@ const Create = ({auth,usuarios}) => {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('usuarios.store'));
+        post(route('usuarios.update',usuarios.id));
     }
     
   return (
@@ -39,7 +39,7 @@ const Create = ({auth,usuarios}) => {
         <Link href={route('usuarios.index')} 
         className="btn btn-primary">
        
-        secciones
+        Editar usuarios
         </Link>
         
         </div>

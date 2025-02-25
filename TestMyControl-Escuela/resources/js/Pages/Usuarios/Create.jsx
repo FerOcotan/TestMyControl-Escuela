@@ -36,7 +36,7 @@ const Create = ({auth}) => {
             Añadir usuario
         </h2>
         <Link href={route('usuarios.index')} className="btn btn-primary">
-        secciones
+        Usuarios
         </Link>
         </div>
     }
