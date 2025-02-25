@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\PadreAlumno;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Escuela\StoreRequestPadreAlumno;
+use App\Http\Requests\Escuela\UpdateRequestPadreAlumno;
 use App\Models\Alumnos;
 use App\Models\Padres;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class PadreAlumnoController extends Controller
@@ -81,9 +83,16 @@ class PadreAlumnoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PadreAlumno $padreAlumno)
+    public function update(UpdateRequestPadreAlumno $request, PadreAlumno $padreAlumno)
     {
-        //
+        
+        $data=$request->only('parentesco','id_padre','id_alumno');
+        
+
+        $data['user_id']=Auth::user()->id;
+
+        $padreAlumno->update($data);
+        return to_route('PadreAlumno.edit',$padreAlumno->id_padre_alumno);
     }
 
     /**

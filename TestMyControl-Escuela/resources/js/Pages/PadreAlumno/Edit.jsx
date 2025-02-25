@@ -23,7 +23,7 @@ const Edit = ({alumnos,padres,padreAlumno}) => {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('PadreAlumno.update',alumnos));
+        post(route('PadreAlumno.update',padreAlumno.id_padre_alumno));
     }
     
   return (

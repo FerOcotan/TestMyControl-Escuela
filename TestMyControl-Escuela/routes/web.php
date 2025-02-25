@@ -67,9 +67,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('PadreAlumno', [PadreAlumnoController::class, 'index'])->name('PadreAlumno.index');
     Route::get('PadreAlumno/create', [PadreAlumnoController::class, 'create'])->name('PadreAlumno.create');
     Route::post('PadreAlumno', [PadreAlumnoController::class, 'store'])->name('PadreAlumno.store');
-    Route::get('PadreAlumno/{PadreAlumno}/edit', [PadreAlumnoController::class, 'edit'])->name('PadreAlumno.edit');
-    Route::post('PadreAlumno/{PadreAlumno}', [PadreAlumnoController::class, 'update'])->name('PadreAlumno.update');
-    Route::delete('PadreAlumno/{PadreAlumno}', [PadreAlumnoController::class, 'destroy'])->name('PadreAlumno.destroy');
+    Route::get('PadreAlumno/{padre_alumno}/edit', [PadreAlumnoController::class, 'edit'])->name('PadreAlumno.edit');
+    Route::post('PadreAlumno/{padre_alumno}', [PadreAlumnoController::class, 'update'])->name('PadreAlumno.update');
+    Route::delete('PadreAlumno/{padre_alumno}', [PadreAlumnoController::class, 'destroy'])->name('PadreAlumno.destroy');
+    
 });
 
 
