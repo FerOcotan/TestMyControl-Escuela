@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'direccion'       => ['required', 'string', 'max:255'],
             'telefono'        => ['required', 'string', 'max:20'],
             'email'           => ['required', 'string', 'email', 'max:255'],
-            'genero'          => ['required', 'string', 'in:Masculino,Femenino'],
+            'genero'          => ['required', 'string', 'in:masculino,femenino'],
             'foto'            => ['nullable', 'mimes:png,jpg,jpeg', 'max:2040'],
             'latitud'         => ['required', 'string', 'max:255'],
             'longitud'        => ['required', 'string', 'max:255'],

@@ -149,26 +149,29 @@
                         <InputError message={errors.foto} className="mt-2" />
                     </div>  
 
-                    <div>
-                        <InputLabel htmlFor="genero" value="genero" />
-
-                        <select 
-                        name="genero" 
-                        id="genero"
-                        defaultValue={alumnos.genero}
-                        onChange={(e) => {setData('genero', e.target.value);
-                            
-                        }}
-
-                        className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
-                        >
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                        </select>
-
-
-                        <InputError message={errors.genero} className="mt-2" />
-                    </div>
+                      <div>
+                                                      <InputLabel htmlFor="genero" value="role" />
+                                  
+                                                      <select 
+                                                      name="genero" 
+                                                      id="genero"
+                                                      defaultValue={alumnos.genero}
+                                                      onChange={(e) => {setData('genero', e.target.value);
+                                                          
+                                                      }}
+                                  
+                                                       className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
+                                                      >
+                                  
+                                                      <option value="masculino">masculino</option>
+                                                      <option value="femenino">femenino</option>
+                                  
+                                              
+                                  
+                                                      </select>
+                                  
+                                                      <InputError message={errors.genero} className="mt-2" />
+                                      </div>  
                     
 
                     <div>

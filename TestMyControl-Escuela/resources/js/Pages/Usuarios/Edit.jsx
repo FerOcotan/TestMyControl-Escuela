@@ -112,6 +112,7 @@ const Create = ({auth,usuarios}) => {
                                     <select 
                                     name="role" 
                                     id="role"
+                                    defaultValue={usuarios.role}
                                     onChange={(e) => {setData('role', e.target.value);
                                         
                                     }}
