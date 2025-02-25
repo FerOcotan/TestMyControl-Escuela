@@ -17,8 +17,8 @@ class PadreAlumnoController extends Controller
     public function index()
     {
        
-
-        return Inertia::render('PadreAlumno/Index');
+        $padreAlumno = PadreAlumno::with(['padres', 'alumnos'])->get();
+        return Inertia::render('PadreAlumno/Index', compact('padreAlumno'));
     }
 
     /**

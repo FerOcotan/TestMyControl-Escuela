@@ -4,8 +4,8 @@ import { Head, Link } from '@inertiajs/react';
 
 
 
-const Index = ({auth,padres}) => {
-    console.log(padres);
+const Index = ({auth,padreAlumno,padres,alumnos}) => {
+
 
   return (
     <AuthenticatedLayout
@@ -16,7 +16,7 @@ const Index = ({auth,padres}) => {
         <h2 className="text-xl font-semibold leading-tight text-gray-800">
             Parentesco
         </h2>
-        <Link href={route('padrealumno.create')} className="btn btn-primary">
+        <Link href={route('PadreAlumno.create')} className="btn btn-primary">
         Agregar Parentesco
         </Link>
         </div>
@@ -50,41 +50,29 @@ const Index = ({auth,padres}) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                 {   
-                                    padres?.map(padre => (
-                                        <tr key={padre} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                            {padreAlumno?.map(padre => (
+                                <tr key={padre.id_padre_almno} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {padre.parentesco}
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {padre.padres.nombre} {/* Aquí se muestra el nombre del padre */}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {padre.alumnos.nombre_completo} {/* Aquí se muestra el nombre del alumno */}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <Link href={route('padrealumno.edit', [padre.id_padre_almno])} className="btn btn-primary">
+                                            Editar
+                                        </Link>
+                                        <Link href={route('padrealumno.destroy', [padre.id_padre_almno])} method="delete" as="button" className="btn btn-danger">
+                                            Eliminar
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
 
-                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          
-                                            {padre.nombre}
-                                        </th>
-                                        <td className="px-6 py-4">
-                                            {padre.direccion}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {padre.telefono}
-                                        </td>
-                                        
-                                    
-                    
-
-                                        <td>
-                                                <div className="space-x-2">
-                                                    <Link href={route('padres.edit',[padre.id_padre])} className="btn btn-primary">
-                                                        Editar
-                                                    </Link>
-                                                    <Link href={route('padres.destroy',[padre.id_padre])} method="delete" as="button" className="btn btn-danger"> 
-                                                    Eliminar
-
-                                                    </Link>
-                                                    
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    ))
-                                }
-                                
-                            </tbody>
                         </table>
                     </div>
 
