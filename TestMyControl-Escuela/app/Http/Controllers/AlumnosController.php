@@ -80,8 +80,20 @@ class AlumnosController extends Controller
      */
     public function edit($id_alumno)
     {
+        $escuelas = escuela::all(['id_school', 'nombre']); // Selecciona ID y Nombre
+        $grados = Grado::all(['id_grado', 'nombre_grado']); // Selecciona ID y Nombre
+        $secciones = Seccion::all(['id_seccion', 'nombre_seccion']); // Selecciona ID y Nombre
+
         $alumnos = Alumnos::findOrFail($id_alumno);
-        return Inertia::render('Alumno/Edit',compact('alumnos'));
+       
+
+        return Inertia::render('Alumno/Edit', [
+            'grados' => $grados,
+            'secciones' => $secciones,
+            'escuelas' => $escuelas,
+            'alumnos' => $alumnos,
+           
+        ]);
     }
 
     /**
@@ -89,7 +101,7 @@ class AlumnosController extends Controller
      */
     public function update(UpdateRequestAlumno $request, Alumnos $alumnos)
     {
-        $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud');
+        $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud','id_school','id_seccion','id_grado');
         if($request->hasFile('foto')){
             $file=$request->file('foto');
             $routeImage = $file->store('fotos',['disk'=>'public']);

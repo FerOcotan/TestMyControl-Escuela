@@ -57,6 +57,12 @@ const Index = ({auth,alumnos}) => {
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                     longitud
+                                    </th> <th scope="col" className="px-6 py-3">
+                                    Grado
+                                    </th> <th scope="col" className="px-6 py-3">
+                                    Seccion
+                                    </th> <th scope="col" className="px-6 py-3">
+                                    Escuela
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                     Acciones
@@ -92,6 +98,15 @@ const Index = ({auth,alumnos}) => {
                                         </td>
                                         <td className="px-6 py-4">
                                             {alumno.longitud}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {alumno.id_grado}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {alumno.id_seccion}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {alumno.id_school}
                                         </td>
 
                                         <td>
