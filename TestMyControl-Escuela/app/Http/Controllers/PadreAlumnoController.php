@@ -100,6 +100,7 @@ class PadreAlumnoController extends Controller
      */
     public function destroy(PadreAlumno $padreAlumno)
     {
-        //
+        $padreAlumno->delete();
+        return to_route('PadreAlumno.index');
     }
 }
