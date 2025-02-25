@@ -24,7 +24,8 @@ class AlumnosController extends Controller
     {
         
        // $alumnos = Alumnos::where('user_id', Auth::user()->id)->get();
-        $alumnos = Alumnos::all();
+       $alumnos = Alumnos::with(['grado', 'seccion', 'escuela'])->get();
+        
         
         return Inertia::render('Alumno/Index',compact('alumnos'));
     }

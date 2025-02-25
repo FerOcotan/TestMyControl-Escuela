@@ -100,14 +100,15 @@ const Index = ({auth,alumnos}) => {
                                             {alumno.longitud}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {alumno.id_grado}
+                                            {alumno.grado ? alumno.grado.nombre_grado : 'Sin grado'}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {alumno.id_seccion}
+                                            {alumno.seccion ? alumno.seccion.nombre_seccion : 'Sin sección'}
                                         </td>
                                         <td className="px-6 py-4">
-                                            {alumno.id_school}
+                                            {alumno.escuela ? alumno.escuela.nombre : 'Sin escuela'}
                                         </td>
+
 
                                         <td>
                                           <div className="space-x-2">
