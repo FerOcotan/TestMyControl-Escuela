@@ -21,10 +21,24 @@ export default function AuthenticatedLayout({ header, children }) {
             {/* Contenedor principal con Sidebar y contenido */}
             <div className="flex">
             <Sidebar>
-          <SidebarItem icon={<Home size={20} />} text="Dashboard" active />
-          <SidebarItem icon={<Users size={20} />} text="Usuarios" alert />
-          <SidebarItem icon={<Settings size={20} />} text="Configuración" />
-        </Sidebar>
+                    <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                        <SidebarItem icon={<Home size={20} />} text="Dashboard" active={route().current('dashboard')} />
+                    </NavLink>
+                    <NavLink href={route('escuela.index')} active={route().current('escuela.index')}>
+                        <SidebarItem icon={<Users size={20} />} text="Escuelas"  />
+                    </NavLink>
+                    <NavLink href={route('padres.index')} active={route().current('padres.index')}>
+                        <SidebarItem icon={<Home size={20} />} text="Padres" />
+                    </NavLink>
+                    <NavLink href={route('alumno.index')} active={route().current('alumno.index')}>
+                        <SidebarItem icon={<Users size={20} />} text="Alumnos"  />
+                    </NavLink>
+                    <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                        <SidebarItem icon={<Home size={20} />} text="Reportes" />
+                    </NavLink>
+                   
+            
+                </Sidebar>
 
                 
                 <div className="flex-1">
@@ -40,6 +54,7 @@ export default function AuthenticatedLayout({ header, children }) {
                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                     </Link>
   </div>
+
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
                             <div className="relative ms-3">

@@ -10,22 +10,21 @@ export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className="h-screen">
+    <aside className="min-h-screen"> {/* Cambiar h-screen a min-h-screen */}
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
         {/* Encabezado del Sidebar */}
-       {/* Encabezado del Sidebar */}
-       <div className="p-4 pb-2 flex justify-between items-center">
+        <div className="p-4 pb-2 flex justify-between items-center">
           <VerticaLogo
             className={`overflow-hidden transition-all ${
               expanded ? "w-32" : "w-0"
             }`}
           />
-         <button
-  onClick={() => setExpanded((curr) => !curr)}
-  className="p-2 rounded-lg bg-gray-50 hover:bg-gray-100"
->
-  {expanded ? <LucideArrowLeftFromLine/> : <LucideArrowRightFromLine />}
-</button>
+          <button
+            onClick={() => setExpanded((curr) => !curr)}
+            className="p-2 rounded-lg bg-gray-50 hover:bg-gray-100"
+          >
+            {expanded ? <LucideArrowLeftFromLine /> : <LucideArrowRightFromLine />}
+          </button>
         </div>
 
         {/* Proveer el contexto a los elementos hijos */}
