@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState } from "react";
 import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react";
 
 // Crear un contexto para el estado del Sidebar

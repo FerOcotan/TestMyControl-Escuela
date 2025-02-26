@@ -4,7 +4,9 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
-import Sidebar from '@/Components/Sidebar'; // Importa tu componente Sidebar
+import { Home, Settings, Users, AlertCircle } from "lucide-react";
+import Sidebar, { SidebarItem } from "@/Components/Sidebar";
+
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
@@ -18,7 +20,11 @@ export default function AuthenticatedLayout({ header, children }) {
 
             {/* Contenedor principal con Sidebar y contenido */}
             <div className="flex">
-                <Sidebar /> {/* Agrega el Sidebar aquí */}
+            <Sidebar>
+          <SidebarItem icon={<Home size={20} />} text="Dashboard" active />
+          <SidebarItem icon={<Users size={20} />} text="Usuarios" alert />
+          <SidebarItem icon={<Settings size={20} />} text="Configuración" />
+        </Sidebar>
 
                 
                 <div className="flex-1">
