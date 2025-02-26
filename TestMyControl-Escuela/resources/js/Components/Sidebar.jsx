@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext } from "react";
-import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react";
+import { AlignEndHorizontalIcon, AlignEndVertical, AlignEndVerticalIcon, ArrowBigLeft, ArrowBigLeftDash, ArrowDownLeftFromSquare, ArrowLeft, ArrowLeftCircleIcon, ArrowRight, ArrowRightLeft, ChevronFirst, ChevronLast, LucideArrowLeftFromLine, LucideArrowRightFromLine, Maximize, Maximize2, Minimize, Minimize2, MoreVertical } from "lucide-react";
+import VerticaLogo from "@/Components/VerticaLogo"; // Importar el componente
+import { ArrowUp, ArrowDown } from "lucide-react";
 
 // Crear un contexto para el estado del Sidebar
 const SidebarContext = createContext();
@@ -11,20 +13,19 @@ export default function Sidebar({ children }) {
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
         {/* Encabezado del Sidebar */}
-        <div className="p-4 pb-2 flex justify-between items-center">
-          <img
-            src="https://img.logoipsum.com/243.svg"
+       {/* Encabezado del Sidebar */}
+       <div className="p-4 pb-2 flex justify-between items-center">
+          <VerticaLogo
             className={`overflow-hidden transition-all ${
               expanded ? "w-32" : "w-0"
             }`}
-            alt="Logo"
           />
-          <button
-            onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
-          >
-            {expanded ? <ChevronFirst /> : <ChevronLast />}
-          </button>
+         <button
+  onClick={() => setExpanded((curr) => !curr)}
+  className="p-2 rounded-lg bg-gray-50 hover:bg-gray-100"
+>
+  {expanded ? <LucideArrowLeftFromLine/> : <LucideArrowRightFromLine />}
+</button>
         </div>
 
         {/* Proveer el contexto a los elementos hijos */}
