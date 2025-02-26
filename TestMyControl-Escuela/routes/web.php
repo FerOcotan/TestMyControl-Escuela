@@ -32,18 +32,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('dashboard')->middleware('auth')->group(function(){
+Route::prefix('dashboard')->middleware(['auth', 'role:administrador'])->group(function(){
     Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
     Route::get('/usuarios/create', [UsuariosController::class, 'create'])->name('usuarios.create');
     Route::post('/usuarios', [UsuariosController::class, 'store'])->name('usuarios.store');
     Route::get('/usuarios/{usuarios}/edit', [UsuariosController::class, 'edit'])->name('usuarios.edit');
     Route::post('/usuarios/{usuarios}', [UsuariosController::class, 'update'])->name('usuarios.update');
     Route::delete('/usuarios/{usuarios}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
-    
 });
 
 
-Route::prefix('dashboard')->middleware('auth')->group(function(){
+
+Route::prefix('dashboard')->middleware(['auth', 'role:administrador'])->group(function(){
     Route::get('/escuela', [EscuelaController::class, 'index'])->name('escuela.index');
     Route::get('/escuela/create', [EscuelaController::class, 'create'])->name('escuela.create');
     Route::post('/escuela', [EscuelaController::class, 'store'])->name('escuela.store');
@@ -52,7 +52,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::delete('/escuela/{escuela}', [EscuelaController::class, 'destroy'])->name('escuela.destroy');
 });
 
-Route::prefix('dashboard')->middleware('auth')->group(function(){
+Route::prefix('dashboard')->middleware(['auth', 'role:administrador'])->group(function(){
     Route::get('/alumno', [AlumnosController::class, 'index'])->name('alumno.index');
     Route::get('/alumno/create', [AlumnosController::class, 'create'])->name('alumno.create');
     Route::post('/alumno', [AlumnosController::class, 'store'])->name('alumno.store');
@@ -61,7 +61,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::delete('/alumno/{alumnos}', [AlumnosController::class, 'destroy'])->name('alumno.destroy');
 });
 
-Route::prefix('dashboard')->middleware('auth')->group(function(){
+Route::prefix('dashboard')->middleware(['auth', 'role:administrador'])->group(function(){
     Route::get('/padres', [PadresController::class, 'index'])->name('padres.index');
     Route::get('/padres/create', [PadresController::class, 'create'])->name('padres.create');
     Route::post('/padres', [PadresController::class, 'store'])->name('padres.store');
@@ -72,9 +72,9 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
  
 });
 
-//no terminada por falta de tiempo...
 
-Route::prefix('dashboard')->middleware('auth')->group(function(){
+
+Route::prefix('dashboard')->middleware(['auth', 'role:administrador'])->group(function(){
     Route::get('PadreAlumno', [PadreAlumnoController::class, 'index'])->name('PadreAlumno.index');
     Route::get('PadreAlumno/create', [PadreAlumnoController::class, 'create'])->name('PadreAlumno.create');
     Route::post('PadreAlumno', [PadreAlumnoController::class, 'store'])->name('PadreAlumno.store');
@@ -85,7 +85,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 });
 
 
-Route::prefix('dashboard')->middleware('auth')->group(function(){
+Route::prefix('dashboard')->middleware(['auth', 'role:administrador'])->group(function(){
 
     Route::get('grado', [GradoController::class, 'index'])->name('grado.index');
     Route::get('grado/create', [GradoController::class, 'create'])->name('grado.create');
@@ -97,7 +97,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
 });
 
-Route::prefix('dashboard')->middleware('auth')->group(function(){
+Route::prefix('dashboard')->middleware(['auth', 'role:administrador'])->group(function(){
 
     Route::get('seccion', [SeccionController::class, 'index'])->name('seccion.index');
     Route::get('seccion/create', [SeccionController::class, 'create'])->name('seccion.create');
