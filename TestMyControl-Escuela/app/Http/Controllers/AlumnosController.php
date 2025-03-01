@@ -63,7 +63,7 @@ class AlumnosController extends Controller
         }
 
         
-     $data['user_id']=Auth::user()->id;
+     
 
         Alumnos::create($data);
         return to_route('alumno.index');

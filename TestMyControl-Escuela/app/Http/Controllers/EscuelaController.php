@@ -19,8 +19,9 @@ class EscuelaController extends Controller
     {
 
 
-       $escuelas = escuela::where('user_id', Auth::user()->id)->get();
-       //$escuelas = Escuela::all();
+        $escuelas = Escuela::all();
+
+ 
 
        
        return Inertia::render('Escuela/Index',compact('escuelas'));
@@ -48,7 +49,7 @@ class EscuelaController extends Controller
             $data['foto']=$routeImage;
         }
 
-        $data['user_id']=Auth::user()->id;
+        
 
         escuela::create($data);
         return to_route('escuela.index');

@@ -50,7 +50,7 @@ export default function AuthenticatedLayout({ header, children }) {
 
                 {/* Logo centrado */}
                 <div className="flex shrink-0 items-center justify-center">
-                    <Link href="/">
+                    <Link href="/dashboard">
                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                     </Link>
   </div>
@@ -87,14 +87,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                         <Dropdown.Link
                                             href={route('profile.edit')}
                                         >
-                                            Profile
+                                            Perfil
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route('logout')}
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            Cerrar Sessión
                                         </Dropdown.Link>
                                     </Dropdown.Content>
                                 </Dropdown>
@@ -178,14 +178,14 @@ export default function AuthenticatedLayout({ header, children }) {
 
                         <div className="mt-3 space-y-1">
                             <ResponsiveNavLink href={route('profile.edit')}>
-                                Profile
+                                Perfil
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
                                 method="post"
                                 href={route('logout')}
                                 as="button"
                             >
-                                Log Out
+                                Cerrar Sessión
                             </ResponsiveNavLink>
                         </div>
                     </div>
