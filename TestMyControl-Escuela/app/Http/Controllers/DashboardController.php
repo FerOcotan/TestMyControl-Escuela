@@ -11,8 +11,8 @@ class DashboardController extends Controller
     public function index()
     {
         // Obtener los datos de las tablas alumnos y escuelas
-        $alumnos = Alumnos::select('id_alumno', 'nombre_completo', 'latitud', 'longitud')->get();
-        $escuelas = Escuela::select('id_school', 'nombre', 'latitud', 'longitud')->get();
+        $alumnos = Alumnos::select('id_alumno', 'nombre_completo', 'latitud', 'longitud','foto')->get();
+        $escuelas = Escuela::select('id_school', 'nombre', 'latitud', 'longitud','foto')->get();
 
         // Pasar los datos al frontend
         return Inertia::render('Dashboard', [

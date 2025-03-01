@@ -62,6 +62,7 @@ class AlumnosController extends Controller
             $data['foto']=$routeImage;
         }
 
+        
      $data['user_id']=Auth::user()->id;
 
         Alumnos::create($data);
