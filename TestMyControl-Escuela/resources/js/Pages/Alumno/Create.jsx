@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
+import MapComponent from '@/Components/MapComponent';  // Importa el nuevo componente
 
 const Create = ({ auth, grados, secciones,escuelas }) => {
 
@@ -141,8 +142,8 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
                      className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
                     >
 
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
 
             
 
@@ -242,6 +243,13 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
                                     </select>
                                     <InputError message={errors.id_school} className="mt-2" />
                                 </div>
+
+                                <MapComponent 
+                                        latitud={data.latitud} 
+                                        longitud={data.longitud} 
+                                        setData={setData} 
+                                    />
+                                
 
                                 <div className="flex justify-end mt-4">
                                     <PrimaryButton>

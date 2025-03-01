@@ -6,7 +6,7 @@
     import InputError from '@/Components/InputError';
     import PrimaryButton from '@/Components/PrimaryButton';
     import { Select, Transition } from '@headlessui/react';
-
+    import MapComponent from '@/Components/MapComponent';  // Importa el nuevo componente
 
 
     const Edit = ({auth,alumnos,secciones,escuelas,grados}) => {
@@ -265,6 +265,12 @@
                                         </select>
                                         <InputError message={errors.id_school} className="mt-2" />
                                     </div>
+
+                                    <MapComponent 
+                                        latitud={data.latitud} 
+                                        longitud={data.longitud} 
+                                        setData={setData} 
+                                    />
 
                         <div className='flex justify-end mt-4'>
                         <PrimaryButton >

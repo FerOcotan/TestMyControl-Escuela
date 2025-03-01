@@ -29,11 +29,11 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return [
-            ...parent::share($request),
+        return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
             ],
-        ];
+            'googleMapsApiKey' => env('REACT_APP_GOOGLE_MAPS_API_KEY'), // Clave de API de Google Maps
+        ]);
     }
 }
