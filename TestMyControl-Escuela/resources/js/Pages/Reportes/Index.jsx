@@ -1,23 +1,37 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Importar useEffect
 
 export default function ReportesIndex() {
-   //escuelas pasadas desde el controlador
+    // Obtener las escuelas pasadas desde el controlador
     const { escuelas } = usePage().props;
 
     // Estado para almacenar la escuela seleccionada
     const [selectedEscuela, setSelectedEscuela] = useState('');
 
+    // Estado para almacenar la URL del PDF
+    const [pdfUrl, setPdfUrl] = useState('');
+
     // Función para manejar la generación del reporte
     const handleGenerarReporte = () => {
         if (selectedEscuela) {
-            // Redirigir a la ruta que genera el PDF
-            window.location.href = `/reportes/generar/${selectedEscuela}`;
+            // Actualizar la URL del iframe con la ruta del PDF
+            setPdfUrl(`/reportes/generar/${selectedEscuela}`);
         } else {
             alert('Por favor, seleccione una escuela.');
         }
     };
+
+    // Usar useEffect para manejar la actualización del iframe
+    useEffect(() => {
+        if (pdfUrl) {
+            // Forzar la actualización del iframe
+            const iframe = document.getElementById('pdf-iframe');
+            if (iframe) {
+                iframe.src = pdfUrl;
+            }
+        }
+    }, [pdfUrl]);
 
     return (
         <AuthenticatedLayout
@@ -59,6 +73,19 @@ export default function ReportesIndex() {
                             >
                                 Generar Reporte
                             </button>
+
+                            {/* Iframe para mostrar el PDF */}
+                            <div className="mt-6">
+                                {pdfUrl && (
+                                    <iframe
+                                        id="pdf-iframe" // Agregar un ID al iframe
+                                        src={pdfUrl}
+                                        width="100%"
+                                        height="600px"
+                                        style={{ border: 'none' }}
+                                    ></iframe>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>

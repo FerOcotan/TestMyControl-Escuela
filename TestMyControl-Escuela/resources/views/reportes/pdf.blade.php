@@ -23,6 +23,10 @@
         th {
             background-color: #f2f2f2;
         }
+        .foto-escuela {
+            width: 100px; /* Ancho fijo */
+            height: auto; /* Altura automática para mantener la proporción */
+        }
     </style>
 </head>
 <body>
@@ -31,17 +35,31 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Foto</th>
                 <th>Nombre</th>
                 <th>Dirección</th>
-             
+                <th>Email</th>
+                <th>Total de Alumnos</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>{{ $escuela->id_school }}</td>
+                <td>
+                    @if ($escuela->foto)
+                        <img 
+                            src="{{ storage_path('app/public/' . $escuela->foto) }}" 
+                            alt="Foto de la escuela" 
+                            class="foto-escuela" 
+                        >
+                    @else
+                        Sin foto
+                    @endif
+                </td>
                 <td>{{ $escuela->nombre }}</td>
                 <td>{{ $escuela->direccion }}</td>
-           
+                <td>{{ $escuela->email }}</td>
+                <td>{{ $totalAlumnos }}</td>
             </tr>
         </tbody>
     </table>
