@@ -87,7 +87,7 @@ class EscuelaController extends Controller
             }
         }
 
-        $data['user_id']=Auth::user()->id;
+
 
         $escuela->update($data);
         return to_route('escuela.edit',$escuela);

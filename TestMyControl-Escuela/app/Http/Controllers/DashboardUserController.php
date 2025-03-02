@@ -11,8 +11,8 @@ class DashboardUserController extends Controller
 {
     public function index()
     {
-        // Obtener todas las escuelas del usuario autenticado
-        $escuelas = Escuela::where('user_id', Auth::id())->get();
+        $escuelas = Escuela::all();
+
 
         // Pasar los datos a la vista de Inertia
         return Inertia::render('DashboardUser/Index', [
