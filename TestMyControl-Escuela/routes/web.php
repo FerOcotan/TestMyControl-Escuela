@@ -57,6 +57,8 @@ Route::middleware(['auth', 'role:usuario'])->group(function () {
 Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::get('/reportes', [ReportController::class, 'index'])->name('reportes.index');
 });
+    // Ruta para generar el reporte en PDF
+Route::get('/reportes/generar/{id_school}', [ReportController::class, 'generarReporte'])->name('reportes.generar');
 
 
 Route::middleware('auth')->group(function () {
