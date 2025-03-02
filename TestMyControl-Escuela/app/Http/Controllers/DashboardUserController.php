@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Escuela; // Asegúrate de importar el modelo
-use Illuminate\Http\Request;
+use App\Models\Alumno;
+use App\Models\Alumnos;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -11,12 +11,37 @@ class DashboardUserController extends Controller
 {
     public function index()
     {
-        $escuelas = Escuela::all();
-
-
-        // Pasar los datos a la vista de Inertia
+        $user = Auth::user();
+    
+        if (!$user) {
+            return redirect()->route('login')->with('message', 'Usuario no autenticado.');
+        }
+    
+        $alumno = Alumnos::where('user_id', $user->id)
+            ->with(['escuela', 'grado', 'seccion'])
+            ->first();
+    
+        if (!$alumno) {
+            return Inertia::render('DashboardUser/Index', [
+                'message' => 'No hay información registrada para este usuario.'
+            ]);
+        }
+    
         return Inertia::render('DashboardUser/Index', [
-            'escuelas' => $escuelas, // Enviar las escuelas a la vista
+            'alumno' => [
+                'id_alumno' => $alumno->id_alumno,
+                'nombre_completo' => $alumno->nombre_completo,
+                'foto' => $alumno->foto,
+                'escuela' => $alumno->escuela ? [
+                    'nombre' => $alumno->escuela->nombre,
+                    'direccion' => $alumno->escuela->direccion,
+                    'latitud' => $alumno->escuela->latitud,
+                    'longitud' => $alumno->escuela->longitud,
+                ] : null,
+                'grado' => $alumno->grado ? ['nombre_grado' => $alumno->grado->nombre_grado] : null,
+                'seccion' => $alumno->seccion ? ['nombre_seccion' => $alumno->seccion->nombre_seccion] : null,
+            ],
         ]);
     }
+    
 }
