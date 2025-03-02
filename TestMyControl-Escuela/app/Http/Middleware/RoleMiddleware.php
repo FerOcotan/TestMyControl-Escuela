@@ -35,8 +35,8 @@ class RoleMiddleware
     private function redirectByRole($role)
     {
         return match ($role) {
-            'admin' => redirect()->route('dashboard')->with('error', 'No tienes permiso para acceder a esta página.'),
-            'usuario' => redirect()->route('DashboardUser')->with('error', 'No tienes permiso para acceder a esta página.'),
+            'administrador' => redirect()->route('dashboard')->with('error', 'No tienes permiso para acceder a esta página.'),
+            'usuario' => redirect()->route('dashboarduser')->with('error', 'No tienes permiso para acceder a esta página.'),
             default => redirect()->route('login')->with('error', 'Acceso denegado.')
         };
     }

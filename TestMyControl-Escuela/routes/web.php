@@ -25,7 +25,7 @@ Route::fallback(function () {
     }
 
     return match (Auth::user()->role) {
-        'admin' => redirect()->route('dashboard')->with('error', 'La página no existe.'),
+        'administrador' => redirect()->route('dashboard')->with('error', 'La página no existe.'),
         'usuario' => redirect()->route('DashboardUser')->with('error', 'La página no existe.'),
         default => redirect()->route('login')->with('error', 'Acceso denegado.'),
     };
@@ -50,7 +50,7 @@ Route::prefix('/dashboard')->middleware(['auth', 'role:administrador'])->group(f
 });
 
 Route::middleware(['auth', 'role:usuario'])->group(function () {
-    Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('DashboardUser');
+    Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
 });
 
 

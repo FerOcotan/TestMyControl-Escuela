@@ -23,7 +23,7 @@ export default function MapaUser({ escuela }) {
         : defaultCenter; // Si no hay datos, usar ubicación por defecto
 
     return (
-        <LoadScript googleMapsApiKey="TU_API_KEY_DE_GOOGLE_MAPS">
+         <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={escuelaPosition}
