@@ -11,6 +11,7 @@ use App\Http\Controllers\UsuariosController;
 use GuzzleHttp\Middleware;
 use App\Http\Controllers\DashboardController; // Importa el DashboardController
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,9 @@ Route::middleware(['auth', 'role:usuario'])->group(function () {
     Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
 });
 
+Route::middleware(['auth', 'role:administrador'])->group(function () {
+    Route::get('/reportes', [ReportController::class, 'index'])->name('reportes.index');
+});
 
 
 Route::middleware('auth')->group(function () {

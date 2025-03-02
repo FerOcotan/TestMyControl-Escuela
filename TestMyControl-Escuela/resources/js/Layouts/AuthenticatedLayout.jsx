@@ -34,9 +34,10 @@ export default function AuthenticatedLayout({ header, children }) {
                         <NavLink href={route('alumno.index')} active={route().current('alumno.index')}>
                             <SidebarItem icon={<Users size={20} />} text="Alumnos" />
                         </NavLink>
-                        <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                            <SidebarItem icon={<Home size={20} />} text="Reportes" />
+                        <NavLink href={route('reportes.index')} active={route().current('reportes.index')}>
+                            <SidebarItem icon={<AlertCircle size={20} />} text="Reportes" />
                         </NavLink>
+                        
                     </Sidebar>
                 )}
 
@@ -150,21 +151,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         ' sm:hidden'
                     }
                 >
-                    <div className="space-y-1 pb-3 pt-2">
-                        <ResponsiveNavLink
-                            href={route('dashboard')}
-                            active={route().current('dashboard')}
-                        >
-                            Inicio
-                        </ResponsiveNavLink>
-
-                        <ResponsiveNavLink
-                            href={route('escuela.index')}
-                            active={route().current('escuela.index')}
-                        >
-                            Escuelas
-                        </ResponsiveNavLink>
-                    </div>
+                    
 
                     <div className="border-t border-gray-200 pb-1 pt-4">
                         <div className="px-4">
