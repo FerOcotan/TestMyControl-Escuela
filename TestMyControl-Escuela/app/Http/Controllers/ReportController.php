@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Escuela; // Asegúrate de importar el modelo Escuela
 use App\Models\Alumno;  // Asegúrate de importar el modelo Alumno
 use App\Models\Alumnos;
+use App\Models\PadreAlumno; // Asegúrate de importar el modelo PadreAlumno
 use Barryvdh\DomPDF\Facade\Pdf; // Importa DomPDF
 
 class ReportController extends Controller
@@ -23,13 +24,11 @@ class ReportController extends Controller
         ]);
     }
 
-    // Método para generar el reporte en PDF
-    public function generarReporte($id_school)
+    // Método para generar el reporte en PDF con los datos de la escuela
+    public function generarReporteEscuela($id_school)
     {
         // Obtener la escuela y sus datos
         $escuela = Escuela::findOrFail($id_school);
-
-        // Obtener el total de alumnos asociados a la escuela
         $totalAlumnos = Alumnos::where('id_school', $id_school)->count();
 
         // Cargar la vista del reporte en PDF
@@ -40,5 +39,29 @@ class ReportController extends Controller
 
         // Mostrar el PDF en el navegador (para incrustar en un iframe)
         return $pdf->stream('reporte_escuela_' . $escuela->id_school . '.pdf');
+    }
+
+    // Método para generar el reporte en PDF con el listado de alumnos
+    public function generarReporteAlumnos($id_school)
+    {
+        // Obtener la escuela y sus datos
+        $escuela = Escuela::findOrFail($id_school);
+
+
+
+        // Obtener los alumnos vinculados a la escuela
+        $alumnos = Alumnos::where('id_school', $id_school)
+            ->with(['grado', 'seccion', 'padres']) // Cargar relaciones
+            ->get();
+
+        // Cargar la vista del reporte en PDF
+        $pdf = Pdf::loadView('reportes.alumnos', [
+            'escuela' => $escuela,
+            'alumnos' => $alumnos,
+        
+        ]);
+
+        // Mostrar el PDF en el navegador (para incrustar en un iframe)
+        return $pdf->stream('reporte_alumnos_' . $escuela->id_school . '.pdf');
     }
 }

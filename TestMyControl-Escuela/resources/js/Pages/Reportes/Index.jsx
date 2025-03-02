@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, usePage } from '@inertiajs/react';
-import { useState, useEffect } from 'react'; // Importar useEffect
+import { useState, useEffect, useRef } from 'react';
 
 export default function ReportesIndex() {
     // Obtener las escuelas pasadas desde el controlador
@@ -12,11 +12,24 @@ export default function ReportesIndex() {
     // Estado para almacenar la URL del PDF
     const [pdfUrl, setPdfUrl] = useState('');
 
-    // Función para manejar la generación del reporte
-    const handleGenerarReporte = () => {
+    // Referencia al iframe
+    const iframeRef = useRef(null);
+
+    // Función para manejar la generación del reporte de la escuela
+    const handleGenerarReporteEscuela = () => {
         if (selectedEscuela) {
-            // Actualizar la URL del iframe con la ruta del PDF
-            setPdfUrl(`/reportes/generar/${selectedEscuela}`);
+            // Actualizar la URL del iframe con la ruta del PDF de la escuela
+            setPdfUrl(`/reportes/generar-escuela/${selectedEscuela}`);
+        } else {
+            alert('Por favor, seleccione una escuela.');
+        }
+    };
+
+    // Función para manejar la generación del reporte de alumnos
+    const handleGenerarReporteAlumnos = () => {
+        if (selectedEscuela) {
+            // Actualizar la URL del iframe con la ruta del PDF de alumnos
+            setPdfUrl(`/reportes/generar-alumnos/${selectedEscuela}`);
         } else {
             alert('Por favor, seleccione una escuela.');
         }
@@ -24,12 +37,9 @@ export default function ReportesIndex() {
 
     // Usar useEffect para manejar la actualización del iframe
     useEffect(() => {
-        if (pdfUrl) {
+        if (pdfUrl && iframeRef.current) {
             // Forzar la actualización del iframe
-            const iframe = document.getElementById('pdf-iframe');
-            if (iframe) {
-                iframe.src = pdfUrl;
-            }
+            iframeRef.current.src = pdfUrl;
         }
     }, [pdfUrl]);
 
@@ -66,25 +76,31 @@ export default function ReportesIndex() {
                                 </select>
                             </div>
 
-                            {/* Botón para generar el reporte */}
+                            {/* Botón para generar el reporte de la escuela */}
                             <button
-                                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-                                onClick={handleGenerarReporte}
+                                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 mr-2"
+                                onClick={handleGenerarReporteEscuela}
                             >
-                                Generar Reporte
+                                Generar Reporte de la Escuela
+                            </button>
+
+                            {/* Botón para generar el reporte de alumnos */}
+                            <button
+                                className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                                onClick={handleGenerarReporteAlumnos}
+                            >
+                                Generar Reporte de Alumnos
                             </button>
 
                             {/* Iframe para mostrar el PDF */}
                             <div className="mt-6">
-                                {pdfUrl && (
-                                    <iframe
-                                        id="pdf-iframe" // Agregar un ID al iframe
-                                        src={pdfUrl}
-                                        width="100%"
-                                        height="600px"
-                                        style={{ border: 'none' }}
-                                    ></iframe>
-                                )}
+                                <iframe
+                                    ref={iframeRef} // Referencia al iframe
+                                    src={pdfUrl}
+                                    width="100%"
+                                    height="600px"
+                                    style={{ border: 'none' }}
+                                ></iframe>
                             </div>
                         </div>
                     </div>

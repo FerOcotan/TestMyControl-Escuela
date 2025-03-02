@@ -57,9 +57,16 @@ Route::middleware(['auth', 'role:usuario'])->group(function () {
 Route::middleware(['auth', 'role:administrador'])->group(function () {
     Route::get('/reportes', [ReportController::class, 'index'])->name('reportes.index');
 });
-    // Ruta para generar el reporte en PDF
-Route::get('/reportes/generar/{id_school}', [ReportController::class, 'generarReporte'])->name('reportes.generar');
 
+Route::middleware(['auth', 'role:administrador'])->group(function () {
+    // Ruta para generar el reporte de la escuela
+    Route::get('/reportes/generar-escuela/{id_school}', [ReportController::class, 'generarReporteEscuela'])
+        ->name('reportes.generar-escuela');
+
+    // Ruta para generar el reporte de alumnos
+    Route::get('/reportes/generar-alumnos/{id_school}', [ReportController::class, 'generarReporteAlumnos'])
+        ->name('reportes.generar-alumnos');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
