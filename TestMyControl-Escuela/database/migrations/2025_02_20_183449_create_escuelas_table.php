@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('foto')->nullable(); 
             $table->string('latitud');
             $table->string('longitud');
-            $table->foreignId('user_id')->constrained();
+            
             $table->timestamps();
         });
     }

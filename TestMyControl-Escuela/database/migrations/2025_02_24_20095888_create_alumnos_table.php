@@ -32,6 +32,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id_seccion');
             $table->foreign('id_seccion')->references('id_seccion')->on('secciones')->onDelete('cascade');
 
+            
+            
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

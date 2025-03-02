@@ -10,10 +10,12 @@ use App\Http\Requests\Escuela\UpdateRequestAlumno;
 use App\Models\escuela;
 use App\Models\Grado;
 use App\Models\Seccion;
+use App\Models\Usuarios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use Users;
 
 class AlumnosController extends Controller
 {
@@ -24,8 +26,8 @@ class AlumnosController extends Controller
     {
         
        // $alumnos = Alumnos::where('user_id', Auth::user()->id)->get();
-       $alumnos = Alumnos::with(['grado', 'seccion', 'escuela'])->get();
-        
+       $alumnos = Alumnos::with(['grado', 'seccion', 'escuela', 'usuario'])->get();
+
         
         return Inertia::render('Alumno/Index',compact('alumnos'));
     }
@@ -40,11 +42,13 @@ class AlumnosController extends Controller
         $escuelas = escuela::all(['id_school', 'nombre']); // Selecciona ID y Nombre
         $grados = Grado::all(['id_grado', 'nombre_grado']); // Selecciona ID y Nombre
         $secciones = Seccion::all(['id_seccion', 'nombre_seccion']); // Selecciona ID y Nombre
+        $users = Usuarios::all(['id', 'email']); // Selecciona ID y Nombre
 
         return Inertia::render('Alumno/Create', [
             'grados' => $grados,
             'secciones' => $secciones,
-            'escuelas' => $escuelas
+            'escuelas' => $escuelas,
+            'users' => $users // Ahora contiene los datos correctos
            
         ]);
 
@@ -55,7 +59,7 @@ class AlumnosController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud','id_school','id_seccion','id_grado');
+        $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud','id_school','id_seccion','id_grado','user_id');
         if($request->hasFile('foto')){
             $file=$request->file('foto');
             $routeImage = $file->store('fotos',['disk'=>'public']);
@@ -85,6 +89,7 @@ class AlumnosController extends Controller
         $escuelas = escuela::all(['id_school', 'nombre']); // Selecciona ID y Nombre
         $grados = Grado::all(['id_grado', 'nombre_grado']); // Selecciona ID y Nombre
         $secciones = Seccion::all(['id_seccion', 'nombre_seccion']); // Selecciona ID y Nombre
+        $users = Usuarios::all(['id', 'email']); 
 
         $alumnos = Alumnos::findOrFail($id_alumno);
        
@@ -94,6 +99,7 @@ class AlumnosController extends Controller
             'secciones' => $secciones,
             'escuelas' => $escuelas,
             'alumnos' => $alumnos,
+            'users' => $users
            
         ]);
     }
@@ -103,7 +109,7 @@ class AlumnosController extends Controller
      */
     public function update(UpdateRequestAlumno $request, Alumnos $alumnos)
     {
-        $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud','id_school','id_seccion','id_grado');
+        $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud','id_school','id_seccion','id_grado','user_id');
         if($request->hasFile('foto')){
             $file=$request->file('foto');
             $routeImage = $file->store('fotos',['disk'=>'public']);
@@ -114,7 +120,7 @@ class AlumnosController extends Controller
 
         }
 
-        $data['user_id']=Auth::user()->id;
+     
 
         $alumnos->update($data);
         return to_route('alumno.edit',$alumnos);

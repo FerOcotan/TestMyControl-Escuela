@@ -7,8 +7,9 @@ import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import MapComponent from '@/Components/MapComponent';  // Importa el nuevo componente
 
-const Create = ({ auth, grados, secciones,escuelas }) => {
+const Create = ({ grados, secciones, escuelas, users }) => {
 
+    
     const initialValues = {
         nombre_completo: "",
         direccion: "",
@@ -20,7 +21,8 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
         longitud: "",
         id_school: "", // Nuevo campo
         id_grado: "",  // Nuevo campo
-        id_seccion: "" // Nuevo campo
+        id_seccion: "" ,// Nuevo campo
+        user_id:""
     };
 
     const { data, errors, setData, post } = useForm(initialValues);
@@ -30,7 +32,7 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
         console.log(data)
         post(route('alumno.store'))
         
-       
+        console.Console.log(data)
         
     }
 
@@ -244,6 +246,26 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
                                     <InputError message={errors.id_school} className="mt-2" />
                                 </div>
 
+                                  {/* usuario */}
+                                  <div>
+                                    <InputLabel htmlFor="user_id" value="Usuario" />
+                                    <select
+                                        id="user_id"
+                                        name="user_id"
+                                        className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                        value={data.user_id}
+                                        onChange={(e) => setData('user_id', e.target.value)}
+                                    >
+                                        <option value="">Seleccione un usuario</option>
+                                        {users.map((user) => (
+                                            <option key={user.id} value={user.id}>
+                                                {user.email}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <InputError message={errors.user_id} className="mt-2" />
+                                </div>
+
                                 <MapComponent 
                                         latitud={data.latitud} 
                                         longitud={data.longitud} 
@@ -264,5 +286,6 @@ const Create = ({ auth, grados, secciones,escuelas }) => {
         </AuthenticatedLayout>
     );
 }
+
 
 export default Create;

@@ -34,6 +34,7 @@ class StoreRequest extends FormRequest
             'id_school'       => ['required', 'integer', 'exists:escuelas,id_school'],
             'id_seccion'      => ['required', 'integer', 'exists:secciones,id_seccion'],
             'id_grado'        => ['required', 'integer', 'exists:grados,id_grado'],
+            'user_id'        => ['required', 'integer', 'exists:users,id'],
         ];
     }
     

@@ -1,15 +1,15 @@
-    import React, { use } from 'react';
+    import React from 'react';
     import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
     import { Head, Link, useForm } from '@inertiajs/react';
     import InputLabel from '@/Components/InputLabel';
     import TextInput from '@/Components/TextInput';
     import InputError from '@/Components/InputError';
     import PrimaryButton from '@/Components/PrimaryButton';
-    import { Select, Transition } from '@headlessui/react';
+    import { Transition } from '@headlessui/react';
     import MapComponent from '@/Components/MapComponent';  // Importa el nuevo componente
 
 
-    const Edit = ({auth,alumnos,secciones,escuelas,grados}) => {
+    const Edit = ({alumnos,secciones,escuelas,grados,users}) => {
 
         const initialValues = {
             nombre_completo: alumnos.nombre_completo,
@@ -23,6 +23,7 @@
             id_school: alumnos.id_school,  
             id_grado: alumnos.id_grado,  
             id_seccion: alumnos.id_seccion,
+             user_id:users.id,
         };
         
         
@@ -264,6 +265,28 @@
                                             ))}
                                         </select>
                                         <InputError message={errors.id_school} className="mt-2" />
+                                    </div>
+
+                                   
+                                         {/* email */}
+                                         <div>
+                                        <InputLabel htmlFor="user_id" value="Email" />
+                                        <select
+                                            id="user_id"
+                                            name="user_id"
+                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                            value={data.user_id}
+                                            onChange={(e) => setData('user_id', e.target.value)}
+                                        >
+                                            <option value="">Seleccione una cuenta</option>
+                                            {users.map((user) => (
+                                            <option key={user.id} value={user.id}>
+                                                {user.email}
+                                            </option>
+                                            ))}
+                                        </select>
+                                        <InputError message={errors.user_id} className="mt-2" />
+
                                     </div>
 
                                     <MapComponent 
