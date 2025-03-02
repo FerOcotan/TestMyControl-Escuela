@@ -20,25 +20,25 @@ export default function AuthenticatedLayout({ header, children }) {
 
             {/* Contenedor principal con Sidebar y contenido */}
             <div className="flex">
-            <Sidebar>
-                    <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                        <SidebarItem icon={<Home size={20} />} text="Dashboard" active={route().current('dashboard')} />
-                    </NavLink>
-                    <NavLink href={route('escuela.index')} active={route().current('escuela.index')}>
-                        <SidebarItem icon={<Users size={20} />} text="Escuelas"  />
-                    </NavLink>
-                    <NavLink href={route('padres.index')} active={route().current('padres.index')}>
-                        <SidebarItem icon={<Home size={20} />} text="Padres" />
-                    </NavLink>
-                    <NavLink href={route('alumno.index')} active={route().current('alumno.index')}>
-                        <SidebarItem icon={<Users size={20} />} text="Alumnos"  />
-                    </NavLink>
-                    <NavLink href={route('dashboard')} active={route().current('dashboard')}>
-                        <SidebarItem icon={<Home size={20} />} text="Reportes" />
-                    </NavLink>
-                   
-            
-                </Sidebar>
+            {user.role === 'administrador' && (
+                    <Sidebar>
+                        <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                            <SidebarItem icon={<Home size={20} />} text="Dashboard" active={route().current('dashboard')} />
+                        </NavLink>
+                        <NavLink href={route('escuela.index')} active={route().current('escuela.index')}>
+                            <SidebarItem icon={<Users size={20} />} text="Escuelas" />
+                        </NavLink>
+                        <NavLink href={route('padres.index')} active={route().current('padres.index')}>
+                            <SidebarItem icon={<Home size={20} />} text="Padres" />
+                        </NavLink>
+                        <NavLink href={route('alumno.index')} active={route().current('alumno.index')}>
+                            <SidebarItem icon={<Users size={20} />} text="Alumnos" />
+                        </NavLink>
+                        <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                            <SidebarItem icon={<Home size={20} />} text="Reportes" />
+                        </NavLink>
+                    </Sidebar>
+                )}
 
                 
                 <div className="flex-1">

@@ -10,9 +10,28 @@ use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\UsuariosController;
 use GuzzleHttp\Middleware;
 use App\Http\Controllers\DashboardController; // Importa el DashboardController
+use App\Http\Controllers\DashboardUserController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+// Importa el RoleMiddleware para verificar el rol del usuario y controla tambien el acceso a las rutas que no existan
+//junto a rolemiddleware se importa tambien el middleware de inertia
+
+Route::fallback(function () {
+    if (!Auth::check()) {
+        return redirect()->route('login')->with('error', 'Debes iniciar sesión.');
+    }
+
+    return match (Auth::user()->role) {
+        'admin' => redirect()->route('dashboard')->with('error', 'La página no existe.'),
+        'usuario' => redirect()->route('DashboardUser')->with('error', 'La página no existe.'),
+        default => redirect()->route('login')->with('error', 'Acceso denegado.'),
+    };
+});
+//fin rollback
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -24,10 +43,17 @@ Route::get('/', function () {
 });
 
 
+Route::prefix('/dashboard')->middleware(['auth', 'role:administrador'])->group(function() {
+    Route::get('/', [DashboardController::class, 'index'])
+        ->middleware(['auth', 'verified'])
+        ->name('dashboard');
+});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'role:usuario'])->group(function () {
+    Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('DashboardUser');
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
