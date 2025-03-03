@@ -27,7 +27,7 @@ Route::fallback(function () {
 
     return match (Auth::user()->role) {
         'administrador' => redirect()->route('dashboard')->with('error', 'La página no existe.'),
-        'usuario' => redirect()->route('DashboardUser')->with('error', 'La página no existe.'),
+        'usuario' => redirect()->route('dashboarduser')->with('error', 'La página no existe.'),
         default => redirect()->route('login')->with('error', 'Acceso denegado.'),
     };
 });

@@ -23,7 +23,7 @@ class DashboardUserController extends Controller
     
         if (!$alumno) {
             return Inertia::render('DashboardUser/Index', [
-                'message' => 'No hay información registrada para este usuario.'
+                'message' => 'No hay información registrada para este usuario, contacta a soporte.',
             ]);
         }
     
@@ -37,9 +37,11 @@ class DashboardUserController extends Controller
                     'direccion' => $alumno->escuela->direccion,
                     'latitud' => $alumno->escuela->latitud,
                     'longitud' => $alumno->escuela->longitud,
+                    'foto' => $alumno->escuela->foto, // Aquí agregamos la foto sin sobrescribir
                 ] : null,
                 'grado' => $alumno->grado ? ['nombre_grado' => $alumno->grado->nombre_grado] : null,
                 'seccion' => $alumno->seccion ? ['nombre_seccion' => $alumno->seccion->nombre_seccion] : null,
+         
             ],
         ]);
     }

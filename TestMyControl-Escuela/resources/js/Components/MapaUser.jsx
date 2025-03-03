@@ -20,7 +20,7 @@ export default function MapaUser({ escuela }) {
             lat: parseFloat(escuela.latitud),
             lng: parseFloat(escuela.longitud),
         }
-        : defaultCenter; // Si no hay datos, usar ubicación por defecto
+        : defaultCenter; 
 
     return (
          <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
