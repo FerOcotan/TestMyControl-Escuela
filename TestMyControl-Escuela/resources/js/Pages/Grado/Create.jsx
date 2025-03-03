@@ -47,11 +47,12 @@ const Create = ({auth}) => {
 
 
                         <div>
-                    <InputLabel htmlFor="nombre_grado" value="nombre_grado" />
+                    <InputLabel htmlFor="nombre_grado" value="Nombre del grado" />
 
                     <TextInput
                         id="nombre_grado"
                         type="text"
+                        placeholder="Ingrese el nombre del grado"
                         name="nombre_grado"
                         value={data.nombre_grado}
                         className="mt-1 block w-full"

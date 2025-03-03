@@ -31,7 +31,7 @@ const Create = ({auth}) => {
             Añadir Seccion
         </h2>
         <Link href={route('seccion.index')} className="btn btn-primary">
-        secciones
+        Secciones
         </Link>
         </div>
     }
@@ -46,12 +46,13 @@ const Create = ({auth}) => {
 
 
                         <div>
-                    <InputLabel htmlFor="nombre_seccion" value="nombre_seccion" />
+                    <InputLabel htmlFor="nombre_seccion" value="Nombre Seccion" />
 
                     <TextInput
                         id="nombre_seccion"
                         type="text"
                         name="nombre_seccion"
+                         placeholder="Ingrese el nombre de la seccion"
                         value={data.nombre_seccion}
                         className="mt-1 block w-full"
             

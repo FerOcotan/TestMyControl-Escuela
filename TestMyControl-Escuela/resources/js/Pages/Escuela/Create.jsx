@@ -57,6 +57,7 @@ const Create = ({ auth }) => {
                                         id="nombre"
                                         type="text"
                                         name="nombre"
+                                        placeholder="Ingrese el nombre de la escuela"
                                         value={data.nombre}
                                         className="mt-1 block w-full"
                                         onChange={(e) =>
@@ -77,6 +78,7 @@ const Create = ({ auth }) => {
                                     <TextInput
                                         id="direccion"
                                         type="text"
+                                         placeholder="Ingrese la dirección de la escuela"
                                         name="direccion"
                                         value={data.direccion}
                                         className="mt-1 block w-full"
@@ -96,6 +98,7 @@ const Create = ({ auth }) => {
                                         id="email"
                                         type="text"
                                         name="email"
+                                         placeholder="Ingrese el email de la escuela"
                                         value={data.email}
                                         className="mt-1 block w-full"
                                         onChange={(e) =>
@@ -114,6 +117,7 @@ const Create = ({ auth }) => {
                                         id="foto"
                                         type="file"
                                         name="foto"
+                                         placeholder="Ingrese el emblema de la escuela"
                                         className="mt-1 block w-full"
                                         onChange={(e) =>
                                             setData("foto", e.target.files[0])
@@ -135,6 +139,7 @@ const Create = ({ auth }) => {
                                         id="latitud"
                                         type="text"
                                         name="latitud"
+                                         placeholder="Selecione su ubicación en el mapa"
                                         value={data.latitud}
                                         className="mt-1 block w-full"
                                         onChange={(e) =>
@@ -157,6 +162,7 @@ const Create = ({ auth }) => {
                                         id="longitud"
                                         type="text"
                                         name="longitud"
+                                         placeholder="Selecione su ubicación en el mapa"
                                         value={data.longitud}
                                         readOnly
                                         className="mt-1 block w-full"

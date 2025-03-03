@@ -59,7 +59,7 @@ const Edit = ({auth,grado}) => {
 
 
                         <div>
-                    <InputLabel htmlFor="nombre_grado" value="nombre_grado" />
+                    <InputLabel htmlFor="nombre_grado" value="Nombre Grado" />
 
                     <TextInput
                         id="nombre_grado"

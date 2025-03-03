@@ -58,13 +58,18 @@ const Index = ({ auth, padreAlumno }) => {
                                                     {padre.padres.nombre}
                                                 </td>
                                                 <td className="px-4 py-3">
-                                                    {padre.alumnos.nombre_completo}
+                                                    {
+                                                        padre.alumnos
+                                                            .nombre_completo
+                                                    }
                                                 </td>
                                                 <td className="px-4 py-3 flex justify-center space-x-3">
                                                     <Link
                                                         href={route(
                                                             "PadreAlumno.edit",
-                                                            [padre.id_padre_alumno]
+                                                            [
+                                                                padre.id_padre_alumno,
+                                                            ]
                                                         )}
                                                         className="px-3 py-1 bg-green-600 text-white rounded-md shadow-md hover:bg-green-700 transition flex items-center space-x-1"
                                                     >
@@ -74,11 +79,22 @@ const Index = ({ auth, padreAlumno }) => {
                                                     <Link
                                                         href={route(
                                                             "PadreAlumno.destroy",
-                                                            [padre.id_padre_alumno]
+                                                            [
+                                                                padre.id_padre_alumno,
+                                                            ]
                                                         )}
                                                         method="delete"
                                                         as="button"
                                                         className="px-3 py-1 bg-red-600 text-white rounded-md shadow-md hover:bg-red-700 transition flex items-center space-x-1"
+                                                        onClick={(e) => {
+                                                            if (
+                                                                !window.confirm(
+                                                                    "¿Estás seguro de que deseas eliminar este registro de padre/alumno?"
+                                                                )
+                                                            ) {
+                                                                e.preventDefault(); // Evita la eliminación si el usuario cancela
+                                                            }
+                                                        }}
                                                     >
                                                         <Trash2 size={16} />
                                                         <span>Eliminar</span>

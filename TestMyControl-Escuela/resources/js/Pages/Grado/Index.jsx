@@ -73,6 +73,15 @@ const Index = ({ auth, grado }) => {
                                                         method="delete"
                                                         as="button"
                                                         className="px-3 py-1 bg-red-600 text-white rounded-md shadow-md hover:bg-red-700 transition flex items-center space-x-1"
+                                                        onClick={(e) => {
+                                                            if (
+                                                                !window.confirm(
+                                                                    `¿Estás seguro de que deseas eliminar al grado ${grados.nombre_grado}?`
+                                                                )
+                                                            ) {
+                                                                e.preventDefault(); // Detiene la eliminación si el usuario cancela
+                                                            }
+                                                        }}
                                                     >
                                                         <Trash2 size={16} />
                                                         <span>Eliminar</span>
