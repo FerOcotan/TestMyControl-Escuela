@@ -57,7 +57,7 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
                         onCloseClick={handleCloseInfoWindow}
                     >
                         <div style={{ textAlign: 'center', maxWidth: '200px' }}>
-                            <h3 style={{ margin: '5px 0', color: activeMarker.tipo === 'Escuela' ? 'green' : 'purple' }}>
+                            <h3 style={{ margin: '5px 0', color: activeMarker.tipo === 'Escuela' ? 'green' : 'orange' }}>
                                 {activeMarker.tipo}
                             </h3>
 

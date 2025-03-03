@@ -68,7 +68,7 @@ export default function ReportesIndex() {
 
                         <div className="flex gap-4">
                             <button
-                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-300"
+                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-300"
                                 onClick={handleGenerarReporteEscuela}
                             >
                                 <Download size={18} />
@@ -76,7 +76,7 @@ export default function ReportesIndex() {
                             </button>
 
                             <button
-                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-300"
+                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-orange-600 text-white rounded-lg shadow-md hover:bg-orange-700 transition duration-300"
                                 onClick={handleGenerarReporteAlumnos}
                             >
                                 <ListChecks size={18} />
