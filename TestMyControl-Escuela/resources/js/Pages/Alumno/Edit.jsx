@@ -23,7 +23,8 @@
             id_school: alumnos.id_school,  
             id_grado: alumnos.id_grado,  
             id_seccion: alumnos.id_seccion,
-             user_id:users.id,
+            user_id: alumnos.user_id, // O el valor correcto que represente el usuario asignado
+
         };
         
         
@@ -56,7 +57,7 @@
                 <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div className="p-6 text-gray-900">
                     <form onSubmit={submit}>
-
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <Transition
                                                 show={recentlySuccessful}
                                                 enter="transition ease-in-out"
@@ -68,10 +69,10 @@
                                                     Alumno Actualizado.
                                                 </p>
                     </Transition>
-
+                    
 
                             <div>
-                        <InputLabel htmlFor="nombre_completo" value="Nombre" />
+                        <InputLabel htmlFor="nombre_completo" value="Nombre Completo" />
 
                         <TextInput
                             id="nombre_completo"
@@ -87,7 +88,7 @@
                     </div>
 
                     <div>
-                        <InputLabel htmlFor="direccion" value="direccion" />
+                        <InputLabel htmlFor="direccion" value="Dirección" />
 
                         <TextInput
                             id="direccion"
@@ -103,7 +104,7 @@
                     </div>
 
                     <div>
-                        <InputLabel htmlFor="telefono" value="telefono" />
+                        <InputLabel htmlFor="telefono" value="Telefono" />
 
                         <TextInput
                             id="telefono"
@@ -112,8 +113,26 @@
                             value={data.telefono}
                             className="mt-1 block w-full"
                 
-                            onChange={(e) => setData('telefono', e.target.value)}
+                            onChange={(e) => {
+                                if (
+                                    /^\d{0,10}$/.test(
+                                        e.target.value
+                                    )
+                                ) {
+                                    // Solo números y máximo 10 caracteres
+                                    setData(
+                                        "telefono",
+                                        e.target.value
+                                    );
+                                }
+                            }}
                         />
+                        {data.telefono.length > 10 && (
+                            <span className="text-red-500 text-sm">
+                                El número de teléfono no puede
+                                superar los 10 dígitos.
+                            </span>
+                        )}
 
                         <InputError message={errors.telefono} className="mt-2" />
                     </div>
@@ -175,37 +194,7 @@
                                       </div>  
                     
 
-                    <div>
-                        <InputLabel htmlFor="latitud" value="latitud" />
-
-                        <TextInput
-                            id="latitud"
-                            type="text"
-                            name="latitud"
-                            value={data.latitud}
-                            className="mt-1 block w-full"
-                
-                            onChange={(e) => setData('latitud', e.target.value)}
-                        />
-
-                        <InputError message={errors.latitud} className="mt-2" />
-                    </div>  
-
-                    <div>
-                        <InputLabel htmlFor="longitud" value="longitud" />
-
-                        <TextInput
-                            id="longitud"
-                            type="text"
-                            name="longitud"
-                            value={data.longitud}
-                            className="mt-1 block w-full"
-                
-                            onChange={(e) => setData('longitud', e.target.value)}
-                        />
-
-                        <InputError message={errors.longitud} className="mt-2" />
-                    </div>  
+                  
 
                     {/* Grado */}
                                 <div>
@@ -272,29 +261,71 @@
                                          <div>
                                         <InputLabel htmlFor="user_id" value="Email" />
                                         <select
-                                            id="user_id"
-                                            name="user_id"
-                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                            value={data.user_id}
-                                            onChange={(e) => setData('user_id', e.target.value)}
-                                        >
-                                            <option value="">Seleccione una cuenta</option>
-                                            {users.map((user) => (
-                                            <option key={user.id} value={user.id}>
-                                                {user.email}
-                                            </option>
-                                            ))}
-                                        </select>
+    id="user_id"
+    name="user_id"
+    className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+    value={data.user_id || ""} // Asegura que no sea undefined
+    onChange={(e) => {
+        console.log("Nuevo valor:", e.target.value); // Depuración
+        setData("user_id", e.target.value);
+    }}
+>
+    <option value="">Seleccione una cuenta</option>
+    {users.map((user) => (
+        <option key={user.id} value={String(user.id)}>
+            {user.email}
+        </option>
+    ))}
+</select>
+
                                         <InputError message={errors.user_id} className="mt-2" />
 
                                     </div>
 
-                                    <MapComponent 
-                                        latitud={data.latitud} 
-                                        longitud={data.longitud} 
-                                        setData={setData} 
-                                    />
+                                    
+                                    <div>
+                        <InputLabel htmlFor="latitud" value="latitud" />
 
+                        <TextInput
+                            id="latitud"
+                            type="text"
+                            name="latitud"
+                            value={data.latitud}
+                            className="mt-1 block w-full"
+                            readOnly
+                            onChange={(e) => setData('latitud', e.target.value)}
+                        />
+
+                        <InputError message={errors.latitud} className="mt-2" />
+                    </div>  
+
+                    <div>
+                        <InputLabel htmlFor="longitud" value="longitud" />
+
+                        <TextInput
+                            id="longitud"
+                            type="text"
+                            name="longitud"
+                            value={data.longitud}
+                            className="mt-1 block w-full"
+                            readOnly
+                
+                            onChange={(e) => setData('longitud', e.target.value)}
+                        />
+
+                        <InputError message={errors.longitud} className="mt-2" />
+                    </div>  
+                             
+        
+        </div>
+
+        <div className="md:col-span-2 mt-8">
+    <MapComponent 
+        latitud={data.latitud} 
+        longitud={data.longitud} 
+        setData={setData} 
+    />
+</div>
                         <div className='flex justify-end mt-4'>
                         <PrimaryButton >
                             Actualizar 

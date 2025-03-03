@@ -96,15 +96,19 @@ const Index = ({ auth, alumnos }) => {
                                             <PencilRuler size={16} />
                                         </Link>
                                         <Link
-                                            href={route("alumno.destroy", [
-                                                alumno.id_alumno,
-                                            ])}
-                                            method="delete"
-                                            as="button"
-                                            className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition flex items-center space-x-1"
-                                        >
-                                            <Trash2 size={16} />
-                                        </Link>
+                                href={route("alumno.destroy", [alumno.id_alumno])}
+                                method="delete"
+                                as="button"
+                                className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition flex items-center space-x-1"
+                                onClick={(e) => {
+                                    if (!confirm(`¿Estás seguro de que deseas eliminar a ${alumno.nombre_completo}?`)) {
+                                        e.preventDefault(); // Cancela la eliminación si el usuario elige "Cancelar"
+                                    }
+                                }}
+                            >
+                                <Trash2 size={16} />
+                            </Link>
+
                                     </td>
                                 </tr>
                             ))}
