@@ -6,7 +6,7 @@ import TextInput from "@/Components/TextInput";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { Transition } from "@headlessui/react";
-import MapComponent from '@/Components/MapComponent';  // Importa el nuevo componente
+import MapComponent from "@/Components/MapComponent"; // Importa el nuevo componente
 
 const Edit = ({ auth, escuela }) => {
     const initialValues = {

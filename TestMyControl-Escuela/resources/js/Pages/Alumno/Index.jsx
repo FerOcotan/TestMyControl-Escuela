@@ -1,143 +1,118 @@
-import React from 'react';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, Link } from '@inertiajs/react';
+import React from "react";
+import { Pencil, PencilRuler, Trash2 } from "lucide-react"; // Importar iconos
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Head, Link } from "@inertiajs/react";
 
+const Index = ({ auth, alumnos }) => {
+    return (
+        <AuthenticatedLayout
+            header={
+                <div className="flex justify-between items-center">
+                    <h2 className="text-2xl font-bold text-gray-800">
+                        Alumnos
+                    </h2>
+                    <Link
+                        href={route("alumno.create")}
+                        className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition duration-300 shadow-md"
+                    >
+                        Crear Alumno
+                    </Link>
+                </div>
+            }
+        >
+            <Head title="Alumnos" />
 
+            {/* Contenedor sin scroll en toda la pantalla */}
+            <div className="w-full">
+                {/* Contenedor con scroll solo en la tabla */}
+                <div className="overflow-x-auto">
+                    <table className="w-full table-fixed text-sm text-left text-gray-600">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-200">
+                            <tr>
+                                <th className="px-3 py-2 w-32">Nombre</th>
+                                <th className="px-3 py-2 w-32">Dirección</th>
+                                <th className="px-3 py-2 w-28">Teléfono</th>
+                                <th className="px-3 py-2 w-40">Email</th>
+                                <th className="px-3 py-2 w-24">Foto</th>
+                                <th className="px-3 py-2 w-24">Género</th>
 
-const Index = ({auth,alumnos}) => {
-    
+                                <th className="px-3 py-2 w-24">Grado</th>
+                                <th className="px-3 py-2 w-24">Sección</th>
+                                <th className="px-3 py-2 w-24">Escuela</th>
+                                <th className="px-3 py-2 w-32">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-gray-200">
+                            {alumnos?.map((alumno) => (
+                                <tr
+                                    key={alumno.id_alumno}
+                                    className="hover:bg-gray-100 transition"
+                                >
+                                    <td className="px-3 py-2 max-w-[120px] truncate whitespace-nowrap">
+                                        {alumno.nombre_completo}
+                                    </td>
+                                    <td className="px-3 py-2 max-w-[120px] truncate whitespace-nowrap">
+                                        {alumno.direccion}
+                                    </td>
+                                    <td className="px-3 py-2 max-w-[100px] truncate whitespace-nowrap">
+                                        {alumno.telefono}
+                                    </td>
+                                    <td className="px-3 py-2 max-w-[150px] truncate whitespace-nowrap">
+                                        {alumno.email}
+                                    </td>
+                                    <td className="px-3 py-2">
+                                        <img
+                                            src={`/storage/${alumno.foto}`}
+                                            className="w-12 h-12 rounded-full object-cover"
+                                        />
+                                    </td>
+                                    <td className="px-3 py-2">
+                                        {alumno.genero}
+                                    </td>
 
-  return (
-    <AuthenticatedLayout
-    header={
-
-        <div className="flex justify-between">
-
-        <h2 className="text-xl font-semibold leading-tight text-gray-800">
-            Alumnos
-        </h2>
-        <Link href={route('alumno.create')} className="btn btn-primary">
-        Crear Alumno
-        </Link>
-        </div>
-    }
->
-    <Head title="Dashboard" />
-
-    <div className="py-12">
-        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div className="p-6 text-gray-900">
-                   
-
-                    <div className="relative overflow-x-auto">
-                        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" className="px-6 py-3">
-                                    Nombre Alumno
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    direccion
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    telfono
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    email
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    foto
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    Genero
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    latitud
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    longitud
-                                    </th> <th scope="col" className="px-6 py-3">
-                                    Grado
-                                    </th> <th scope="col" className="px-6 py-3">
-                                    Seccion
-                                    </th> <th scope="col" className="px-6 py-3">
-                                    Escuela
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                    Acciones
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                 {   
-                                    alumnos?.map(alumno => (
-                                        <tr key={alumno} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-
-                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                          
-                                            {alumno.nombre_completo}
-                                        </th>
-                                        <td className="px-6 py-4">
-                                            {alumno.direccion}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {alumno.telefono}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {alumno.email}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {alumno.genero}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            <img src={`/storage/${alumno.foto}`} alt="" className="w-20 h-20 rounded-full" />
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {alumno.latitud}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {alumno.longitud}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {alumno.grado ? alumno.grado.nombre_grado : 'Sin grado'}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {alumno.seccion ? alumno.seccion.nombre_seccion : 'Sin sección'}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {alumno.escuela ? alumno.escuela.nombre : 'Sin escuela'}
-                                        </td>
-
-
-                                        <td>
-                                          <div className="space-x-2">
-                                         <Link href={route('alumno.edit',[alumno.id_alumno])} className="btn btn-primary">
-                                          Editar
+                                    <td className="px-3 py-2">
+                                        {alumno.grado
+                                            ? alumno.grado.nombre_grado
+                                            : "Sin grado"}
+                                    </td>
+                                    <td className="px-3 py-2">
+                                        {alumno.seccion
+                                            ? alumno.seccion.nombre_seccion
+                                            : "Sin sección"}
+                                    </td>
+                                    <td className="px-3 py-2">
+                                        {alumno.escuela
+                                            ? alumno.escuela.nombre
+                                            : "Sin escuela"}
+                                    </td>
+                                    <td className="px-3 py-2 flex space-x-2">
+                                        <Link
+                                            href={route("alumno.edit", [
+                                                alumno.id_alumno,
+                                            ])}
+                                            className="px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 transition flex items-center space-x-1"
+                                        >
+                                            <PencilRuler size={16} />
                                         </Link>
-                                        <Link href={route('alumno.destroy',[alumno.id_alumno])} method="delete" as="button" className="btn btn-danger"> 
-                                             Eliminar
-                                        
-                                     </Link>
-                                         
-                                                    
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    ))
-                                }
-                                
-                            </tbody>
-                        </table>
-                    </div>
-
+                                        <Link
+                                            href={route("alumno.destroy", [
+                                                alumno.id_alumno,
+                                            ])}
+                                            method="delete"
+                                            as="button"
+                                            className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition flex items-center space-x-1"
+                                        >
+                                            <Trash2 size={16} />
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
-    </div>
-</AuthenticatedLayout>
-  )
-}
+        </AuthenticatedLayout>
+    );
+};
 
-
-export default Index
+export default Index;
