@@ -51,12 +51,13 @@ const Create = ({auth}) => {
 
 
                         <div>
-                    <InputLabel htmlFor="name" value="name" />
+                    <InputLabel htmlFor="name" value="Nombre Usuario" />
 
                     <TextInput
                         id="name"
                         type="text"
                         name="name"
+                        placeholder="Ingrese el nombre del usuario"     
                         value={data.name}
                         className="mt-1 block w-full"
             
@@ -67,11 +68,12 @@ const Create = ({auth}) => {
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="email" value="email" />
+                    <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
                         id="email"
                         type="text"
+                        placeholder="Ingrese el email del usuario"
                         name="email"
                         value={data.email}
                         className="mt-1 block w-full"
@@ -84,11 +86,13 @@ const Create = ({auth}) => {
 
                 
                   <div className="mt-4">
-                                    <InputLabel htmlFor="password" value="Password" />
+                                    <InputLabel htmlFor="password" value="Contraseña" />
                 
                                     <TextInput
+                                    
                                         id="password"
                                         type="password"
+                                        placeholder="Ingrese la contraseña"
                                         name="password"
                                         value={data.password}
                                         className="mt-1 block w-full"
@@ -102,7 +106,7 @@ const Create = ({auth}) => {
                
 
                   <div>
-                                    <InputLabel htmlFor="role" value="role" />
+                                    <InputLabel htmlFor="role" value="Permisos" />
                 
                                     <select 
                                     name="role" 

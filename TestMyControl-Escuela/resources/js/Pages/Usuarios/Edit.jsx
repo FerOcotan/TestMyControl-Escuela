@@ -56,7 +56,7 @@ const Create = ({auth,usuarios}) => {
 
 
                         <div>
-                    <InputLabel htmlFor="name" value="name" />
+                    <InputLabel htmlFor="name" value="Nombre" />
 
                     <TextInput
                         id="name"
@@ -72,7 +72,7 @@ const Create = ({auth,usuarios}) => {
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="email" value="email" />
+                    <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
                         id="email"
@@ -89,7 +89,7 @@ const Create = ({auth,usuarios}) => {
 
                 
                   <div className="mt-4">
-                                    <InputLabel htmlFor="password" value="Password" />
+                                    <InputLabel htmlFor="password" value="Contraseña" />
                 
                                     <TextInput
                                         id="password"
@@ -107,7 +107,7 @@ const Create = ({auth,usuarios}) => {
                
 
                   <div>
-                                    <InputLabel htmlFor="role" value="role" />
+                                    <InputLabel htmlFor="role" value="Permisos" />
                 
                                     <select 
                                     name="role" 

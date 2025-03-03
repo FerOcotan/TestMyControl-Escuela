@@ -35,7 +35,7 @@ const Index = ({ auth, usuarios }) => {
                                                 Código
                                             </th>
                                             <th className="px-4 py-3 w-1/5">
-                                                Username
+                                                Usuario
                                             </th>
                                             <th className="px-4 py-3 w-1/5">
                                                 Email
@@ -85,6 +85,18 @@ const Index = ({ auth, usuarios }) => {
                                                         method="delete"
                                                         as="button"
                                                         className="px-3 py-1 bg-red-600 text-white rounded-md shadow-md hover:bg-red-700 transition flex items-center space-x-1"
+                                                        onClick={(e) => {
+                                                            if (
+                                                                !window.confirm(
+                                                                    `¿Estás seguro de que deseas eliminar el usuario ${
+                                                                        usuario.name ||
+                                                                        usuario.email
+                                                                    }? Esta acción no se puede deshacer.`
+                                                                )
+                                                            ) {
+                                                                e.preventDefault(); // Cancela la eliminación si el usuario no confirma
+                                                            }
+                                                        }}
                                                     >
                                                         <Trash2 size={16} />
                                                         <span>Eliminar</span>

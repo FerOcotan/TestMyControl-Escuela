@@ -79,6 +79,15 @@ const Index = ({ auth, padres }) => {
                                                         method="delete"
                                                         as="button"
                                                         className="px-3 py-1 bg-red-600 text-white rounded-md shadow-md hover:bg-red-700 transition flex items-center space-x-1"
+                                                        onClick={(e) => {
+                                                            if (
+                                                                !window.confirm(
+                                                                         `¿Estás seguro de que deseas eliminar este encargado ${padre.nombre}?`
+                                                                )
+                                                            ) {
+                                                                e.preventDefault(); // Cancela la eliminación si el usuario no confirma
+                                                            }
+                                                        }}
                                                     >
                                                         <Trash2 size={16} />
                                                         <span>Eliminar</span>
