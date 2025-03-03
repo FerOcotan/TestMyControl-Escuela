@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Reporte de Escuela</title>
+    <title>Reporte de Todas las Escuelas</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -90,28 +89,21 @@
         }
     </style>
 </head>
-
 <body>
-
-    <img src="{{ public_path('storage/images/logopdf.jpg') }}" alt="Logo" class="logo">
-    <h1>Listado de Escuelas</h1>
-
-    <div class="table-container">
-        <table>
-            <thead>
+<img src="{{ public_path('storage/images/logopdf.jpg') }}" alt="Logo" class="logo">
+    <h1>Reporte de Todas las Escuelas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Emblema</th>
+                <th>Nombre de la Escuela</th>
+                <th>Total de Alumnos</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($escuelas as $escuela)
                 <tr>
-                    <th>ID</th>
-                    <th>Emblema</th>
-                    <th>Nombre</th>
-                    <th>Dirección</th>
-                    <th>Email</th>
-                    <th>Total de Alumnos</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ $escuela->id_school }}</td>
-                    <td>
+                <td>
                         @if ($escuela->foto)
                         <img
                             src="{{ storage_path('app/public/' . $escuela->foto) }}"
@@ -122,13 +114,11 @@
                         @endif
                     </td>
                     <td>{{ $escuela->nombre }}</td>
-                    <td>{{ $escuela->direccion }}</td>
-                    <td>{{ $escuela->email }}</td>
-                    <td>{{ $totalAlumnos }}</td>
+                    <td>{{ $escuela->totalAlumnos }}</td>
+                    
                 </tr>
-            </tbody>
-        </table>
-    </div>
+            @endforeach
+        </tbody>
+    </table>
 </body>
-
 </html>

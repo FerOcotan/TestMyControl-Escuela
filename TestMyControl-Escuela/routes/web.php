@@ -59,10 +59,8 @@ Route::middleware(['auth', 'role:administrador'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:administrador'])->group(function () {
-    // Ruta para generar el reporte de la escuela
-    Route::get('/reportes/generar-escuela/{id_school}', [ReportController::class, 'generarReporteEscuela'])
-        ->name('reportes.generar-escuela');
-
+    Route::get('/reportes/generar-todas-escuelas', [ReportController::class, 'generarReporteTodasEscuelas']);
+    
     // Ruta para generar el reporte de alumnos
     Route::get('/reportes/generar-alumnos/{id_school}', [ReportController::class, 'generarReporteAlumnos'])
         ->name('reportes.generar-alumnos');
