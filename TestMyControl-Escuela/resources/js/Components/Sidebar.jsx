@@ -11,7 +11,7 @@ export default function Sidebar({ children }) {
   return (
     <aside className="min-h-screen">
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
-        {/* Header del Sidebar */}
+        {/* Header */}
         <div className="p-4 pb-2 flex justify-between items-center">
           <VerticaLogo className={`overflow-hidden transition-all ${expanded ? "w-100" : "w-0"}`} />
           <button onClick={() => setExpanded((curr) => !curr)} className="p-2 rounded-lg bg-white-700 hover:bg-orange-100">
@@ -27,7 +27,7 @@ export default function Sidebar({ children }) {
   );
 }
 
-// SidebarItem: Elemento individual del menú
+// SidebarItem
 export function SidebarItem({ icon, text, active, alert }) {
   const { expanded } = useContext(SidebarContext);
 

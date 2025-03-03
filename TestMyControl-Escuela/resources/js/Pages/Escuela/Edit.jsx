@@ -87,7 +87,7 @@ const Edit = ({ auth, escuela }) => {
                                 <div>
                                     <InputLabel
                                         htmlFor="direccion"
-                                        value="direccion"
+                                        value="Dirección"
                                     />
 
                                     <TextInput
@@ -108,7 +108,7 @@ const Edit = ({ auth, escuela }) => {
                                 </div>
 
                                 <div>
-                                    <InputLabel htmlFor="email" value="email" />
+                                    <InputLabel htmlFor="email" value="Email" />
 
                                     <TextInput
                                         id="email"
@@ -128,7 +128,7 @@ const Edit = ({ auth, escuela }) => {
                                 </div>
 
                                 <div>
-                                    <InputLabel htmlFor="foto" value="foto" />
+                                    <InputLabel htmlFor="foto" value="Emblema" />
 
                                     <TextInput
                                         id="foto"
@@ -149,7 +149,7 @@ const Edit = ({ auth, escuela }) => {
                                 <div>
                                     <InputLabel
                                         htmlFor="latitud"
-                                        value="latitud"
+                                        value="Latitud"
                                     />
 
                                     <TextInput

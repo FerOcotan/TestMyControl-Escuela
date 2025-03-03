@@ -141,7 +141,7 @@ const Create = ({ auth }) => {
                                         name="latitud"
                                          placeholder="Selecione su ubicación en el mapa"
                                         value={data.latitud}
-                                        className="mt-1 block w-full"
+                                  className="mt-1 block w-full"
                                         onChange={(e) =>
                                             setData("latitud", e.target.value)
                                         }

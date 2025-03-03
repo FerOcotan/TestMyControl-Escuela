@@ -58,13 +58,13 @@ const Index = ({ auth, escuelas }) => {
                                 key={escuela.id_school}
                                 className="hover:bg-gray-100 transition"
                             >
-                                <td className="px-6 py-4 max-w-[150px] truncate">
+                                <td className="px-6 py-4 max-w-[0px]">
                                     {escuela.nombre}
                                 </td>
-                                <td className="px-6 py-4 max-w-[150px] truncate">
+                                <td className="px-6 py-4 max-w-[150px] ">
                                     {escuela.direccion}
                                 </td>
-                                <td className="px-6 py-4 max-w-[150px] truncate">
+                                <td className="px-6 py-4 max-w-[150px] ">
                                     {escuela.email}
                                 </td>
                                 <td className="px-6 py-4">

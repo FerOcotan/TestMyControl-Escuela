@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('foto')->nullable();
             $table->enum('genero', ['masculino', 'femenino']);
-            $table->decimal('latitud');
-            $table->decimal('longitud');
+            $table->string('latitud');
+            $table->string('longitud');
 
             // 🔗 Claves foráneas correctamente referenciadas
             $table->unsignedBigInteger('id_school');

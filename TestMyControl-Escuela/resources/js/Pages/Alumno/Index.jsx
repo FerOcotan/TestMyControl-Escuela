@@ -49,16 +49,16 @@ const Index = ({ auth, alumnos }) => {
                                     key={alumno.id_alumno}
                                     className="hover:bg-gray-100 transition"
                                 >
-                                    <td className="px-3 py-2 max-w-[120px] truncate whitespace-nowrap">
+                                    <td className="px-3 py-2 max-w-[120px]  ">
                                         {alumno.nombre_completo}
-                                    </td>
-                                    <td className="px-3 py-2 max-w-[120px] truncate whitespace-nowrap">
+                                    </td>   
+                                    <td className="px-3 py-2 max-w-[120px]  ">
                                         {alumno.direccion}
                                     </td>
-                                    <td className="px-3 py-2 max-w-[100px] truncate whitespace-nowrap">
+                                    <td className="px-3 py-2 max-w-[100px]  ">
                                         {alumno.telefono}
                                     </td>
-                                    <td className="px-3 py-2 max-w-[150px] truncate whitespace-nowrap">
+                                    <td className="px-3 py-2 max-w-[150px]  ">
                                         {alumno.email}
                                     </td>
                                     <td className="px-3 py-2">
