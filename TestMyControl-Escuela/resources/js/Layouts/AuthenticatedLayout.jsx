@@ -5,6 +5,7 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link, usePage } from "@inertiajs/react";
 import { useState } from "react";
+
 import {
     Home,
     Settings,
@@ -20,7 +21,8 @@ import {
     Lock,
     Contact,
 } from "lucide-react";
-import Sidebar, { SidebarItem } from "@/Components/Sidebar";
+
+import Sidebar, { SidebarItem, SidebarSection } from "@/Components/Sidebar";
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
@@ -44,24 +46,66 @@ export default function AuthenticatedLayout({ header, children }) {
                                 active={route().current("dashboard")}
                             />
                         </NavLink>
-                        <NavLink
-                            href={route("escuela.index")}
-                            active={route().current("escuela.index")}
+
+                        {/* Sección de Escuela */}
+                        <SidebarSection
+                            title="Escuela"
+                            icon={<University size={20} />}
                         >
-                            <SidebarItem
-                                icon={<University size={20} />}
-                                text="Escuelas"
-                            />
-                        </NavLink>
-                        <NavLink
-                            href={route("padres.index")}
-                            active={route().current("padres.index")}
+                            <NavLink
+                                href={route("escuela.index")}
+                                active={route().current("escuela.index")}
+                            >
+                                <SidebarItem
+                                    icon={<University size={18} />}
+                                    text="Escuelas"
+                                />
+                            </NavLink>
+                            <NavLink
+                                href={route("grado.index")}
+                                active={route().current("grado.index")}
+                            >
+                                <SidebarItem
+                                    icon={<BookPlus size={18} />}
+                                    text="Grados"
+                                />
+                            </NavLink>
+                            <NavLink
+                                href={route("seccion.index")}
+                                active={route().current("seccion.index")}
+                            >
+                                <SidebarItem
+                                    icon={<BookOpenCheck size={18} />}
+                                    text="Secciones"
+                                />
+                            </NavLink>
+                        </SidebarSection>
+
+                        {/* Sección de Padres */}
+                        <SidebarSection
+                            title="Padres"
+                            icon={<UserRound size={20} />}
                         >
-                            <SidebarItem
-                                icon={<UserRound size={20} />}
-                                text="Padres"
-                            />
-                        </NavLink>
+                            <NavLink
+                                href={route("padres.index")}
+                                active={route().current("padres.index")}
+                            >
+                                <SidebarItem
+                                    icon={<UserRound size={18} />}
+                                    text="Padres"
+                                />
+                            </NavLink>
+                            <NavLink
+                                href={route("PadreAlumno.index")}
+                                active={route().current("PadreAlumno.index")}
+                            >
+                                <SidebarItem
+                                    icon={<Contact size={18} />}
+                                    text="Parentesco"
+                                />
+                            </NavLink>
+                        </SidebarSection>
+
                         <NavLink
                             href={route("alumno.index")}
                             active={route().current("alumno.index")}
@@ -80,24 +124,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                 text="Reportes"
                             />
                         </NavLink>
-                        <NavLink
-                            href={route("seccion.index")}
-                            active={route().current("seccion.index")}
-                        >
-                            <SidebarItem
-                                icon={<BookOpenCheck size={20} />}
-                                text="Secciones"
-                            />
-                        </NavLink>
-                        <NavLink
-                            href={route("grado.index")}
-                            active={route().current("grado.index")}
-                        >
-                            <SidebarItem
-                                icon={<BookPlus size={20} />}
-                                text="Grados"
-                            />
-                        </NavLink>
+                       
                         <NavLink
                             href={route("usuarios.index")}
                             active={route().current("usuarios.index")}
@@ -105,15 +132,6 @@ export default function AuthenticatedLayout({ header, children }) {
                             <SidebarItem
                                 icon={<Lock size={20} />}
                                 text="Usuarios"
-                            />
-                        </NavLink>
-                        <NavLink
-                            href={route("PadreAlumno.index")}
-                            active={route().current("PadreAlumno.index")}
-                        >
-                            <SidebarItem
-                                icon={<Contact size={20} />}
-                                text="Parentesco"
                             />
                         </NavLink>
                     </Sidebar>
