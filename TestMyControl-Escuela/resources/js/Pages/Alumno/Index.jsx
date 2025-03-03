@@ -1,5 +1,5 @@
 import React from "react";
-import { Pencil, PencilRuler, Trash2 } from "lucide-react"; // Importar iconos
+import { Pencil, PencilRuler, Trash2,PlusCircle } from "lucide-react"; // Importar iconos
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
@@ -13,9 +13,10 @@ const Index = ({ auth, alumnos }) => {
                     </h2>
                     <Link
                         href={route("alumno.create")}
-                        className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition duration-300 shadow-md"
-                    >
-                        Crear Alumno
+                        className="px-4 py-2 bg-orange-600 text-white rounded-md shadow-md hover:bg-orange-700 transition flex items-center space-x-2"
+                        >
+                            <PlusCircle size={18} />
+                            <span>Agregar Alumno</span>
                     </Link>
                 </div>
             }
