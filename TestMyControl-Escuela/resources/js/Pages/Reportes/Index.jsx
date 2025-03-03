@@ -1,6 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, usePage } from '@inertiajs/react';
 import { useState, useEffect, useRef } from 'react';
+import { Download, ListChecks, PlusCircle } from 'lucide-react';
 
 export default function ReportesIndex() {
     const { escuelas } = usePage().props;
@@ -12,7 +13,7 @@ export default function ReportesIndex() {
         if (selectedEscuela) {
             const newPdfUrl = `/reportes/generar-escuela/${selectedEscuela}`;
             if (pdfUrl !== newPdfUrl) {
-                setPdfUrl(newPdfUrl); // Solo actualiza si la URL es diferente
+                setPdfUrl(newPdfUrl);
             }
         } else {
             alert('Por favor, seleccione una escuela.');
@@ -23,7 +24,7 @@ export default function ReportesIndex() {
         if (selectedEscuela) {
             const newPdfUrl = `/reportes/generar-alumnos/${selectedEscuela}`;
             if (pdfUrl !== newPdfUrl) {
-                setPdfUrl(newPdfUrl); // Solo actualiza si la URL es diferente
+                setPdfUrl(newPdfUrl);
             }
         } else {
             alert('Por favor, seleccione una escuela.');
@@ -32,65 +33,65 @@ export default function ReportesIndex() {
 
     useEffect(() => {
         if (pdfUrl && iframeRef.current) {
-            iframeRef.current.src = pdfUrl; // Actualiza el iframe solo si hay una URL válida
+            iframeRef.current.src = pdfUrl;
         }
     }, [pdfUrl]);
 
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Reportes de Escuelas
-                </h2>
+                <h2 className="text-2xl font-bold text-gray-800">Reportes de Escuelas</h2>
             }
         >
             <Head title="Reportes" />
 
             <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium text-gray-700">
-                                    Seleccione una escuela
-                                </label>
-                                <select
-                                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                                    value={selectedEscuela}
-                                    onChange={(e) => setSelectedEscuela(e.target.value)}
-                                >
-                                    <option value="">Seleccione una escuela...</option>
-                                    {escuelas.map((escuela) => (
-                                        <option key={escuela.id_school} value={escuela.id_school}>
-                                            {escuela.nombre}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
+                <div className="max-w-5xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-white shadow-md rounded-lg p-6">
+                        <div className="mb-6">
+                            <label className="block text-lg font-semibold text-gray-700 mb-2">
+                                Seleccione la escuela:
+                            </label>
+                            <select
+                                className="block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
+                                value={selectedEscuela}
+                                onChange={(e) => setSelectedEscuela(e.target.value)}
+                            >
+                                <option value="">--Seleccione--</option>
+                                {escuelas.map((escuela) => (
+                                    <option key={escuela.id_school} value={escuela.id_school}>
+                                        {escuela.nombre}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
+                        <div className="flex gap-4">
                             <button
-                                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 mr-2"
+                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg shadow-md hover:bg-red-700 transition duration-300"
                                 onClick={handleGenerarReporteEscuela}
                             >
-                                Generar Reporte de la Escuela
+                                <Download size={18} />
+                                Reporte de la Escuela
                             </button>
 
                             <button
-                                className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 transition duration-300"
                                 onClick={handleGenerarReporteAlumnos}
                             >
-                                Generar Reporte de Alumnos
+                                <ListChecks size={18} />
+                                Reporte de Alumnos
                             </button>
+                        </div>
 
-                            <div className="mt-6">
-                                <iframe
-                                    ref={iframeRef}
-                                    src={pdfUrl}
-                                    width="100%"
-                                    height="600px"
-                                    style={{ border: 'none' }}
-                                ></iframe>
-                            </div>
+                        <div className="mt-8 border border-gray-300 rounded-lg overflow-hidden">
+                            <iframe
+                                ref={iframeRef}
+                                src={pdfUrl}
+                                width="100%"
+                                height="600px"
+                                className="rounded-md"
+                            ></iframe>
                         </div>
                     </div>
                 </div>
