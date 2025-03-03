@@ -51,29 +51,34 @@ const Create = ({ grados, secciones, escuelas, users }) => {
         >
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
+            <div className="py-12 bg-gray-100 min-h-screen flex items-center justify-center">
+    <div className="mx-auto max-w-4xl sm:px-6 lg:px-8">
+        <div className="overflow-hidden bg-white shadow-lg rounded-lg">
+            <div className="p-6 text-gray-900 space-y-4">
+
                             <form onSubmit={submit}>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <InputLabel htmlFor="nombre_completo" value="Nombre completo" />
                                     <TextInput
                                         id="nombre_completo"
                                         type="text"
                                         name="nombre_completo"
+                                        placeholder="Ingrese el nombre completo"
                                         value={data.nombre_completo}
-                                        className="mt-1 block w-full"
+                                         className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2"
                                         onChange={(e) => setData('nombre_completo', e.target.value)}
                                     />
                                     <InputError message={errors.nombre_completo} className="mt-2" />
                                 </div>
                                 <div>
-                    <InputLabel htmlFor="direccion" value="direccion" />
+                    <InputLabel htmlFor="direccion" value="Dirección" />
 
                     <TextInput
                         id="direccion"
                         type="text"
+                        placeholder="Ingrese la dirección donde reside"
                         name="direccion"
                         value={data.direccion}
                         className="mt-1 block w-full"
@@ -84,29 +89,39 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                     <InputError message={errors.direccion} className="mt-2" />
                 </div>
                 <div>
-                    <InputLabel htmlFor="telefono" value="telefono" />
+                    <InputLabel htmlFor="telefono" value="Telefono" />
 
                     <TextInput
-                        id="telefono"
-                        type="text"
-                        name="telefono"
-                        value={data.telefono}
-                        className="mt-1 block w-full"
-            
-                        onChange={(e) => setData('telefono', e.target.value)}
-                    />
+                    id="telefono"
+                    type="text"
+                    name="telefono"
+                    value={data.telefono}
+                    className="mt-1 block w-full"
+                    placeholder="Ingrese su número de teléfono"
+                    maxLength={10} // Máximo de 10 dígitos
+                    onChange={(e) => {
+                        if (/^\d{0,10}$/.test(e.target.value)) { // Solo números y máximo 10 caracteres
+                            setData('telefono', e.target.value);
+                        }
+                    }}
+/>
+{data.telefono.length > 10 && (
+    <span className="text-red-500 text-sm">El número de teléfono no puede superar los 10 dígitos.</span>
+)}
+
 
                     <InputError message={errors.telefono} className="mt-2" />
                 </div>
 
                 
                 <div>
-                    <InputLabel htmlFor="email" value="email" />
+                    <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
                         id="email"
                         type="text"
                         name="email"
+                        placeholder="Ingrese su correo electrónico"
                         value={data.email}
                         className="mt-1 block w-full"
             
@@ -117,7 +132,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                 </div>  
 
                 <div>
-                    <InputLabel htmlFor="foto" value="foto" />
+                    <InputLabel htmlFor="foto" value="Foto alumno" />
 
                     <TextInput
                         id="foto"
@@ -132,7 +147,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                 </div>  
                 
                 <div>
-                    <InputLabel htmlFor="genero" value="genero" />
+                    <InputLabel htmlFor="genero" value="Genero" />
 
                     <select 
                     name="genero" 
@@ -154,37 +169,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                     <InputError message={errors.genero} className="mt-2" />
                 </div>  
 
-                <div>
-                    <InputLabel htmlFor="latitud" value="latitud" />
-
-                    <TextInput
-                        id="latitud"
-                        type="text"
-                        name="latitud"
-                        value={data.latitud}
-                        className="mt-1 block w-full"
-            
-                        onChange={(e) => setData('latitud', e.target.value)}
-                    />
-
-                    <InputError message={errors.latitud} className="mt-2" />
-                </div>  
-
-                <div>
-                    <InputLabel htmlFor="longitud" value="longitud" />
-
-                    <TextInput
-                        id="longitud"
-                        type="text"
-                        name="longitud"
-                        value={data.longitud}
-                        className="mt-1 block w-full"
-            
-                        onChange={(e) => setData('longitud', e.target.value)}
-                    />
-
-                    <InputError message={errors.longitud} className="mt-2" />
-                </div>  
+  
 
                                {/* Grado */}
                             <div>
@@ -228,7 +213,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
 
                                   {/* escuela */}
                                   <div>
-                                    <InputLabel htmlFor="id_school" value="Sección" />
+                                    <InputLabel htmlFor="id_school" value="Escuela" />
                                     <select
                                         id="id_school"
                                         name="id_school"
@@ -265,13 +250,45 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                     </select>
                                     <InputError message={errors.user_id} className="mt-2" />
                                 </div>
+                            </div>
 
-                                <MapComponent 
-                                        latitud={data.latitud} 
-                                        longitud={data.longitud} 
-                                        setData={setData} 
-                                    />
-                                
+                            <div>
+    <InputLabel htmlFor="latitud" value="Latitud" />
+    <TextInput
+        id="latitud"
+        type="text"
+        name="latitud"
+        placeholder="Selecione su ubicación en el mapa"
+        value={data.latitud}
+        className="mt-1 block w-full bg-gray-100 cursor-not-allowed"
+        readOnly
+    />
+    <InputError message={errors.latitud} className="mt-2" />
+</div>  
+
+<div>
+    <InputLabel htmlFor="longitud" value="Longitud" />
+    <TextInput
+        id="longitud"
+        type="text"
+          placeholder="Selecione su ubicación en el mapa"
+        name="longitud"
+        value={data.longitud}
+        className="mt-1 block w-full bg-gray-100 cursor-not-allowed"
+        readOnly
+    />
+    <InputError message={errors.longitud} className="mt-2" />
+</div>
+
+
+<div className="md:col-span-2 mt-8">
+    <MapComponent 
+        latitud={data.latitud} 
+        longitud={data.longitud} 
+        setData={setData} 
+    />
+</div>
+
 
                                 <div className="flex justify-end mt-4">
                                     <PrimaryButton>
