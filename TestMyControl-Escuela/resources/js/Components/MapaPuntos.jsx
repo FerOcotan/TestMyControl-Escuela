@@ -25,14 +25,14 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
 
     const containerStyle = {
         width: '100%',
-        height: '400px',
+        height: '550px',
         marginBottom: '20px',
     };
 
     const defaultCenter = { lat: 13.69294, lng: -89.21819 };
 
     const iconos = {
-        Alumno: { url: 'https://maps.google.com/mapfiles/ms/icons/purple-dot.png' },
+        Alumno: { url: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png' },
         Escuela: { url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png' },
     };
 

@@ -33,15 +33,15 @@ export function SidebarItem({ icon, text, active, alert }) {
 
   return (
     <li className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
-      active ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800" : "hover:bg-indigo-50 text-gray-600"
+      active ? "bg-gradient-to-tr from-orange-200 to-green-50 text-orange-800" : "hover:bg-orange-50 text-gray-600"
     }`}>
       {icon}
       <span className={`overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"}`}>
         {text}
       </span>
-      {alert && <div className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${expanded ? "" : "top-2"}`} />}
+      {alert && <div className={`absolute right-2 w-2 h-2 rounded bg-orange-400 ${expanded ? "" : "top-2"}`} />}
       {!expanded && (
-        <div className="absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0">
+        <div className="absolute left-full rounded-md px-2 py-1 ml-6 bg-orange-100 text-orange-800 text-sm invisible opacity-20 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0">
           {text}
         </div>
       )}
@@ -49,19 +49,36 @@ export function SidebarItem({ icon, text, active, alert }) {
   );
 }
 
-// SidebarSection: Contenedor de elementos desplegables
 export function SidebarSection({ title, icon, children }) {
+  const { expanded } = useContext(SidebarContext); // Accede al estado del sidebar
   const [open, setOpen] = useState(false);
+
+  // Cierra el desplegable cuando el sidebar se colapse
+  React.useEffect(() => {
+    if (!expanded) setOpen(false);
+  }, [expanded]);
+
   return (
     <div>
-      <button className="flex items-center w-full px-3 py-2 font-medium text-gray-700 rounded-md hover:bg-gray-50 transition" onClick={() => setOpen(!open)}>
+      <button
+        className="flex items-center w-full px-3 py-2 font-medium text-gray-700 rounded-md hover:bg-gray-50 transition"
+        onClick={() => setOpen(!open)}
+        disabled={!expanded} // Deshabilita el botón si el menú está cerrado
+      >
         {icon}
-        <span className="ml-3">{title}</span>
-        <span className="ml-auto">{open ? <Minus size={16} /> : <Plus size={16} />}</span>
+        {expanded && <span className="ml-3">{title}</span>}
+        {expanded && <span className="ml-auto">{open ? <Minus size={16} /> : <Plus size={16} />}</span>}
       </button>
-      <ul className={`pl-6 mt-1 space-y-1 transition-all ${open ? "block" : "hidden"}`}>
-        {children}
-      </ul>
+
+      {/* Contenedor con animación */}
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          open ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <ul className="pl-6 mt-1 space-y-1">{children}</ul>
+      </div>
     </div>
   );
 }
+
