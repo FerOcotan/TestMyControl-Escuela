@@ -5,7 +5,7 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link, usePage } from "@inertiajs/react";
 import { useState } from "react";
-import { Home, Settings, Users, AlertCircle } from "lucide-react";
+import { Home, Settings, Users, AlertCircle, File, University, UserRound, GraduationCap, FileDown, BookPlus, BookOpenCheck, Lock } from "lucide-react";
 import Sidebar, { SidebarItem } from "@/Components/Sidebar";
 
 export default function AuthenticatedLayout({ header, children }) {
@@ -35,7 +35,7 @@ export default function AuthenticatedLayout({ header, children }) {
                             active={route().current("escuela.index")}
                         >
                             <SidebarItem
-                                icon={<Users size={20} />}
+                                icon={<University size={20} />}
                                 text="Escuelas"
                             />
                         </NavLink>
@@ -44,7 +44,7 @@ export default function AuthenticatedLayout({ header, children }) {
                             active={route().current("padres.index")}
                         >
                             <SidebarItem
-                                icon={<Home size={20} />}
+                                icon={<UserRound size={20} />}
                                 text="Padres"
                             />
                         </NavLink>
@@ -53,7 +53,7 @@ export default function AuthenticatedLayout({ header, children }) {
                             active={route().current("alumno.index")}
                         >
                             <SidebarItem
-                                icon={<Users size={20} />}
+                                icon={<GraduationCap size={20} />}
                                 text="Alumnos"
                             />
                         </NavLink>
@@ -62,8 +62,35 @@ export default function AuthenticatedLayout({ header, children }) {
                             active={route().current("reportes.index")}
                         >
                             <SidebarItem
-                                icon={<AlertCircle size={20} />}
+                                icon={<FileDown size={20} />}
                                 text="Reportes"
+                            />
+                        </NavLink>
+                        <NavLink
+                            href={route("seccion.index")}
+                            active={route().current("seccion.index")}
+                        >
+                            <SidebarItem
+                                icon={<BookOpenCheck size={20} />}
+                                text="Secciones"
+                            />
+                        </NavLink>
+                        <NavLink
+                            href={route("grado.index")}
+                            active={route().current("grado.index")}
+                        >
+                            <SidebarItem
+                                icon={<BookPlus size={20} />}
+                                text="Grados"
+                            />
+                        </NavLink>
+                        <NavLink
+                            href={route("usuarios.index")}
+                            active={route().current("usuarios.index")}
+                        >
+                            <SidebarItem
+                                icon={<Lock size={20} />}
+                                text="Usuarios"
                             />
                         </NavLink>
                     </Sidebar>
