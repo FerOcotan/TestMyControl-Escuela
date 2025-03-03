@@ -40,7 +40,7 @@ export default function ReportesIndex() {
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-2xl font-bold text-gray-800">Reportes de Escuelas</h2>
+                <h2  className="text-xl font-semibold leading-tight text-gray-800">Reportes </h2>
             }
         >
             <Head title="Reportes" />

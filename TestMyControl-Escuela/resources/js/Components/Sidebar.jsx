@@ -13,14 +13,14 @@ export default function Sidebar({ children }) {
       <nav className="h-full flex flex-col bg-white border-r shadow-sm">
         {/* Header del Sidebar */}
         <div className="p-4 pb-2 flex justify-between items-center">
-          <VerticaLogo className={`overflow-hidden transition-all ${expanded ? "w-32" : "w-0"}`} />
-          <button onClick={() => setExpanded((curr) => !curr)} className="p-2 rounded-lg bg-gray-50 hover:bg-gray-100">
+          <VerticaLogo className={`overflow-hidden transition-all ${expanded ? "w-100" : "w-0"}`} />
+          <button onClick={() => setExpanded((curr) => !curr)} className="p-2 rounded-lg bg-white-700 hover:bg-orange-100">
             {expanded ? <LucideArrowLeftFromLine /> : <LucideArrowRightFromLine />}
           </button>
         </div>
 
         <SidebarContext.Provider value={{ expanded }}>
-          <ul className="flex-1 px-3">{children}</ul>
+          <ul className="flex-1 px-2">{children}</ul>
         </SidebarContext.Provider>
       </nav>
     </aside>

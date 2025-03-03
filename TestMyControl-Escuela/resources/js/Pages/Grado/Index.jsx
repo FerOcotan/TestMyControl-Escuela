@@ -8,7 +8,7 @@ const Index = ({ auth, grado }) => {
         <AuthenticatedLayout
             header={
                 <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-semibold text-gray-800">
+                     <h2 className="text-xl font-semibold leading-tight text-gray-800">
                         Grados
                     </h2>
                     <Link

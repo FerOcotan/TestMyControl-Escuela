@@ -10,7 +10,7 @@ const Index = ({ auth, escuelas }) => {
         <AuthenticatedLayout
             header={
                 <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-bold text-gray-800">
+                   <h2 className="text-xl font-semibold leading-tight text-gray-800">
                         Escuelas
                     </h2>
                     <Link
