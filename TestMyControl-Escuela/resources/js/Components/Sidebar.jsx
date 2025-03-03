@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
-import { AlignEndHorizontalIcon, AlignEndVertical, AlignEndVerticalIcon, ArrowBigLeft, ArrowBigLeftDash, ArrowDownLeftFromSquare, ArrowLeft, ArrowLeftCircleIcon, ArrowRight, ArrowRightLeft, ChevronFirst, ChevronLast, LucideArrowLeftFromLine, LucideArrowRightFromLine, Maximize, Maximize2, Minimize, Minimize2, MoreVertical } from "lucide-react";
+import { LucideArrowLeftFromLine, LucideArrowRightFromLine} from "lucide-react";
 import VerticaLogo from "@/Components/VerticaLogo"; // Importar el componente
 import { ArrowUp, ArrowDown } from "lucide-react";
 

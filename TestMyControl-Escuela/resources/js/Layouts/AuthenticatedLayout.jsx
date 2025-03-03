@@ -5,7 +5,21 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link, usePage } from "@inertiajs/react";
 import { useState } from "react";
-import { Home, Settings, Users, AlertCircle, File, University, UserRound, GraduationCap, FileDown, BookPlus, BookOpenCheck, Lock } from "lucide-react";
+import {
+    Home,
+    Settings,
+    Users,
+    AlertCircle,
+    File,
+    University,
+    UserRound,
+    GraduationCap,
+    FileDown,
+    BookPlus,
+    BookOpenCheck,
+    Lock,
+    Contact,
+} from "lucide-react";
 import Sidebar, { SidebarItem } from "@/Components/Sidebar";
 
 export default function AuthenticatedLayout({ header, children }) {
@@ -91,6 +105,15 @@ export default function AuthenticatedLayout({ header, children }) {
                             <SidebarItem
                                 icon={<Lock size={20} />}
                                 text="Usuarios"
+                            />
+                        </NavLink>
+                        <NavLink
+                            href={route("PadreAlumno.index")}
+                            active={route().current("PadreAlumno.index")}
+                        >
+                            <SidebarItem
+                                icon={<Contact size={20} />}
+                                text="Parentesco"
                             />
                         </NavLink>
                     </Sidebar>
