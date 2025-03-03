@@ -1,4 +1,5 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
+import AplicationBrand from '@/Components/ApplicationBrand';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
@@ -46,15 +47,21 @@ export default function AuthenticatedLayout({ header, children }) {
                 <nav className="border-b border-gray-100 bg-white">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 justify-between items-center">
-                {/* Espacio vacío a la izquierda para equilibrar el diseño */}
-                <div className="flex-1"></div>
+                
 
                 {/* Logo centrado */}
-                <div className="flex shrink-0 items-center justify-center">
+                <div className="flex shrink-0 items-center justify-left">
                     <Link href="/dashboard">
                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                     </Link>
   </div>
+
+  {/* Espacio vacío a la izquierda para equilibrar el diseño */}
+  <div className="flex-1"></div>
+
+  <Link href="/dashboard">
+                    <AplicationBrand className="block h-9 w-auto fill-current text-gray-800" />
+                    </Link>
 
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
