@@ -1,5 +1,5 @@
 import React from "react";
-import { Pencil, PencilRuler, Trash2,PlusCircle } from "lucide-react"; // Importar iconos
+import { Pencil, PencilRuler, Trash2, PlusCircle } from "lucide-react"; // Importar iconos
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
@@ -14,9 +14,9 @@ const Index = ({ auth, alumnos }) => {
                     <Link
                         href={route("alumno.create")}
                         className="px-4 py-2 bg-orange-600 text-white rounded-md shadow-md hover:bg-orange-700 transition flex items-center space-x-2"
-                        >
-                            <PlusCircle size={18} />
-                            <span>Agregar Alumno</span>
+                    >
+                        <PlusCircle size={18} />
+                        <span>Agregar Alumno</span>
                     </Link>
                 </div>
             }
@@ -96,19 +96,24 @@ const Index = ({ auth, alumnos }) => {
                                             <PencilRuler size={16} />
                                         </Link>
                                         <Link
-                                href={route("alumno.destroy", [alumno.id_alumno])}
-                                method="delete"
-                                as="button"
-                                className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition flex items-center space-x-1"
-                                onClick={(e) => {
-                                    if (!confirm(`¿Estás seguro de que deseas eliminar a ${alumno.nombre_completo}?`)) {
-                                        e.preventDefault(); // Cancela la eliminación si el usuario elige "Cancelar"
-                                    }
-                                }}
-                            >
-                                <Trash2 size={16} />
-                            </Link>
-
+                                            href={route("alumno.destroy", [
+                                                alumno.id_alumno,
+                                            ])}
+                                            method="delete"
+                                            as="button"
+                                            className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition flex items-center space-x-1"
+                                            onClick={(e) => {
+                                                if (
+                                                    !confirm(
+                                                        `¿Estás seguro de que deseas eliminar a ${alumno.nombre_completo}?`
+                                                    )
+                                                ) {
+                                                    e.preventDefault(); // Cancela la eliminación si el usuario elige "Cancelar"
+                                                }
+                                            }}
+                                        >
+                                            <Trash2 size={16} />
+                                        </Link>
                                     </td>
                                 </tr>
                             ))}

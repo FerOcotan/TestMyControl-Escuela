@@ -46,6 +46,7 @@ const Create = ({ auth }) => {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
+                            
                             <form onSubmit={submit}>
                                 <div>
                                     <InputLabel
@@ -139,6 +140,7 @@ const Create = ({ auth }) => {
                                         onChange={(e) =>
                                             setData("latitud", e.target.value)
                                         }
+                                        readOnly
                                     />
                                     <InputError
                                         message={errors.latitud}
@@ -156,6 +158,7 @@ const Create = ({ auth }) => {
                                         type="text"
                                         name="longitud"
                                         value={data.longitud}
+                                        readOnly
                                         className="mt-1 block w-full"
                                         onChange={(e) =>
                                             setData("longitud", e.target.value)

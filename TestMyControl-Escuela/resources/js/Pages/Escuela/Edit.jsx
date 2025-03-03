@@ -156,6 +156,7 @@ const Edit = ({ auth, escuela }) => {
                                         id="latitud"
                                         type="text"
                                         name="latitud"
+                                        readOnly
                                         value={data.latitud}
                                         className="mt-1 block w-full"
                                         onChange={(e) =>
@@ -178,6 +179,7 @@ const Edit = ({ auth, escuela }) => {
                                     <TextInput
                                         id="longitud"
                                         type="text"
+                                        readOnly
                                         name="longitud"
                                         value={data.longitud}
                                         className="mt-1 block w-full"

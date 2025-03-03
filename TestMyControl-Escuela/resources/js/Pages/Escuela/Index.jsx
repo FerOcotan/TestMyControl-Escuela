@@ -1,7 +1,7 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Pencil, PencilRuler, Trash2,PlusCircle } from "lucide-react"; // Importar iconos
+import { Pencil, PencilRuler, Trash2, PlusCircle } from "lucide-react"; // Importar iconos
 
 const Index = ({ auth, escuelas }) => {
     console.log(escuelas);
@@ -16,9 +16,9 @@ const Index = ({ auth, escuelas }) => {
                     <Link
                         href={route("escuela.create")}
                         className="px-4 py-2 bg-orange-600 text-white rounded-md shadow-md hover:bg-orange-700 transition flex items-center space-x-2"
-                                            >
-                                                <PlusCircle size={18} />
-                                                <span>Agregar Escuela</span>
+                    >
+                        <PlusCircle size={18} />
+                        <span>Agregar Escuela</span>
                     </Link>
                 </div>
             }
@@ -84,8 +84,7 @@ const Index = ({ auth, escuelas }) => {
                                         ])}
                                         className="px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
                                     >
-                                         <PencilRuler size={16} />
-                                     
+                                        <PencilRuler size={16} />
                                     </Link>
                                     <Link
                                         href={route("escuela.destroy", [
@@ -94,6 +93,15 @@ const Index = ({ auth, escuelas }) => {
                                         method="delete"
                                         as="button"
                                         className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
+                                        onClick={(e) => {
+                                            if (
+                                                !window.confirm(
+                                                   `¿Estás seguro de que deseas eliminar la escuela ${escuela.nombre}?`
+                                                )
+                                            ) {
+                                                e.preventDefault(); // Evita que se ejecute la eliminación si el usuario cancela
+                                            }
+                                        }}
                                     >
                                         <Trash2 size={16} />
                                     </Link>
