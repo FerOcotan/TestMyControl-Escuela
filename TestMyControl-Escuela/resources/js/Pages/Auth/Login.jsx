@@ -22,7 +22,7 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <GuestLayout>
+        <GuestLayout imageUrl="https://www.mined.gob.sv/joomgallery/originals/mas_de_400_estudiantes_ce_jose_antonio_rodriguez_port_reciben_el_primer_uniforme_escolar_2132/mas_de_400_estudiantes_ce_jose_antonio_rodriguez_port_reciben_el_primer_uniforme_escolar_1_20200213_1138437033.jpg">
             <Head title="Log in" />
 
           
@@ -46,7 +46,7 @@ export default function Login({ status, canResetPassword }) {
                                 type="email"
                                 name="email"
                                 value={data.email}
-                                className="mt-1 block w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                                className="mt-1 block w-full rounded-lg border-gray-300 focus:border-orange-500 focus:ring-orange-500"
                                 autoComplete="username"
                                 isFocused={true}
                                 onChange={(e) => setData('email', e.target.value)}
@@ -63,7 +63,7 @@ export default function Login({ status, canResetPassword }) {
                                 type="password"
                                 name="password"
                                 value={data.password}
-                                className="mt-1 block w-full rounded-lg border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                                className="mt-1 block w-full rounded-lg border-gray-300 focus:border-orange-500 focus:ring-orange-500"
                                 autoComplete="current-password"
                                 onChange={(e) => setData('password', e.target.value)}
                             />
