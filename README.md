@@ -94,4 +94,8 @@ Se debe crear una base de datos en MySQL llamada `school`, dentro de las migraci
 - `password`
 - `tipo` -> (Administrador, Usuario)
 
+- 
+### 1. Bienvenida 
+![Welcome](https://github.com/user-attachments/assets/e9b87872-2be6-494d-856a-cf61ae97f3fb)
+
 
