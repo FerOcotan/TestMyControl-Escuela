@@ -57,6 +57,7 @@ class GradoController extends Controller
     {
         $grado = Grado::findOrFail($id_grado);
         return Inertia::render('Grado/Edit',compact('grado'));
+
     }
 
     /**

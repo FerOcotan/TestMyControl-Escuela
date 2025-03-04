@@ -47,6 +47,7 @@ class PadreAlumnoController extends Controller
     {
         $data=$request->only('parentesco', 'id_alumno', 'id_padre');
         PadreAlumno::create($data);
+        return to_route('PadreAlumno.index');
 
     }
 
