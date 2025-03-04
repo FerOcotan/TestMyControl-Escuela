@@ -1,8 +1,7 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Pencil, Trash2, PlusCircle } from "lucide-react";
-W;
+import { Pencil, Trash2, PlusCircle } from "lucide-react"; // Importar iconos
 
 const Index = ({ auth, usuarios }) => {
     return (
@@ -95,7 +94,7 @@ const Index = ({ auth, usuarios }) => {
                                                                     }? Esta acción no se puede deshacer.`
                                                                 )
                                                             ) {
-                                                                e.preventDefault(); // Cancela la eliminación
+                                                                e.preventDefault(); // Cancela la eliminación si el usuario no confirma
                                                             }
                                                         }}
                                                     >
