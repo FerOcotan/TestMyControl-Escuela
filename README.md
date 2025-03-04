@@ -1,7 +1,7 @@
 # TestMyControl-Escuela
 
 ## Descripción
-TestMyControl-Escuela ha sido desarrollado para facilitar la gestión y consulta de datos relacionados con instituciones educativas, alumnos y sus padres, proporcionando herramientas avanzadas de visualización y generación de reportes de las escuelas existentes de forma visual gracias al mapa y a traves de la generacion de reportes.
+Este proyecto es un sistema de gestión de escuelas, alumnos y padres, con autenticación de usuarios y geolocalización mediante Google Maps.
 
 TestMyControl-Escuela ha sido desarrollado utilizando **React** para el frontend y **Laravel con Inertia.js** en el backend, ofreciendo una experiencia fluida y dinámica en la gestión de la información educativa.
 
