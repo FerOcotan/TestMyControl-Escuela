@@ -7,7 +7,7 @@ export default function GuestLayout({ children, imageUrl }) {
     return (
         <div className="flex min-h-screen items-center justify-center bg-gray-100">
             <div className="flex w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden">
-                {/* Columna del formulario */}
+           
                 <div className="w-full max-w-md px-6 py-8">
                     <div className="flex justify-center mb-4">
                         <Link href="/">

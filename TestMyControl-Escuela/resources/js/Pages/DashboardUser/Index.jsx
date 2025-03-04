@@ -73,7 +73,7 @@ export default function Dashboard() {
                     )}
 
                     {/* Información del estudiante */}
-                    {/* Información del estudiante */}
+                   
 
                     <h2 className="text-2xl text-gray-600 text-center mb-8">
                         Informacion del estudiante.
