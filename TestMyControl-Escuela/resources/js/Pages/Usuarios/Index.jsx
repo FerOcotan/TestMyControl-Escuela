@@ -1,7 +1,8 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Pencil, Trash2, PlusCircle } from "lucide-react"; W
+import { Pencil, Trash2, PlusCircle } from "lucide-react";
+W;
 
 const Index = ({ auth, usuarios }) => {
     return (

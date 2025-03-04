@@ -5,7 +5,7 @@ import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
-import MapComponent from "@/Components/MapComponent"; 
+import MapComponent from "@/Components/MapComponent";
 
 const Create = ({ auth }) => {
     const initialValues = {
@@ -46,7 +46,6 @@ const Create = ({ auth }) => {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
-                            
                             <form onSubmit={submit}>
                                 <div>
                                     <InputLabel
@@ -78,7 +77,7 @@ const Create = ({ auth }) => {
                                     <TextInput
                                         id="direccion"
                                         type="text"
-                                         placeholder="Ingrese la dirección de la escuela"
+                                        placeholder="Ingrese la dirección de la escuela"
                                         name="direccion"
                                         value={data.direccion}
                                         className="mt-1 block w-full"
@@ -98,7 +97,7 @@ const Create = ({ auth }) => {
                                         id="email"
                                         type="text"
                                         name="email"
-                                         placeholder="Ingrese el email de la escuela"
+                                        placeholder="Ingrese el email de la escuela"
                                         value={data.email}
                                         className="mt-1 block w-full"
                                         onChange={(e) =>
@@ -117,7 +116,7 @@ const Create = ({ auth }) => {
                                         id="foto"
                                         type="file"
                                         name="foto"
-                                         placeholder="Ingrese el emblema de la escuela"
+                                        placeholder="Ingrese el emblema de la escuela"
                                         className="mt-1 block w-full"
                                         onChange={(e) =>
                                             setData("foto", e.target.files[0])
@@ -139,9 +138,9 @@ const Create = ({ auth }) => {
                                         id="latitud"
                                         type="text"
                                         name="latitud"
-                                         placeholder="Selecione su ubicación en el mapa"
+                                        placeholder="Selecione su ubicación en el mapa"
                                         value={data.latitud}
-                                  className="mt-1 block w-full"
+                                        className="mt-1 block w-full"
                                         onChange={(e) =>
                                             setData("latitud", e.target.value)
                                         }
@@ -162,7 +161,7 @@ const Create = ({ auth }) => {
                                         id="longitud"
                                         type="text"
                                         name="longitud"
-                                         placeholder="Selecione su ubicación en el mapa"
+                                        placeholder="Selecione su ubicación en el mapa"
                                         value={data.longitud}
                                         readOnly
                                         className="mt-1 block w-full"

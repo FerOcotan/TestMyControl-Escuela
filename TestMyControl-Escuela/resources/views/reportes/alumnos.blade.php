@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Reporte de Alumnos - {{ $escuela->nombre }}</title>
     <style>
@@ -81,16 +82,17 @@
 
         .logo {
             width: 280px;
-            
+
             height: auto;
             display: block;
             margin: 0 auto 20px;
-            
+
         }
     </style>
 </head>
+
 <body>
-<img src="{{ public_path('storage/images/logopdf.jpg') }}" alt="Logo" class="logo">
+    <img src="{{ public_path('storage/images/logopdf.jpg') }}" alt="Logo" class="logo">
 
     <h1>Reporte de Alumnos - {{ $escuela->nombre }}</h1>
     <table>
@@ -105,25 +107,26 @@
             </tr>
         </thead>
         <tbody>
-        @foreach ($alumnos as $alumno)
-    <tr>
-        <td>{{ $alumno->nombre_completo }}</td>
-        <td>{{ $alumno->genero }}</td>
-        <td>{{ $alumno->grado->nombre_grado }}</td> <!-- Acceder a la relación grado -->
-        <td>{{ $alumno->seccion->nombre_seccion }}</td> <!-- Acceder a la relación seccion -->
-        <td>
-            @foreach ($alumno->padres as $padre)
-                {{ $padre->nombre }}<br> <!-- Acceder a la relación padres -->
+            @foreach ($alumnos as $alumno)
+            <tr>
+                <td>{{ $alumno->nombre_completo }}</td>
+                <td>{{ $alumno->genero }}</td>
+                <td>{{ $alumno->grado->nombre_grado }}</td> <!-- Acceder a la relación grado -->
+                <td>{{ $alumno->seccion->nombre_seccion }}</td> <!-- Acceder a la relación seccion -->
+                <td>
+                    @foreach ($alumno->padres as $padre)
+                    {{ $padre->nombre }}<br> <!-- Acceder a la relación padres -->
+                    @endforeach
+                </td>
+                <td>
+                    @foreach ($alumno->padres as $padre)
+                    {{ $padre->pivot->parentesco }}<br> <!-- Acceder al campo pivot -->
+                    @endforeach
+                </td>
+            </tr>
             @endforeach
-        </td>
-        <td>
-            @foreach ($alumno->padres as $padre)
-                {{ $padre->pivot->parentesco }}<br> <!-- Acceder al campo pivot -->
-            @endforeach
-        </td>
-    </tr>
-@endforeach
         </tbody>
     </table>
 </body>
+
 </html>

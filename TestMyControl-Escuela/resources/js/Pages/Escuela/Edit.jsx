@@ -128,7 +128,10 @@ const Edit = ({ auth, escuela }) => {
                                 </div>
 
                                 <div>
-                                    <InputLabel htmlFor="foto" value="Emblema" />
+                                    <InputLabel
+                                        htmlFor="foto"
+                                        value="Emblema"
+                                    />
 
                                     <TextInput
                                         id="foto"

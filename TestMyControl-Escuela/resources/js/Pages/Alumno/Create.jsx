@@ -261,7 +261,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                                     "id_seccion",
                                                     e.target.value
                                                 )
-                                            } 
+                                            }
                                         >
                                             <option value="">
                                                 Seleccione una sección

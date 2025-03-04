@@ -12,7 +12,7 @@ export default function VerifyEmail({ status }) {
     };
 
     return (
-        <GuestLayout>
+        <GuestLayout imageUrl="https://www.mined.gob.sv/wp-content/uploads/2020/10/c0c26ec2b98f11c4e261423b8ec26409.jpg">
             <Head title="Email Verification" />
 
             <div className="mb-4 text-sm text-gray-600">

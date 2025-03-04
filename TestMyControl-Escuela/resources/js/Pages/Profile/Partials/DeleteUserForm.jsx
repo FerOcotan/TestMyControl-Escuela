@@ -1,13 +1,13 @@
-import DangerButton from '@/Components/DangerButton';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import Modal from '@/Components/Modal';
-import SecondaryButton from '@/Components/SecondaryButton';
-import TextInput from '@/Components/TextInput';
-import { useForm } from '@inertiajs/react';
-import { useRef, useState } from 'react';
+import DangerButton from "@/Components/DangerButton";
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
+import Modal from "@/Components/Modal";
+import SecondaryButton from "@/Components/SecondaryButton";
+import TextInput from "@/Components/TextInput";
+import { useForm } from "@inertiajs/react";
+import { useRef, useState } from "react";
 
-export default function DeleteUserForm({ className = '' }) {
+export default function DeleteUserForm({ className = "" }) {
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
     const passwordInput = useRef();
 
@@ -20,7 +20,7 @@ export default function DeleteUserForm({ className = '' }) {
         errors,
         clearErrors,
     } = useForm({
-        password: '',
+        password: "",
     });
 
     const confirmUserDeletion = () => {
@@ -30,7 +30,7 @@ export default function DeleteUserForm({ className = '' }) {
     const deleteUser = (e) => {
         e.preventDefault();
 
-        destroy(route('profile.destroy'), {
+        destroy(route("profile.destroy"), {
             preserveScroll: true,
             onSuccess: () => closeModal(),
             onError: () => passwordInput.current.focus(),
@@ -53,7 +53,7 @@ export default function DeleteUserForm({ className = '' }) {
                 </h2>
 
                 <p className="mt-1 text-sm text-gray-600">
-                Una vez que se elimina su cuenta, todos sus recursos y datos
+                    Una vez que se elimina su cuenta, todos sus recursos y datos
                     será eliminado permanentemente. Antes de eliminar su cuenta,
                     por favor descargue cualquier dato o información que desee
                     retener.
@@ -67,16 +67,15 @@ export default function DeleteUserForm({ className = '' }) {
             <Modal show={confirmingUserDeletion} onClose={closeModal}>
                 <form onSubmit={deleteUser} className="p-6">
                     <h2 className="text-lg font-medium text-gray-900">
-                    ¿Estás seguro de que quieres eliminar tu cuenta?
+                        ¿Estás seguro de que quieres eliminar tu cuenta?
                     </h2>
 
                     <p className="mt-1 text-sm text-gray-600">
-                        
-                         Una vez que se elimina su cuenta, todos sus recursos y
-                        Los datos se eliminarán permanentemente. Por favor ingrese su
-                        contraseña para confirmar que desea eliminar permanentemente
-                        tu cuenta.
-                        Traera problemas mas adelante.
+                        Una vez que se elimina su cuenta, todos sus recursos y
+                        Los datos se eliminarán permanentemente. Por favor
+                        ingrese su contraseña para confirmar que desea eliminar
+                        permanentemente tu cuenta. Traera problemas mas
+                        adelante.
                     </p>
 
                     <div className="mt-6">
@@ -93,7 +92,7 @@ export default function DeleteUserForm({ className = '' }) {
                             ref={passwordInput}
                             value={data.password}
                             onChange={(e) =>
-                                setData('password', e.target.value)
+                                setData("password", e.target.value)
                             }
                             className="mt-1 block w-3/4"
                             isFocused

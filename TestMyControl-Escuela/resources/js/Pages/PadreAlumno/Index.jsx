@@ -1,14 +1,14 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Pencil, Trash2, PlusCircle } from "lucide-react"; 
+import { Pencil, Trash2, PlusCircle } from "lucide-react";
 
 const Index = ({ auth, padreAlumno }) => {
     return (
         <AuthenticatedLayout
             header={
                 <div className="flex justify-between items-center">
-                 <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    <h2 className="text-xl font-semibold leading-tight text-gray-800">
                         Parentesco
                     </h2>
                     <Link

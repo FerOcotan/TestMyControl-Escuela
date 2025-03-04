@@ -1,7 +1,7 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import { Link } from '@inertiajs/react';
+import ApplicationLogo from "@/Components/ApplicationLogo";
+import { Link } from "@inertiajs/react";
 
-import AplicationBrand from '@/Components/ApplicationBrand';
+import AplicationBrand from "@/Components/ApplicationBrand";
 
 export default function GuestLayout({ children, imageUrl }) {
     return (

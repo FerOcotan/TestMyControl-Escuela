@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Reporte de Todas las Escuelas</title>
     <style>
@@ -81,16 +82,17 @@
 
         .logo {
             width: 280px;
-            
+
             height: auto;
             display: block;
             margin: 0 auto 20px;
-            
+
         }
     </style>
 </head>
+
 <body>
-<img src="{{ public_path('storage/images/logopdf.jpg') }}" alt="Logo" class="logo">
+    <img src="{{ public_path('storage/images/logopdf.jpg') }}" alt="Logo" class="logo">
     <h1>Reporte de Todas las Escuelas</h1>
     <table>
         <thead>
@@ -102,23 +104,24 @@
         </thead>
         <tbody>
             @foreach ($escuelas as $escuela)
-                <tr>
+            <tr>
                 <td>
-                        @if ($escuela->foto)
-                        <img
-                            src="{{ storage_path('app/public/' . $escuela->foto) }}"
-                            alt="Foto de la escuela"
-                            class="foto-escuela">
-                        @else
-                        <span class="sin-foto">Sin foto</span>
-                        @endif
-                    </td>
-                    <td>{{ $escuela->nombre }}</td>
-                    <td>{{ $escuela->totalAlumnos }}</td>
-                    
-                </tr>
+                    @if ($escuela->foto)
+                    <img
+                        src="{{ storage_path('app/public/' . $escuela->foto) }}"
+                        alt="Foto de la escuela"
+                        class="foto-escuela">
+                    @else
+                    <span class="sin-foto">Sin foto</span>
+                    @endif
+                </td>
+                <td>{{ $escuela->nombre }}</td>
+                <td>{{ $escuela->totalAlumnos }}</td>
+
+            </tr>
             @endforeach
         </tbody>
     </table>
 </body>
+
 </html>

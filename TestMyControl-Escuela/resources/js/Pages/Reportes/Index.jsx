@@ -1,12 +1,12 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head, usePage } from '@inertiajs/react';
-import { useState, useEffect, useRef } from 'react';
-import { Download, ListChecks } from 'lucide-react';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Head, usePage } from "@inertiajs/react";
+import { useState, useEffect, useRef } from "react";
+import { Download, ListChecks } from "lucide-react";
 
 export default function ReportesIndex() {
     const { escuelas } = usePage().props;
-    const [selectedEscuela, setSelectedEscuela] = useState('');
-    const [pdfUrl, setPdfUrl] = useState('');
+    const [selectedEscuela, setSelectedEscuela] = useState("");
+    const [pdfUrl, setPdfUrl] = useState("");
     const iframeRef = useRef(null);
 
     const handleGenerarReporteAlumnos = () => {
@@ -14,7 +14,7 @@ export default function ReportesIndex() {
             const newPdfUrl = `/reportes/generar-alumnos/${selectedEscuela}`;
             setPdfUrl(newPdfUrl);
         } else {
-            alert('Por favor, seleccione una escuela.');
+            alert("Por favor, seleccione una escuela.");
         }
     };
 
@@ -33,7 +33,9 @@ export default function ReportesIndex() {
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">Reportes</h2>
+                <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    Reportes
+                </h2>
             }
         >
             <Head title="Reportes" />
@@ -61,11 +63,16 @@ export default function ReportesIndex() {
                                 <select
                                     className="block w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400"
                                     value={selectedEscuela}
-                                    onChange={(e) => setSelectedEscuela(e.target.value)}
+                                    onChange={(e) =>
+                                        setSelectedEscuela(e.target.value)
+                                    }
                                 >
                                     <option value="">--Seleccione--</option>
                                     {escuelas.map((escuela) => (
-                                        <option key={escuela.id_school} value={escuela.id_school}>
+                                        <option
+                                            key={escuela.id_school}
+                                            value={escuela.id_school}
+                                        >
                                             {escuela.nombre}
                                         </option>
                                     ))}

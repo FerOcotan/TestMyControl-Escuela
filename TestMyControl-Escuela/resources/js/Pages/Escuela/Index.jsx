@@ -1,7 +1,7 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Pencil, PencilRuler, Trash2, PlusCircle } from "lucide-react"; 
+import { Pencil, PencilRuler, Trash2, PlusCircle } from "lucide-react";
 
 const Index = ({ auth, escuelas }) => {
     console.log(escuelas);
@@ -10,7 +10,7 @@ const Index = ({ auth, escuelas }) => {
         <AuthenticatedLayout
             header={
                 <div className="flex justify-between items-center">
-                   <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    <h2 className="text-xl font-semibold leading-tight text-gray-800">
                         Escuelas
                     </h2>
                     <Link
@@ -96,7 +96,7 @@ const Index = ({ auth, escuelas }) => {
                                         onClick={(e) => {
                                             if (
                                                 !window.confirm(
-                                                   `¿Estás seguro de que deseas eliminar la escuela ${escuela.nombre}?`
+                                                    `¿Estás seguro de que deseas eliminar la escuela ${escuela.nombre}?`
                                                 )
                                             ) {
                                                 e.preventDefault(); // Evita que se ejecute la eliminación si el usuario cancela

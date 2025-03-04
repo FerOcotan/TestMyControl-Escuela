@@ -1,5 +1,5 @@
 import React from "react";
-import { Pencil, PencilRuler, Trash2, PlusCircle } from "lucide-react"; 
+import { Pencil, PencilRuler, Trash2, PlusCircle } from "lucide-react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
@@ -8,7 +8,7 @@ const Index = ({ auth, alumnos }) => {
         <AuthenticatedLayout
             header={
                 <div className="flex justify-between items-center">
-                     <h2 className="text-xl font-semibold leading-tight text-gray-800">
+                    <h2 className="text-xl font-semibold leading-tight text-gray-800">
                         Alumnos
                     </h2>
                     <Link
@@ -23,9 +23,7 @@ const Index = ({ auth, alumnos }) => {
         >
             <Head title="Alumnos" />
 
-        
             <div className="w-full">
-
                 <div className="overflow-x-auto">
                     <table className="w-full table-fixed text-sm text-left text-gray-600">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-200">
@@ -51,7 +49,7 @@ const Index = ({ auth, alumnos }) => {
                                 >
                                     <td className="px-3 py-2 max-w-[120px]  ">
                                         {alumno.nombre_completo}
-                                    </td>   
+                                    </td>
                                     <td className="px-3 py-2 max-w-[120px]  ">
                                         {alumno.direccion}
                                     </td>
@@ -108,7 +106,7 @@ const Index = ({ auth, alumnos }) => {
                                                         `¿Estás seguro de que deseas eliminar a ${alumno.nombre_completo}?`
                                                     )
                                                 ) {
-                                                    e.preventDefault(); // Cancela la eliminación 
+                                                    e.preventDefault(); // Cancela la eliminación
                                                 }
                                             }}
                                         >

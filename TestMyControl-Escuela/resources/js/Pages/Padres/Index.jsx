@@ -1,7 +1,7 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Pencil, Trash2, PlusCircle } from "lucide-react"; 
+import { Pencil, Trash2, PlusCircle } from "lucide-react";
 
 const Index = ({ auth, padres }) => {
     return (
@@ -82,10 +82,10 @@ const Index = ({ auth, padres }) => {
                                                         onClick={(e) => {
                                                             if (
                                                                 !window.confirm(
-                                                                         `¿Estás seguro de que deseas eliminar este encargado ${padre.nombre}?`
+                                                                    `¿Estás seguro de que deseas eliminar este encargado ${padre.nombre}?`
                                                                 )
                                                             ) {
-                                                                e.preventDefault(); // Cancela la eliminación 
+                                                                e.preventDefault(); // Cancela la eliminación
                                                             }
                                                         }}
                                                     >
