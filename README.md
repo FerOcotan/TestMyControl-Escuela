@@ -107,8 +107,19 @@ Se debe crear una base de datos en MySQL llamada `school`, dentro de las migraci
 
 ## Vista Usuario
 
-## 1 Usuario sin alumno asignado.
-![Usuario](https://github.com/user-attachments/assets/fb7e337d-0700-4662-8888-00108ebfe7c7)
+## 1-Dashboard
+- Vista para el usuario sin alumno asignado.
+
+![image](https://github.com/user-attachments/assets/e59b2e62-4a66-4c48-9883-efee28ed3fed)
+
+
+- Vista para el usuario con alumno asignado.
+![image](https://github.com/user-attachments/assets/e891564b-3d0d-49eb-affd-022524f612d4)
+
+## Vista Administrador
+
+### 1-Dashboard
+![image](https://github.com/user-attachments/assets/cbf007aa-cd71-4784-9436-051cd49c2df0)
 
 
 
