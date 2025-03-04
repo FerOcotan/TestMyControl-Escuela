@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('padre_alumnos', function (Blueprint $table) {
             $table->bigIncrements('id_padre_alumno');
 
-            // Asegúrate de usar "unsignedBigInteger" si la clave primaria en "alumnos" es "bigIncrements"
+        
            
         
             $table->unsignedBigInteger('id_padre');

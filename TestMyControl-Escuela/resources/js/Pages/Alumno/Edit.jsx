@@ -6,7 +6,7 @@ import TextInput from "@/Components/TextInput";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { Transition } from "@headlessui/react";
-import MapComponent from "@/Components/MapComponent"; // Importa el nuevo componente
+import MapComponent from "@/Components/MapComponent"; 
 
 const Edit = ({ alumnos, secciones, escuelas, grados, users }) => {
     const initialValues = {
@@ -21,7 +21,7 @@ const Edit = ({ alumnos, secciones, escuelas, grados, users }) => {
         id_school: alumnos.id_school,
         id_grado: alumnos.id_grado,
         id_seccion: alumnos.id_seccion,
-        user_id: alumnos.user_id, // O el valor correcto que represente el usuario asignado
+        user_id: alumnos.user_id, 
     };
 
     const { data, errors, setData, post, recentlySuccessful } =

@@ -9,9 +9,9 @@ class Seccion extends Model
 {
     use HasFactory;
 
-    protected $table = 'secciones'; // Confirma el nombre de la tabla
+    protected $table = 'secciones'; 
 
-    protected $primaryKey = 'id_seccion'; // Asegura que coincida con la clave primaria en la BD
+    protected $primaryKey = 'id_seccion'; 
 
 
     protected $fillable = ['nombre_seccion'];

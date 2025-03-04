@@ -5,7 +5,7 @@ import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
-import MapComponent from "@/Components/MapComponent"; // Importa el nuevo componente
+import MapComponent from "@/Components/MapComponent"; 
 
 const Create = ({ auth }) => {
     const initialValues = {

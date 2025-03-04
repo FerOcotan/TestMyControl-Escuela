@@ -19,10 +19,10 @@ export default function GuestLayout({ children, imageUrl }) {
                     </div>
                 </div>
 
-                {/* Columna de la imagen con imagen dinámica */}
+                {/* Columna de la imagen con imagen dinámica, login y register */}
                 <div className="w-full max-w-md">
                     <img
-                        src={imageUrl} // Imagen personalizada
+                        src={imageUrl}
                         alt="Imagen de fondo"
                         className="w-full h-full object-cover rounded-r-lg"
                     />

@@ -44,7 +44,7 @@ class AlumnosController extends Controller
         $grados = Grado::all(['id_grado', 'nombre_grado']);
         $secciones = Seccion::all(['id_seccion', 'nombre_seccion']);
     
-        // Obtener usuarios que NO tienen un alumno vinculado y que NO son administradores
+        //  usuarios que NO tienen un alumno vinculado y que NO son administradores
         $users = Usuarios::whereDoesntHave('alumno')
                          ->where('role', '!=', 'administrador')
                          ->get(['id', 'email']);
@@ -93,10 +93,10 @@ class AlumnosController extends Controller
         $grados = Grado::all(['id_grado', 'nombre_grado']);
         $secciones = Seccion::all(['id_seccion', 'nombre_seccion']);
     
-        // Obtener el alumno a editar
+        
         $alumnos = Alumnos::findOrFail($id_alumno);
     
-        // Obtener los usuarios que no tienen un alumno vinculado o que sean el usuario actual del alumno
+        // usuarios que no tienen un alumno vinculado o que sean el usuario actual del alumno
         $users = Usuarios::where(function ($query) use ($alumnos) {
                     $query->whereDoesntHave('alumno')
                           ->orWhere('id', $alumnos->user_id);

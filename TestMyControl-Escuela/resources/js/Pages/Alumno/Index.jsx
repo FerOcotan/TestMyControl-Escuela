@@ -108,7 +108,7 @@ const Index = ({ auth, alumnos }) => {
                                                         `¿Estás seguro de que deseas eliminar a ${alumno.nombre_completo}?`
                                                     )
                                                 ) {
-                                                    e.preventDefault(); // Cancela la eliminación si el usuario elige "Cancelar"
+                                                    e.preventDefault(); // Cancela la eliminación 
                                                 }
                                             }}
                                         >

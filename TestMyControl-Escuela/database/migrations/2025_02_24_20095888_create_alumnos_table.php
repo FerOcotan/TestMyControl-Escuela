@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('latitud');
             $table->string('longitud');
 
-            // 🔗 Claves foráneas correctamente referenciadas
+            // Claves foráneas
             $table->unsignedBigInteger('id_school');
             $table->foreign('id_school')->references('id_school')->on('escuelas')->onDelete('cascade');
 

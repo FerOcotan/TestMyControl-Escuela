@@ -1,22 +1,27 @@
-import React, { useState } from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import React, { useState } from "react";
+import {
+    GoogleMap,
+    LoadScript,
+    Marker,
+    InfoWindow,
+} from "@react-google-maps/api";
 
 const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
     const puntos = [
-        ...alumnos.map(alumno => ({
+        ...alumnos.map((alumno) => ({
             id: alumno.id_alumno,
             nombre: alumno.nombre_completo,
             latitud: parseFloat(alumno.latitud),
             longitud: parseFloat(alumno.longitud),
-            tipo: 'Alumno',
+            tipo: "Alumno",
             foto: alumno.foto,
         })),
-        ...escuelas.map(escuela => ({
+        ...escuelas.map((escuela) => ({
             id: escuela.id_school,
             nombre: escuela.nombre,
             latitud: parseFloat(escuela.latitud),
             longitud: parseFloat(escuela.longitud),
-            tipo: 'Escuela',
+            tipo: "Escuela",
             foto: escuela.foto,
         })),
     ];
@@ -24,16 +29,20 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
     const [activeMarker, setActiveMarker] = useState(null);
 
     const containerStyle = {
-        width: '100%',
-        height: '550px',
-        marginBottom: '20px',
+        width: "100%",
+        height: "550px",
+        marginBottom: "20px",
     };
 
     const defaultCenter = { lat: 13.69294, lng: -89.21819 };
 
     const iconos = {
-        Alumno: { url: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png' },
-        Escuela: { url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png' },
+        Alumno: {
+            url: "https://maps.google.com/mapfiles/ms/icons/orange-dot.png",
+        },
+        Escuela: {
+            url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
+        },
     };
 
     const handleMarkerClick = (punto) => setActiveMarker(punto);
@@ -41,7 +50,11 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
 
     return (
         <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
-            <GoogleMap mapContainerStyle={containerStyle} center={defaultCenter} zoom={10}>
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={defaultCenter}
+                zoom={10}
+            >
                 {puntos.map((punto) => (
                     <Marker
                         key={`${punto.tipo}-${punto.id}`}
@@ -53,48 +66,80 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
 
                 {activeMarker && (
                     <InfoWindow
-                        position={{ lat: activeMarker.latitud, lng: activeMarker.longitud }}
+                        position={{
+                            lat: activeMarker.latitud,
+                            lng: activeMarker.longitud,
+                        }}
                         onCloseClick={handleCloseInfoWindow}
                     >
-                        <div style={{ textAlign: 'center', maxWidth: '200px' }}>
-                            <h3 style={{ margin: '5px 0', color: activeMarker.tipo === 'Escuela' ? 'green' : 'orange' }}>
+                        <div style={{ textAlign: "center", maxWidth: "200px" }}>
+                            <h3
+                                style={{
+                                    margin: "5px 0",
+                                    color:
+                                        activeMarker.tipo === "Escuela"
+                                            ? "green"
+                                            : "orange",
+                                }}
+                            >
                                 {activeMarker.tipo}
                             </h3>
 
-                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
                                 {activeMarker.foto ? (
                                     <img
                                         src={`http://127.0.0.1:8000/storage/${activeMarker.foto}`}
                                         alt={activeMarker.nombre}
                                         style={{
-                                            width: '100px',
-                                            height: '100px',
-                                            borderRadius: '10px',
-                                            objectFit: 'cover',
-                                            marginBottom: '10px',
+                                            width: "100px",
+                                            height: "100px",
+                                            borderRadius: "10px",
+                                            objectFit: "cover",
+                                            marginBottom: "10px",
                                         }}
-                                        onError={(e) => { e.target.src = 'https://placehold.co/100x100'; }}
+                                        onError={(e) => {
+                                            e.target.src =
+                                                "https://placehold.co/100x100";
+                                        }}
                                     />
                                 ) : (
                                     <div
                                         style={{
-                                            width: '100px',
-                                            height: '100px',
-                                            borderRadius: '10px',
-                                            backgroundColor: '#ccc',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            marginBottom: '10px',
+                                            width: "100px",
+                                            height: "100px",
+                                            borderRadius: "10px",
+                                            backgroundColor: "#ccc",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            marginBottom: "10px",
                                         }}
                                     >
-                                        <span style={{ color: '#fff', fontSize: '14px' }}>N/A</span>
+                                        <span
+                                            style={{
+                                                color: "#fff",
+                                                fontSize: "14px",
+                                            }}
+                                        >
+                                            N/A
+                                        </span>
                                     </div>
                                 )}
                             </div>
 
-                            <p><strong>Nombre:</strong> {activeMarker.nombre}</p>
-                            <p><strong>Dirección:</strong> {activeMarker.latitud}, {activeMarker.longitud}</p>
+                            <p>
+                                <strong>Nombre:</strong> {activeMarker.nombre}
+                            </p>
+                            <p>
+                                <strong>Dirección:</strong>{" "}
+                                {activeMarker.latitud}, {activeMarker.longitud}
+                            </p>
                         </div>
                     </InfoWindow>
                 )}

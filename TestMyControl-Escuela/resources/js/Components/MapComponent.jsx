@@ -1,16 +1,16 @@
-import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import { usePage } from '@inertiajs/react'; // Importa usePage para acceder a las props
+import React from "react";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { usePage } from "@inertiajs/react";
 
 const MapComponent = ({ latitud, longitud, setData }) => {
-    // Accede a la clave de API desde las props de Inertia
+    // Accede a la clave de API de Google Maps desde la página actual
     const { props } = usePage();
     const googleMapsApiKey = props.googleMapsApiKey;
 
     const containerStyle = {
-        width: '100%',
-        height: '400px',
-        marginBottom: '20px',
+        width: "100%",
+        height: "400px",
+        marginBottom: "20px",
     };
 
     const defaultCenter = {
@@ -22,20 +22,32 @@ const MapComponent = ({ latitud, longitud, setData }) => {
         const lat = event.latLng.lat();
         const lng = event.latLng.lng();
 
-        setData('latitud', lat.toString());
-        setData('longitud', lng.toString());
+        setData("latitud", lat.toString());
+        setData("longitud", lng.toString());
     };
 
     return (
         <LoadScript googleMapsApiKey={googleMapsApiKey}>
             <GoogleMap
                 mapContainerStyle={containerStyle}
-                center={latitud && longitud ? { lat: parseFloat(latitud), lng: parseFloat(longitud) } : defaultCenter}
+                center={
+                    latitud && longitud
+                        ? {
+                              lat: parseFloat(latitud),
+                              lng: parseFloat(longitud),
+                          }
+                        : defaultCenter
+                }
                 zoom={12}
                 onClick={handleMapClick}
             >
                 {latitud && longitud && (
-                    <Marker position={{ lat: parseFloat(latitud), lng: parseFloat(longitud) }} />
+                    <Marker
+                        position={{
+                            lat: parseFloat(latitud),
+                            lng: parseFloat(longitud),
+                        }}
+                    />
                 )}
             </GoogleMap>
         </LoadScript>

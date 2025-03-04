@@ -110,7 +110,7 @@ const Create = ({auth}) => {
     <select
         name="role"
         id="role"
-        value={data.role} // Asegurar que usa el estado
+        value={data.role} 
         onChange={(e) => setData("role", e.target.value)}
         className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
     >

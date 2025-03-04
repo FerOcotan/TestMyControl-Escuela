@@ -8,5 +8,5 @@ class escuela extends Model
 {
     protected $table = 'escuelas';       
     protected $fillable = ['nombre','direccion','email','foto','latitud','longitud'];
-    protected $primaryKey = 'id_school'; // Especifica la clave primaria personalizada
+    protected $primaryKey = 'id_school'; // clave primaria personalizada
 }

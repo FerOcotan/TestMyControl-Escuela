@@ -45,6 +45,6 @@ class Alumnos extends Model
     public function padres()
     {
         return $this->belongsToMany(Padres::class, 'padre_alumnos', 'id_alumno', 'id_padre')
-            ->withPivot('parentesco'); // Incluir el campo "parentesco" de la tabla intermedia
+            ->withPivot('parentesco');
     }
 }

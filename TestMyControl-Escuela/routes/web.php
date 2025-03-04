@@ -9,7 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SeccionController;
 use App\Http\Controllers\UsuariosController;
 use GuzzleHttp\Middleware;
-use App\Http\Controllers\DashboardController; // Importa el DashboardController
+use App\Http\Controllers\DashboardController; 
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Foundation\Application;

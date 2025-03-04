@@ -37,7 +37,7 @@ class DashboardUserController extends Controller
                     'direccion' => $alumno->escuela->direccion,
                     'latitud' => $alumno->escuela->latitud,
                     'longitud' => $alumno->escuela->longitud,
-                    'foto' => $alumno->escuela->foto, // Aquí agregamos la foto sin sobrescribir
+                    'foto' => $alumno->escuela->foto, 
                 ] : null,
                 'grado' => $alumno->grado ? ['nombre_grado' => $alumno->grado->nombre_grado] : null,
                 'seccion' => $alumno->seccion ? ['nombre_seccion' => $alumno->seccion->nombre_seccion] : null,

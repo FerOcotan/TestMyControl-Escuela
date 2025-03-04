@@ -65,8 +65,8 @@ class PadreAlumnoController extends Controller
     public function edit($padreAlumno)
 {
     
-        $alumnos = Alumnos::all(['id_alumno', 'nombre_completo']); // Selecciona ID y Nombre
-        $padres = Padres::all(['id_padre', 'nombre']); // Selecciona ID y Nombre
+        $alumnos = Alumnos::all(['id_alumno', 'nombre_completo']); //  ID y Nombre
+        $padres = Padres::all(['id_padre', 'nombre']); //  ID y Nombre
 
         $padreAlumno = PadreAlumno::findOrFail($padreAlumno);
        

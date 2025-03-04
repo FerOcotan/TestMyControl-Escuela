@@ -5,7 +5,7 @@ import InputLabel from "@/Components/InputLabel";
 import TextInput from "@/Components/TextInput";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
-import MapComponent from "@/Components/MapComponent"; // Importa el nuevo componente
+import MapComponent from "@/Components/MapComponent";
 
 const Create = ({ grados, secciones, escuelas, users }) => {
     const initialValues = {
@@ -17,9 +17,9 @@ const Create = ({ grados, secciones, escuelas, users }) => {
         genero: "",
         latitud: "",
         longitud: "",
-        id_school: "", // Nuevo campo
-        id_grado: "", // Nuevo campo
-        id_seccion: "", // Nuevo campo
+        id_school: "",
+        id_grado: "",
+        id_seccion: "",
         user_id: "",
     };
 
@@ -182,7 +182,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                         <select
                                             name="genero"
                                             id="genero"
-                                            value={data.genero} // Asegurar que toma el valor de data
+                                            value={data.genero}
                                             onChange={(e) =>
                                                 setData(
                                                     "genero",
@@ -225,7 +225,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                                     "id_grado",
                                                     e.target.value
                                                 )
-                                            } // No convertir a BigInt
+                                            }
                                         >
                                             <option value="">
                                                 Seleccione un grado
@@ -261,7 +261,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                                     "id_seccion",
                                                     e.target.value
                                                 )
-                                            } // No convertir a BigInt
+                                            } 
                                         >
                                             <option value="">
                                                 Seleccione una sección

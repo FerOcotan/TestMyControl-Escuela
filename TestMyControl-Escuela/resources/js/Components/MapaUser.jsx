@@ -1,13 +1,17 @@
-import React from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import React from "react";
+import {
+    GoogleMap,
+    LoadScript,
+    Marker,
+    InfoWindow,
+} from "@react-google-maps/api";
 
-// Estilos del contenedor del mapa
 const containerStyle = {
-    width: '100%',
-    height: '400px',
+    width: "100%",
+    height: "400px",
 };
 
-// Configuración inicial del mapa
+// Configuración inicial
 const defaultCenter = { lat: 13.69294, lng: -89.21819 };
 
 export default function MapaUser({ escuela }) {
@@ -15,15 +19,16 @@ export default function MapaUser({ escuela }) {
     const [isOpen, setIsOpen] = React.useState(false);
 
     // Validar y convertir coordenadas
-    const escuelaPosition = escuela?.latitud && escuela?.longitud
-        ? {
-            lat: parseFloat(escuela.latitud),
-            lng: parseFloat(escuela.longitud),
-        }
-        : defaultCenter; 
+    const escuelaPosition =
+        escuela?.latitud && escuela?.longitud
+            ? {
+                  lat: parseFloat(escuela.latitud),
+                  lng: parseFloat(escuela.longitud),
+              }
+            : defaultCenter;
 
     return (
-         <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+        <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={escuelaPosition}

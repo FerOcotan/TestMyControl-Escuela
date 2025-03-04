@@ -1,7 +1,7 @@
 import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Pencil, Trash2, PlusCircle } from "lucide-react"; // Importar iconos
+import { Pencil, Trash2, PlusCircle } from "lucide-react"; 
 
 const Index = ({ auth, seccion }) => {
     return (
