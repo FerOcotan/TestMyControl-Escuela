@@ -1,5 +1,5 @@
 import React from "react";
-import { Pencil, PencilRuler, Trash2, PlusCircle } from "lucide-react"; // Importar iconos
+import { Pencil, PencilRuler, Trash2, PlusCircle } from "lucide-react"; 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
@@ -23,9 +23,9 @@ const Index = ({ auth, alumnos }) => {
         >
             <Head title="Alumnos" />
 
-            {/* Contenedor sin scroll en toda la pantalla */}
+        
             <div className="w-full">
-                {/* Contenedor con scroll solo en la tabla */}
+
                 <div className="overflow-x-auto">
                     <table className="w-full table-fixed text-sm text-left text-gray-600">
                         <thead className="text-xs text-gray-700 uppercase bg-gray-200">

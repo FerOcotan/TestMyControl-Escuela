@@ -40,22 +40,23 @@ class AlumnosController extends Controller
      */
     public function create()
     {
-
-        $escuelas = escuela::all(['id_school', 'nombre']); // Selecciona ID y Nombre
-        $grados = Grado::all(['id_grado', 'nombre_grado']); // Selecciona ID y Nombre
-        $secciones = Seccion::all(['id_seccion', 'nombre_seccion']); // Selecciona ID y Nombre
-        $users = Usuarios::all(['id', 'email']); // Selecciona ID y Nombre
-
+        $escuelas = escuela::all(['id_school', 'nombre']);
+        $grados = Grado::all(['id_grado', 'nombre_grado']);
+        $secciones = Seccion::all(['id_seccion', 'nombre_seccion']);
+    
+        // Obtener usuarios que NO tienen un alumno vinculado y que NO son administradores
+        $users = Usuarios::whereDoesntHave('alumno')
+                         ->where('role', '!=', 'administrador')
+                         ->get(['id', 'email']);
+    
         return Inertia::render('Alumno/Create', [
             'grados' => $grados,
             'secciones' => $secciones,
             'escuelas' => $escuelas,
-            'users' => $users // Ahora contiene los datos correctos
-           
+            'users' => $users
         ]);
-
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -88,23 +89,31 @@ class AlumnosController extends Controller
      */
     public function edit($id_alumno)
     {
-        $escuelas = escuela::all(['id_school', 'nombre']); // Selecciona ID y Nombre
-        $grados = Grado::all(['id_grado', 'nombre_grado']); // Selecciona ID y Nombre
-        $secciones = Seccion::all(['id_seccion', 'nombre_seccion']); // Selecciona ID y Nombre
-        $users = Usuarios::all(['id', 'email']); 
-
+        $escuelas = escuela::all(['id_school', 'nombre']);
+        $grados = Grado::all(['id_grado', 'nombre_grado']);
+        $secciones = Seccion::all(['id_seccion', 'nombre_seccion']);
+    
+        // Obtener el alumno a editar
         $alumnos = Alumnos::findOrFail($id_alumno);
-       
-
+    
+        // Obtener los usuarios que no tienen un alumno vinculado o que sean el usuario actual del alumno
+        $users = Usuarios::where(function ($query) use ($alumnos) {
+                    $query->whereDoesntHave('alumno')
+                          ->orWhere('id', $alumnos->user_id);
+                })
+                ->where('role', '!=', 'administrador')
+                ->get(['id', 'email']);
+    
         return Inertia::render('Alumno/Edit', [
             'grados' => $grados,
             'secciones' => $secciones,
             'escuelas' => $escuelas,
             'alumnos' => $alumnos,
             'users' => $users
-           
         ]);
     }
+    
+
 
     /**
      * Update the specified resource in storage.
