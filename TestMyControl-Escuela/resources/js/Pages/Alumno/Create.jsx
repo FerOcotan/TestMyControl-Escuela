@@ -51,10 +51,10 @@ const Create = ({ grados, secciones, escuelas, users }) => {
         >
             <Head title="Dashboard" />
 
-            <div className="py-12 bg-gray-100 min-h-screen flex items-center justify-center">
-                <div className="mx-auto max-w-4xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-lg rounded-lg">
-                        <div className="p-6 text-gray-900 space-y-4">
+            <div className="py-12">
+                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-gray-900">
                             <form onSubmit={submit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
@@ -68,7 +68,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                             name="nombre_completo"
                                             placeholder="Ingrese el nombre completo"
                                             value={data.nombre_completo}
-                                            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2"
+                                            className="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 p-2"
                                             onChange={(e) =>
                                                 setData(
                                                     "nombre_completo",
@@ -150,30 +150,6 @@ const Create = ({ grados, secciones, escuelas, users }) => {
 
                                     <div>
                                         <InputLabel
-                                            htmlFor="email"
-                                            value="Email"
-                                        />
-
-                                        <TextInput
-                                            id="email"
-                                            type="text"
-                                            name="email"
-                                            placeholder="Ingrese su correo electrónico"
-                                            value={data.email}
-                                            className="mt-1 block w-full"
-                                            onChange={(e) =>
-                                                setData("email", e.target.value)
-                                            }
-                                        />
-
-                                        <InputError
-                                            message={errors.email}
-                                            className="mt-2"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <InputLabel
                                             htmlFor="foto"
                                             value="Foto alumno"
                                         />
@@ -203,19 +179,29 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                             value="Genero"
                                         />
 
-                                    <select
-                                        name="genero"
-                                        id="genero"
-                                        value={data.genero} // Asegurar que toma el valor de data
-                                        onChange={(e) => setData("genero", e.target.value)}
-                                        className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                                    >
-                                        <option value="">Seleccione un género</option> {/* Opción por defecto */}
-                                        <option value="masculino">Masculino</option>
-                                        <option value="femenino">Femenino</option>
-                                    </select>
-
-                                        
+                                        <select
+                                            name="genero"
+                                            id="genero"
+                                            value={data.genero} // Asegurar que toma el valor de data
+                                            onChange={(e) =>
+                                                setData(
+                                                    "genero",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-orange-500 focus:ring-orange-500"
+                                        >
+                                            <option value="">
+                                                Seleccione un género
+                                            </option>{" "}
+                                            {/* Opción por defecto */}
+                                            <option value="masculino">
+                                                Masculino
+                                            </option>
+                                            <option value="femenino">
+                                                Femenino
+                                            </option>
+                                        </select>
 
                                         <InputError
                                             message={errors.genero}
@@ -232,7 +218,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                         <select
                                             id="id_grado"
                                             name="id_grado"
-                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-orange-500 focus:ring-orange-500"
                                             value={data.id_grado}
                                             onChange={(e) =>
                                                 setData(
@@ -268,7 +254,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                         <select
                                             id="id_seccion"
                                             name="id_seccion"
-                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-orange-500 focus:ring-orange-500"
                                             value={data.id_seccion}
                                             onChange={(e) =>
                                                 setData(
@@ -304,7 +290,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                         <select
                                             id="id_school"
                                             name="id_school"
-                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-orange-500 focus:ring-orange-500"
                                             value={data.id_school}
                                             onChange={(e) =>
                                                 setData(
@@ -331,8 +317,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                         />
                                     </div>
 
-                                    {/* usuario */}
-                                    <div>
+                                    <div className="md:col-span-2">
                                         <InputLabel
                                             htmlFor="user_id"
                                             value="Usuario"
@@ -340,14 +325,22 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                         <select
                                             id="user_id"
                                             name="user_id"
-                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-orange-500 focus:ring-orange-500"
                                             value={data.user_id}
-                                            onChange={(e) =>
-                                                setData(
-                                                    "user_id",
-                                                    e.target.value
-                                                )
-                                            }
+                                            onChange={(e) => {
+                                                const selectedUser = users.find(
+                                                    (user) =>
+                                                        user.id ===
+                                                        parseInt(e.target.value)
+                                                );
+                                                setData({
+                                                    ...data,
+                                                    user_id: e.target.value,
+                                                    email: selectedUser
+                                                        ? selectedUser.email
+                                                        : "",
+                                                });
+                                            }}
                                         >
                                             <option value="">
                                                 Seleccione un usuario
@@ -366,6 +359,13 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                             className="mt-2"
                                         />
                                     </div>
+
+                                    {/* Input oculto para enviar el email en el formulario */}
+                                    <input
+                                        type="hidden"
+                                        name="email"
+                                        value={data.email}
+                                    />
                                 </div>
 
                                 <div>
