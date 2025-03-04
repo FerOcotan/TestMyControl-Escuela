@@ -56,9 +56,10 @@ const Index = ({ auth, alumnos }) => {
                                     <td className="px-3 py-2 max-w-[100px]  ">
                                         {alumno.telefono}
                                     </td>
-                                    <td className="px-3 py-2 max-w-[150px]  ">
+                                    <td className="px-3 py-2 max-w-[100px] break-words whitespace-normal">
                                         {alumno.email}
                                     </td>
+
                                     <td className="px-3 py-2">
                                         <img
                                             src={`/storage/${alumno.foto}`}
