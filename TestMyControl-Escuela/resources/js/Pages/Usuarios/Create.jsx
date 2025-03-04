@@ -105,28 +105,21 @@ const Create = ({auth}) => {
                  </div>
                
 
-                  <div>
-                                    <InputLabel htmlFor="role" value="Permisos" />
-                
-                                    <select 
-                                    name="role" 
-                                    id="role"
-                                    onChange={(e) => {setData('role', e.target.value);
-                                        
-                                    }}
-                
-                                     className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
-                                    >
-                
-                                    <option value="administrador">administrador</option>
-                                    <option value="usuario">usuario</option>
-                
-                            
-                
-                                    </select>
-                
-                                    <InputError message={errors.role} className="mt-2" />
-                    </div>  
+                 <div>
+    <InputLabel htmlFor="role" value="Permisos" />
+    <select
+        name="role"
+        id="role"
+        value={data.role} // Asegurar que usa el estado
+        onChange={(e) => setData("role", e.target.value)}
+        className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+    >
+        <option value="">Seleccione un permiso</option> {/* Opción por defecto */}
+        <option value="administrador">Administrador</option>
+        <option value="usuario">Usuario</option>
+    </select>
+    <InputError message={errors.role} className="mt-2" />
+</div>
 
 
               
