@@ -203,24 +203,19 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                             value="Genero"
                                         />
 
-                                        <select
-                                            name="genero"
-                                            id="genero"
-                                            onChange={(e) => {
-                                                setData(
-                                                    "genero",
-                                                    e.target.value
-                                                );
-                                            }}
-                                            className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500 "
-                                        >
-                                            <option value="masculino">
-                                                Masculino
-                                            </option>
-                                            <option value="femenino">
-                                                Femenino
-                                            </option>
-                                        </select>
+                                    <select
+                                        name="genero"
+                                        id="genero"
+                                        value={data.genero} // Asegurar que toma el valor de data
+                                        onChange={(e) => setData("genero", e.target.value)}
+                                        className="rounded-md border-gray-300 w-full shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                                    >
+                                        <option value="">Seleccione un género</option> {/* Opción por defecto */}
+                                        <option value="masculino">Masculino</option>
+                                        <option value="femenino">Femenino</option>
+                                    </select>
+
+                                        
 
                                         <InputError
                                             message={errors.genero}
