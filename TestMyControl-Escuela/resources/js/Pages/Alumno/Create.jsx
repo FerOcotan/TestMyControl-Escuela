@@ -110,7 +110,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                     <div>
                                         <InputLabel
                                             htmlFor="telefono"
-                                            value="Telefono"
+                                            value="Teléfono"
                                         />
 
                                         <TextInput
@@ -176,7 +176,7 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                     <div>
                                         <InputLabel
                                             htmlFor="genero"
-                                            value="Genero"
+                                            value="Género"
                                         />
 
                                         <select

@@ -28,7 +28,7 @@ const Create = ({auth}) => {
         <div className="flex justify-between">
 
         <h2 className="text-xl font-semibold leading-tight text-gray-800">
-            Añadir Seccion
+            Añadir Sección
         </h2>
         <Link href={route('seccion.index')} className="btn btn-primary">
         Secciones
@@ -46,7 +46,7 @@ const Create = ({auth}) => {
 
 
                         <div>
-                    <InputLabel htmlFor="nombre_seccion" value="Nombre Seccion" />
+                    <InputLabel htmlFor="nombre_seccion" value="Nombre Sección" />
 
                     <TextInput
                         id="nombre_seccion"
