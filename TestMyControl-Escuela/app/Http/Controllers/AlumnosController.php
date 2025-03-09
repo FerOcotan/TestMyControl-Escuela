@@ -60,17 +60,18 @@ class AlumnosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+     // Se cambia el tipo de request a StoreRequest
     public function store(StoreRequest $request)
     {
         $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud','id_school','id_seccion','id_grado','user_id');
+
+
         if($request->hasFile('foto')){
             $file=$request->file('foto');
             $routeImage = $file->store('fotos',['disk'=>'public']);
             $data['foto']=$routeImage;
         }
-
-        
-     
 
         Alumnos::create($data);
         return to_route('alumno.index');
@@ -87,6 +88,8 @@ class AlumnosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
+
     public function edit($id_alumno)
     {
         $escuelas = escuela::all(['id_school', 'nombre']);
@@ -103,6 +106,7 @@ class AlumnosController extends Controller
                 })
                 ->where('role', '!=', 'administrador')
                 ->get(['id', 'email']);
+
     
         return Inertia::render('Alumno/Edit', [
             'grados' => $grados,
@@ -118,6 +122,9 @@ class AlumnosController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+     // Se cambia el tipo de request a UpdateRequestAlumno
+
     public function update(UpdateRequestAlumno $request, Alumnos $alumnos)
     {
         $data=$request->only('nombre_completo','direccion','telefono','email','genero','latitud','longitud','id_school','id_seccion','id_grado','user_id');
@@ -130,8 +137,6 @@ class AlumnosController extends Controller
             }
 
         }
-
-     
 
         $alumnos->update($data);
         return to_route('alumno.edit',$alumnos);

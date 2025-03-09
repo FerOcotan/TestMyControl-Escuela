@@ -46,7 +46,10 @@ const Index = ({ auth, padres }) => {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200">
-                                        {padres?.map((padre) => (
+                                        {padres
+                                          ?.slice() //  una copia del array para no modificar el original
+                                          .sort((a, b) => a.nombre.localeCompare(b.nombre)) //  alfabéticamente
+                                          .map((padre) => (
                                             <tr
                                                 key={padre.id_padre}
                                                 className="hover:bg-gray-50 transition"

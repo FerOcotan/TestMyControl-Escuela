@@ -6,6 +6,9 @@ import {
     InfoWindow,
 } from "@react-google-maps/api";
 
+
+
+// Componente para mostrar ell mapa con marcadores dashborddd
 const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
     const puntos = [
         ...alumnos.map((alumno) => ({
@@ -26,14 +29,19 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
         })),
     ];
 
+    // Estado para controlar el marcador activo
     const [activeMarker, setActiveMarker] = useState(null);
 
+
+    // Estilos del contenedor del mapa
     const containerStyle = {
         width: "100%",
         height: "550px",
         marginBottom: "20px",
     };
 
+
+    // Configuración inicial el salvador
     const defaultCenter = { lat: 13.69294, lng: -89.21819 };
 
     const iconos = {
@@ -45,10 +53,13 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
         },
     };
 
+
+    // Funciones para manejar los eventos de los marcadores
     const handleMarkerClick = (punto) => setActiveMarker(punto);
     const handleCloseInfoWindow = () => setActiveMarker(null);
 
     return (
+        // Componente de Google Maps api
         <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
             <GoogleMap
                 mapContainerStyle={containerStyle}
@@ -56,6 +67,7 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
                 zoom={10}
             >
                 {puntos.map((punto) => (
+                    // Marcador para cada punto
                     <Marker
                         key={`${punto.tipo}-${punto.id}`}
                         position={{ lat: punto.latitud, lng: punto.longitud }}
@@ -65,6 +77,7 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
                 ))}
 
                 {activeMarker && (
+                    // InfoWindow para mostrar detalles del marcador activo
                     <InfoWindow
                         position={{
                             lat: activeMarker.latitud,
@@ -143,9 +156,15 @@ const MapaPuntos = ({ alumnos = [], escuelas = [] }) => {
                         </div>
                     </InfoWindow>
                 )}
+                
             </GoogleMap>
+            
         </LoadScript>
+
+        //// Fin del componente de Google Maps api
     );
 };
+
+// Exporta el componente para su uso en otras partes de la aplicación
 
 export default MapaPuntos;

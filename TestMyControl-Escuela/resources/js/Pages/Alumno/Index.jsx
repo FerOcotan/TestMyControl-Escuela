@@ -42,7 +42,10 @@ const Index = ({ auth, alumnos }) => {
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {alumnos?.map((alumno) => (
+                            {alumnos
+                                ?.slice() //  una  array para no modificar el original
+                                .sort((a, b) => a.nombre_completo.localeCompare(b.nombre_completo)) //  alfabéticamente
+                                .map((alumno) => (
                                 <tr
                                     key={alumno.id_alumno}
                                     className="hover:bg-gray-100 transition"

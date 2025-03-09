@@ -19,6 +19,7 @@ class Padres extends Model
     // 🔹 Relación muchos a muchos con la tabla alumnos (a través de la tabla intermedia padre_alumnos)
     public function alumnos()
     {
+        //belongsToMany relacion muchos a mcuhos
         return $this->belongsToMany(Alumnos::class, 'padre_alumnos', 'id_padre', 'id_alumno')
             ->withPivot('parentesco'); //   "parentesco" de la tabla intermedia
     }

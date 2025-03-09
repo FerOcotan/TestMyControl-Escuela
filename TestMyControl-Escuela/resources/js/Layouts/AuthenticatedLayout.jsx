@@ -44,6 +44,14 @@ export default function AuthenticatedLayout({ header, children }) {
                             />
                         </NavLink>
 
+                        <NavLink href={route("usuarios.index")}>
+                            <SidebarItem
+                                icon={<Lock size={20} />}
+                                text="Usuarios"
+                                active={route().current("usuarios.index")}
+                            />
+                        </NavLink>
+
                         <SidebarSection
                             title="Escuela"
                             icon={<University size={20} />}
@@ -121,13 +129,7 @@ export default function AuthenticatedLayout({ header, children }) {
                             />
                         </NavLink>
 
-                        <NavLink href={route("usuarios.index")}>
-                            <SidebarItem
-                                icon={<Lock size={20} />}
-                                text="Usuarios"
-                                active={route().current("usuarios.index")}
-                            />
-                        </NavLink>
+                    
                     </Sidebar>
                 )}
 

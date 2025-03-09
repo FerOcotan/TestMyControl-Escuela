@@ -64,7 +64,10 @@ const Create = ({ auth, alumnos, padres }) => {
                                         <option value="">
                                             -- Selecciona --
                                         </option>
-                                        {alumnos.map((alumno) => (
+                                        {alumnos
+                                        .slice() // Crea una copia para no modificar el array original
+                                        .sort((a, b) => a.nombre_completo.localeCompare(b.nombre_completo)) // Ordena alfabéticamente
+                                        .map((alumno) => (                                
                                             <option
                                                 key={alumno.id_alumno}
                                                 value={alumno.id_alumno}
@@ -102,7 +105,10 @@ const Create = ({ auth, alumnos, padres }) => {
                                         <option value="">
                                             -- Selecciona --
                                         </option>
-                                        {padres.map((padre) => (
+                                        {padres
+                                     .slice() // Crea una copia para no modificar el array original
+                                     .sort((a, b) => a.nombre.localeCompare(b.nombre)) // Ordena alfabéticamente
+                                     .map((padre) => (
                                             <option
                                                 key={padre.id_padre}
                                                 value={padre.id_padre}

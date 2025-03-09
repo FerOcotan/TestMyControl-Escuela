@@ -2,6 +2,9 @@ import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { usePage } from "@inertiajs/react";
 
+
+// Componente para mostrar ell mapa con marcadores para cruds
+
 const MapComponent = ({ latitud, longitud, setData }) => {
     // Accede a la clave de API de Google Maps desde la página actual
     const { props } = usePage();

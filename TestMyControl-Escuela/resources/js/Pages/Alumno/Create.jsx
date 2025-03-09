@@ -408,12 +408,14 @@ const Create = ({ grados, secciones, escuelas, users }) => {
                                     />
                                 </div>
 
+
                                 <div className="md:col-span-2 mt-8">
                                     <MapComponent
                                         latitud={data.latitud}
                                         longitud={data.longitud}
                                         setData={setData}
                                     />
+
                                 </div>
 
                                 <div className="flex justify-end mt-4">

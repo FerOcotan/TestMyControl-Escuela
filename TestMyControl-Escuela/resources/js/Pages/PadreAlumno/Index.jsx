@@ -38,7 +38,7 @@ const Index = ({ auth, padreAlumno }) => {
                                                 Responsable
                                             </th>
                                             <th className="px-4 py-3 w-1/4">
-                                                Hijo
+                                                Alumno
                                             </th>
                                             <th className="px-4 py-3 w-1/4 text-center">
                                                 Acciones
@@ -46,7 +46,10 @@ const Index = ({ auth, padreAlumno }) => {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200">
-                                        {padreAlumno?.map((padre) => (
+                                        {padreAlumno
+                                         ?.slice() //  una copia del array para no modificar el original
+                                         .sort((a, b) => a.padres.nombre.localeCompare(b.padres.nombre)) // Ordena alfabéticamente por el nombre del padre
+                                         .map((padre) => (
                                             <tr
                                                 key={padre.id_padre_alumno}
                                                 className="hover:bg-gray-50 transition"

@@ -102,7 +102,7 @@
                 <th>Género</th>
                 <th>Grado</th>
                 <th>Sección</th>
-                <th>Padre/Madre</th>
+                <th>Responsable</th>
                 <th>Parentesco</th>
             </tr>
         </thead>
